@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -66,28 +65,20 @@ export function ChatInterface() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="gpt-4o">
-                  <div className="flex flex-col">
-                    <span className="font-medium">GPT-4o</span>
-                    <span className="text-xs text-gray-500">Great for most tasks</span>
-                  </div>
+                  <span className="font-medium">GPT-4o</span>
+                  <span className="text-xs text-gray-500 ml-2">Great for most tasks</span>
                 </SelectItem>
                 <SelectItem value="o3">
-                  <div className="flex flex-col">
-                    <span className="font-medium">o3</span>
-                    <span className="text-xs text-gray-500">Uses advanced reasoning</span>
-                  </div>
+                  <span className="font-medium">o3</span>
+                  <span className="text-xs text-gray-500 ml-2">Uses advanced reasoning</span>
                 </SelectItem>
                 <SelectItem value="o4-mini">
-                  <div className="flex flex-col">
-                    <span className="font-medium">o4-mini</span>
-                    <span className="text-xs text-gray-500">Fastest at advanced reasoning</span>
-                  </div>
+                  <span className="font-medium">o4-mini</span>
+                  <span className="text-xs text-gray-500 ml-2">Fastest at advanced reasoning</span>
                 </SelectItem>
                 <SelectItem value="o4-mini-high">
-                  <div className="flex flex-col">
-                    <span className="font-medium">o4-mini-high</span>
-                    <span className="text-xs text-gray-500">Great at coding and visual reasoning</span>
-                  </div>
+                  <span className="font-medium">o4-mini-high</span>
+                  <span className="text-xs text-gray-500 ml-2">Great at coding and visual reasoning</span>
                 </SelectItem>
               </SelectContent>
             </Select>
