@@ -1,12 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
+import { MainContent } from "@/components/MainContent";
+import { TopNavbar } from "@/components/TopNavbar";
 
 const Index = () => {
+  const [currentView, setCurrentView] = useState("dashboard");
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-[#0f0f0f] text-white">
+      <SidebarProvider>
+        <div className="flex min-h-screen w-full">
+          <AppSidebar currentView={currentView} onViewChange={setCurrentView} />
+          <div className="flex flex-1 flex-col">
+            <TopNavbar />
+            <MainContent currentView={currentView} />
+          </div>
+        </div>
+      </SidebarProvider>
     </div>
   );
 };
