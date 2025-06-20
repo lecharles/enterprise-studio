@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -100,10 +101,10 @@ export function ChatInterface() {
   };
 
   const quickAccessItems = [
-    { id: 'agents', label: 'Agents', icon: Code },
-    { id: 'automation', label: 'Automation', icon: Zap },
-    { id: 'campaigns', label: 'Campaigns', icon: Users },
-    { id: 'leads', label: 'Leads', icon: Briefcase },
+    { id: 'agents', label: 'Agents', icon: Code, color: 'text-green-600' },
+    { id: 'automation', label: 'Automation', icon: Zap, color: 'text-yellow-600' },
+    { id: 'campaigns', label: 'Campaigns', icon: Users, color: 'text-purple-600' },
+    { id: 'leads', label: 'Leads', icon: Briefcase, color: 'text-blue-600' },
   ];
 
   return (
@@ -292,16 +293,16 @@ export function ChatInterface() {
             </div>
 
             {/* Quick Access Buttons */}
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex justify-center gap-3 mt-6">
               {quickAccessItems.map((item) => (
                 <button
                   key={item.id}
-                  className="flex flex-col items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all bg-white min-w-[100px]"
+                  className="flex flex-col items-center gap-1.5 p-3 rounded-lg border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all bg-white min-w-[80px]"
                 >
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-gray-600" />
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    <item.icon className={`w-5 h-5 ${item.color}`} />
                   </div>
-                  <span className="text-sm font-medium text-gray-900">{item.label}</span>
+                  <span className="text-xs font-medium text-gray-900">{item.label}</span>
                 </button>
               ))}
             </div>
