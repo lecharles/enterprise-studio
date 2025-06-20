@@ -1,24 +1,36 @@
 
 import { useState } from "react";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/AppSidebar";
-import { MainContent } from "@/components/MainContent";
-import { TopNavbar } from "@/components/TopNavbar";
+import { DashboardView } from "@/components/views/DashboardView";
+import { AgentsView } from "@/components/views/AgentsView";
+import { AnalyticsView } from "@/components/views/AnalyticsView";
+import { ProjectView } from "@/components/views/ProjectView";
+import { NewProjectView } from "@/components/views/NewProjectView";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState("dashboard");
 
+  const renderView = () => {
+    switch (currentView) {
+      case "dashboard":
+        return <DashboardView />;
+      case "agents":
+        return <AgentsView />;
+      case "analytics":
+        return <AnalyticsView />;
+      case "new-project":
+        return <NewProjectView />;
+      default:
+        if (currentView.startsWith("project-")) {
+          const projectId = currentView.replace("project-", "");
+          return <ProjectView projectId={projectId} />;
+        }
+        return <DashboardView />;
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#0f0f0f] text-white">
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full">
-          <AppSidebar currentView={currentView} onViewChange={setCurrentView} />
-          <div className="flex flex-1 flex-col">
-            <TopNavbar />
-            <MainContent currentView={currentView} />
-          </div>
-        </div>
-      </SidebarProvider>
+    <div className="min-h-screen bg-gray-50">
+      {renderView()}
     </div>
   );
 };
