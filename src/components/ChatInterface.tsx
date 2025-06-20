@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,21 +9,44 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import { Switch } from "@/components/ui/switch";
 import { 
   Plus, 
   Settings, 
   Mic, 
   Send, 
-  BarChart3,
-  Code,
-  Film,
-  Zap,
-  Users,
-  Bot
+  ChevronDown,
+  X,
+  Search,
+  Zap
 } from "lucide-react";
 
 export function ChatInterface() {
   const [selectedModel, setSelectedModel] = useState("o3");
+  const [showResearchTool, setShowResearchTool] = useState(false);
+  const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
+  const [enabledSources, setEnabledSources] = useState({
+    webSearch: true,
+    box: false,
+    dropbox: false,
+    github: false,
+    gmail: false,
+    googleCalendar: false,
+    googleDrive: false,
+    hubspot: true,
+    linear: false,
+    outlookCalendar: true,
+    outlookEmail: true,
+    sharepoint: false,
+    teams: false
+  });
 
   const recentProjects = [
     { 
@@ -46,6 +70,29 @@ export function ChatInterface() {
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop&crop=center"
     },
   ];
+
+  const sources = [
+    { id: 'webSearch', label: 'Web search', icon: '🌐', enabled: enabledSources.webSearch },
+    { id: 'box', label: 'Box', icon: '📦', enabled: enabledSources.box },
+    { id: 'dropbox', label: 'Dropbox', icon: '📦', enabled: enabledSources.dropbox },
+    { id: 'github', label: 'GitHub', icon: '🐙', enabled: enabledSources.github },
+    { id: 'gmail', label: 'Gmail', icon: '📧', enabled: enabledSources.gmail },
+    { id: 'googleCalendar', label: 'Google Calendar', icon: '📅', enabled: enabledSources.googleCalendar },
+    { id: 'googleDrive', label: 'Google Drive', icon: '💾', enabled: enabledSources.googleDrive },
+    { id: 'hubspot', label: 'HubSpot', icon: '🟠', enabled: enabledSources.hubspot },
+    { id: 'linear', label: 'Linear', icon: '📐', enabled: enabledSources.linear },
+    { id: 'outlookCalendar', label: 'Outlook Calendar', icon: '📅', enabled: enabledSources.outlookCalendar },
+    { id: 'outlookEmail', label: 'Outlook Email', icon: '📧', enabled: enabledSources.outlookEmail },
+    { id: 'sharepoint', label: 'SharePoint', icon: '🟢', enabled: enabledSources.sharepoint },
+    { id: 'teams', label: 'Teams', icon: '👥', enabled: enabledSources.teams },
+  ];
+
+  const toggleSource = (sourceId: string) => {
+    setEnabledSources(prev => ({
+      ...prev,
+      [sourceId]: !prev[sourceId as keyof typeof prev]
+    }));
+  };
 
   return (
     <div className="flex-1 flex flex-col bg-white min-h-screen">
@@ -98,7 +145,7 @@ export function ChatInterface() {
           {/* Main Title */}
           <div className="text-center mb-8">
             <h1 className="text-2xl font-normal text-gray-900 mb-6">
-              What's on the agenda today?
+              What can I help with?
             </h1>
             
             {/* Chat Input */}
@@ -113,14 +160,95 @@ export function ChatInterface() {
                     <Plus className="w-4 h-4" />
                   </Button>
                   
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="flex items-center gap-1 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-full px-3 py-1 mr-3"
-                  >
-                    <Settings className="w-4 h-4" />
-                    <span className="text-sm">Tools</span>
-                  </Button>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="flex items-center gap-1 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-full px-3 py-1 mr-3"
+                      >
+                        <Settings className="w-4 h-4" />
+                        <span className="text-sm">Tools</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start" className="w-56 bg-white">
+                      <DropdownMenuItem className="flex items-center gap-3 cursor-pointer">
+                        <div className="w-4 h-4 flex items-center justify-center">🔗</div>
+                        <div>
+                          <div className="font-medium text-sm">Search connectors</div>
+                          <div className="text-xs text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded">NEW</div>
+                        </div>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="flex items-center gap-3 cursor-pointer">
+                        <div className="w-4 h-4 flex items-center justify-center">🎨</div>
+                        <span className="text-sm">Create an image</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="flex items-center gap-3 cursor-pointer">
+                        <div className="w-4 h-4 flex items-center justify-center">🌐</div>
+                        <span className="text-sm">Search the web</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="flex items-center gap-3 cursor-pointer">
+                        <div className="w-4 h-4 flex items-center justify-center">💻</div>
+                        <span className="text-sm">Write or code</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="flex items-center gap-3 cursor-pointer" onClick={() => setShowResearchTool(!showResearchTool)}>
+                        <div className="w-4 h-4 flex items-center justify-center">🔍</div>
+                        <span className="text-sm">Run deep research</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+
+                  {/* Research Tool */}
+                  {showResearchTool && (
+                    <div className="flex items-center gap-2 mr-3">
+                      <div className="flex items-center gap-1 bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">
+                        <Search className="w-3 h-3" />
+                        <span>Research</span>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="p-0 h-4 w-4 hover:bg-blue-200 rounded-full"
+                          onClick={() => setShowResearchTool(false)}
+                        >
+                          <X className="w-3 h-3" />
+                        </Button>
+                      </div>
+
+                      {/* Sources Dropdown */}
+                      <DropdownMenu open={showSourcesDropdown} onOpenChange={setShowSourcesDropdown}>
+                        <DropdownMenuTrigger asChild>
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="flex items-center gap-1 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-full px-3 py-1"
+                          >
+                            <span className="text-sm">Sources</span>
+                            <ChevronDown className="w-3 h-3" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="start" className="w-64 bg-white max-h-80 overflow-y-auto">
+                          {sources.map((source) => (
+                            <DropdownMenuItem key={source.id} className="flex items-center justify-between p-3 cursor-pointer" onClick={(e) => e.preventDefault()}>
+                              <div className="flex items-center gap-3">
+                                <span>{source.icon}</span>
+                                <span className="text-sm">{source.label}</span>
+                              </div>
+                              <Switch
+                                checked={source.enabled}
+                                onCheckedChange={() => toggleSource(source.id)}
+                                className="scale-75"
+                              />
+                            </DropdownMenuItem>
+                          ))}
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem className="flex items-center gap-3 cursor-pointer">
+                            <span>🔗</span>
+                            <span className="text-sm">Connect more</span>
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
+                  )}
                   
                   <Input
                     placeholder="Ask anything"
