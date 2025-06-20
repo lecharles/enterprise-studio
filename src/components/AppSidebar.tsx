@@ -1,14 +1,14 @@
 
 import { useState } from "react";
 import { 
-  Bot, 
-  Settings, 
-  Users, 
-  BarChart3, 
-  FolderOpen,
+  MessageSquare,
+  Search,
+  Library,
+  Code,
+  Film,
+  Users,
+  Palette,
   Plus,
-  ChevronRight,
-  Home,
   Zap
 } from "lucide-react";
 import {
@@ -29,46 +29,45 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ currentView, onViewChange }: AppSidebarProps) {
-  const [expandedGroups, setExpandedGroups] = useState<string[]>(["projects"]);
-
   const mainMenuItems = [
-    { id: "dashboard", title: "Dashboard", icon: Home },
-    { id: "agents", title: "AI Agents", icon: Bot },
-    { id: "analytics", title: "Analytics", icon: BarChart3 },
-    { id: "team", title: "Team", icon: Users },
-    { id: "settings", title: "Settings", icon: Settings },
+    { id: "chat", title: "New chat", icon: MessageSquare },
+    { id: "search", title: "Search chats", icon: Search },
+    { id: "library", title: "Library", icon: Library },
   ];
 
-  const projects = [
-    { id: "schneider-concierge", title: "Schneider Concierge Agent", type: "Agent" },
-    { id: "energy-advisor", title: "Energy Efficiency Advisor", type: "Agent" },
-    { id: "maintenance-assistant", title: "Maintenance Assistant", type: "App" },
-    { id: "compliance-checker", title: "Compliance Checker", type: "Automation" },
+  const toolItems = [
+    { id: "agents", title: "Agents", icon: Code, color: "text-green-600" },
+    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600" },
+    { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
+    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600" },
+    { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
   ];
 
-  const toggleGroup = (groupId: string) => {
-    setExpandedGroups(prev => 
-      prev.includes(groupId) 
-        ? prev.filter(id => id !== groupId)
-        : [...prev, groupId]
-    );
-  };
+  const recentChats = [
+    "Schneider Electric Energy Solutions",
+    "Building Automation Systems",
+    "Solar Panel Optimization",
+    "Industrial IoT Implementation",
+    "Smart Grid Technology",
+    "Energy Efficiency Analysis",
+    "Electrical Safety Protocols",
+    "Renewable Energy Integration",
+    "Power Management Systems",
+    "Sustainability Reporting"
+  ];
 
   return (
-    <Sidebar className="border-r border-gray-800">
-      <SidebarHeader className="border-b border-gray-800 p-6">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <Zap className="w-4 h-4 text-white" />
+    <Sidebar className="border-r border-gray-200 bg-gray-50">
+      <SidebarHeader className="border-b border-gray-200 p-4">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
+            <div className="w-3 h-3 bg-white rounded-full"></div>
           </div>
-          <div>
-            <h2 className="text-lg font-semibold">Schneider AI Studio</h2>
-            <p className="text-sm text-gray-400">Enterprise Platform</p>
-          </div>
+          <span className="font-medium text-gray-900">Schneider Studio</span>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="p-4">
+      <SidebarContent className="p-2">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -76,10 +75,10 @@ export function AppSidebar({ currentView, onViewChange }: AppSidebarProps) {
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
                     onClick={() => onViewChange(item.id)}
-                    className={`w-full justify-start gap-3 px-3 py-2 rounded-lg transition-colors ${
+                    className={`w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                       currentView === item.id 
-                        ? "bg-blue-600 text-white" 
-                        : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                        ? "bg-gray-200 text-gray-900" 
+                        : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
                     <item.icon className="w-4 h-4" />
@@ -91,53 +90,56 @@ export function AppSidebar({ currentView, onViewChange }: AppSidebarProps) {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup className="mt-6">
-          <SidebarGroupLabel 
-            className="flex items-center justify-between cursor-pointer text-gray-400 hover:text-white transition-colors"
-            onClick={() => toggleGroup("projects")}
-          >
-            <span>Recent Projects</span>
-            <ChevronRight 
-              className={`w-4 h-4 transition-transform ${
-                expandedGroups.includes("projects") ? "rotate-90" : ""
-              }`} 
-            />
-          </SidebarGroupLabel>
-          
-          {expandedGroups.includes("projects") && (
-            <SidebarGroupContent className="mt-2">
-              <SidebarMenu>
-                {projects.map((project) => (
-                  <SidebarMenuItem key={project.id}>
-                    <SidebarMenuButton
-                      onClick={() => onViewChange(`project-${project.id}`)}
-                      className={`w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-                        currentView === `project-${project.id}` 
-                          ? "bg-purple-600 text-white" 
-                          : "text-gray-400 hover:bg-gray-800 hover:text-white"
-                      }`}
-                    >
-                      <FolderOpen className="w-3 h-3" />
-                      <div className="flex flex-col items-start">
-                        <span className="truncate">{project.title}</span>
-                        <span className="text-xs text-gray-500">{project.type}</span>
-                      </div>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-                
-                <SidebarMenuItem>
+        <SidebarGroup className="mt-4">
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {toolItems.map((item) => (
+                <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
-                    onClick={() => onViewChange("new-project")}
-                    className="w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:bg-gray-800 hover:text-white transition-colors border border-dashed border-gray-600"
+                    onClick={() => onViewChange(item.id)}
+                    className={`w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                      currentView === item.id 
+                        ? "bg-gray-200 text-gray-900" 
+                        : "text-gray-700 hover:bg-gray-100"
+                    }`}
                   >
-                    <Plus className="w-3 h-3" />
-                    <span>Create New Project</span>
+                    <item.icon className={`w-4 h-4 ${item.color}`} />
+                    <span>{item.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          )}
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup className="mt-4">
+          <SidebarMenuButton
+            onClick={() => onViewChange("new-project")}
+            className="w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+          >
+            <Plus className="w-4 h-4" />
+            <span>New project</span>
+          </SidebarMenuButton>
+        </SidebarGroup>
+
+        <SidebarGroup className="mt-6">
+          <SidebarGroupLabel className="text-xs text-gray-500 px-3 py-1">
+            Chats
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {recentChats.map((chat, index) => (
+                <SidebarMenuItem key={index}>
+                  <SidebarMenuButton
+                    onClick={() => onViewChange(`chat-${index}`)}
+                    className="w-full justify-start px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-colors truncate"
+                  >
+                    <span className="truncate">{chat}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>

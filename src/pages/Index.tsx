@@ -1,5 +1,7 @@
 
 import { useState } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { DashboardView } from "@/components/views/DashboardView";
 import { AgentsView } from "@/components/views/AgentsView";
 import { AnalyticsView } from "@/components/views/AnalyticsView";
@@ -8,7 +10,7 @@ import { NewProjectView } from "@/components/views/NewProjectView";
 import { ChatInterface } from "@/components/ChatInterface";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState("dashboard");
+  const [currentView, setCurrentView] = useState("chat");
 
   const renderView = () => {
     switch (currentView) {
@@ -32,9 +34,14 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {renderView()}
-    </div>
+    <SidebarProvider>
+      <div className="min-h-screen flex w-full bg-white">
+        <AppSidebar currentView={currentView} onViewChange={setCurrentView} />
+        <main className="flex-1 bg-white">
+          {renderView()}
+        </main>
+      </div>
+    </SidebarProvider>
   );
 };
 
