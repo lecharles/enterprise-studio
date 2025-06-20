@@ -5,6 +5,7 @@ import { AgentsView } from "@/components/views/AgentsView";
 import { AnalyticsView } from "@/components/views/AnalyticsView";
 import { ProjectView } from "@/components/views/ProjectView";
 import { NewProjectView } from "@/components/views/NewProjectView";
+import { ChatInterface } from "@/components/ChatInterface";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState("dashboard");
@@ -13,6 +14,8 @@ const Index = () => {
     switch (currentView) {
       case "dashboard":
         return <DashboardView />;
+      case "chat":
+        return <ChatInterface />;
       case "agents":
         return <AgentsView />;
       case "analytics":
@@ -24,12 +27,12 @@ const Index = () => {
           const projectId = currentView.replace("project-", "");
           return <ProjectView projectId={projectId} />;
         }
-        return <DashboardView />;
+        return <ChatInterface />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {renderView()}
     </div>
   );
