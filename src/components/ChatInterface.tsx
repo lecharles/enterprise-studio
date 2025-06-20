@@ -25,7 +25,7 @@ import {
   ChevronDown,
   X,
   Search,
-  Zap
+  Cloud
 } from "lucide-react";
 
 export function ChatInterface() {
@@ -45,7 +45,8 @@ export function ChatInterface() {
     outlookCalendar: true,
     outlookEmail: true,
     sharepoint: false,
-    teams: false
+    teams: false,
+    salesforceMarketingCloud: false
   });
 
   const recentProjects = [
@@ -83,6 +84,7 @@ export function ChatInterface() {
     { id: 'linear', label: 'Linear', icon: '📐', enabled: enabledSources.linear },
     { id: 'outlookCalendar', label: 'Outlook Calendar', icon: '📅', enabled: enabledSources.outlookCalendar },
     { id: 'outlookEmail', label: 'Outlook Email', icon: '📧', enabled: enabledSources.outlookEmail },
+    { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <Cloud className="w-4 h-4 text-blue-500" />, enabled: enabledSources.salesforceMarketingCloud },
     { id: 'sharepoint', label: 'SharePoint', icon: '🟢', enabled: enabledSources.sharepoint },
     { id: 'teams', label: 'Teams', icon: '👥', enabled: enabledSources.teams },
   ];
@@ -230,7 +232,11 @@ export function ChatInterface() {
                           {sources.map((source) => (
                             <DropdownMenuItem key={source.id} className="flex items-center justify-between p-3 cursor-pointer" onClick={(e) => e.preventDefault()}>
                               <div className="flex items-center gap-3">
-                                <span>{source.icon}</span>
+                                {typeof source.icon === 'string' ? (
+                                  <span>{source.icon}</span>
+                                ) : (
+                                  source.icon
+                                )}
                                 <span className="text-sm">{source.label}</span>
                               </div>
                               <Switch
