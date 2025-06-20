@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,7 +24,11 @@ import {
   ChevronDown,
   X,
   Search,
-  Cloud
+  Cloud,
+  Code,
+  Zap,
+  Users,
+  Briefcase
 } from "lucide-react";
 
 export function ChatInterface() {
@@ -95,6 +98,13 @@ export function ChatInterface() {
       [sourceId]: !prev[sourceId as keyof typeof prev]
     }));
   };
+
+  const quickAccessItems = [
+    { id: 'agents', label: 'Agents', icon: Code },
+    { id: 'automation', label: 'Automation', icon: Zap },
+    { id: 'campaigns', label: 'Campaigns', icon: Users },
+    { id: 'leads', label: 'Leads', icon: Briefcase },
+  ];
 
   return (
     <div className="flex-1 flex flex-col bg-white min-h-screen">
@@ -279,6 +289,21 @@ export function ChatInterface() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Quick Access Buttons */}
+            <div className="flex justify-center gap-4 mt-6">
+              {quickAccessItems.map((item) => (
+                <button
+                  key={item.id}
+                  className="flex flex-col items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all bg-white min-w-[100px]"
+                >
+                  <div className="w-8 h-8 flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-gray-600" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-900">{item.label}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>
