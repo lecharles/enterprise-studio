@@ -48,7 +48,7 @@ export function ChatInterface() {
   ];
 
   return (
-    <div className="flex-1 flex flex-col bg-white">
+    <div className="flex-1 flex flex-col bg-white min-h-screen">
       {/* Header */}
       <div className="border-b border-gray-200 px-4 py-3">
         <div className="flex items-center justify-between">
@@ -69,10 +69,9 @@ export function ChatInterface() {
         </div>
       </div>
 
-      {/* Main Content - Centered */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6">
+      {/* Main Content - Centered Chat Interface */}
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         <div className="max-w-4xl w-full">
-          
           {/* Centered Main Title and Input */}
           <div className="text-center mb-12">
             <h1 className="text-3xl font-normal text-gray-900 mb-8">
@@ -140,12 +139,11 @@ export function ChatInterface() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
 
-      {/* Recent Projects Section - Bottom */}
-      <div className="border-t border-gray-100 bg-gray-50/50 px-6 py-8">
+      {/* Recent Projects Section - Bottom of page */}
+      <div className="border-t border-gray-100 bg-gray-50/50 px-6 py-8 mt-auto">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-lg font-medium text-gray-900 mb-6 text-center">Recent Projects</h2>
           <div className="grid grid-cols-4 gap-6">
