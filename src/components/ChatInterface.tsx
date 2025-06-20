@@ -1,5 +1,4 @@
 
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,7 +29,8 @@ import {
   Code,
   Zap,
   Users,
-  Briefcase
+  Briefcase,
+  Building2
 } from "lucide-react";
 
 export function ChatInterface() {
@@ -103,7 +103,7 @@ export function ChatInterface() {
 
   const quickAccessItems = [
     { id: 'agents', label: 'Agents', icon: Code, color: 'text-green-600' },
-    { id: 'automation', label: 'Automation', icon: Zap, color: 'text-yellow-600' },
+    { id: 'assets', label: 'Assets', icon: Building2, color: 'text-orange-600' },
     { id: 'campaigns', label: 'Campaigns', icon: Users, color: 'text-purple-600' },
     { id: 'leads', label: 'Leads', icon: Briefcase, color: 'text-red-600' },
   ];
