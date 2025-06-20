@@ -25,14 +25,6 @@ import {
 export function ChatInterface() {
   const [selectedModel, setSelectedModel] = useState("o3");
 
-  const quickAccessItems = [
-    { id: "agents", title: "Agents", icon: Code, color: "text-green-600" },
-    { id: "analytics", title: "Analytics", icon: BarChart3, color: "text-blue-600" },
-    { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
-    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600" },
-    { id: "leads", title: "Leads", icon: Bot, color: "text-gray-600" },
-  ];
-
   const recentProjects = [
     { 
       title: "Solar Energy Solutions", 
@@ -69,7 +61,7 @@ export function ChatInterface() {
             
             {/* Model Picker */}
             <Select value={selectedModel} onValueChange={setSelectedModel}>
-              <SelectTrigger className="w-[200px] h-8 text-sm border-gray-300">
+              <SelectTrigger className="w-[140px] h-8 text-sm border-none bg-transparent hover:bg-gray-100 rounded-lg">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -102,9 +94,6 @@ export function ChatInterface() {
           </div>
           
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" className="text-gray-600">
-              <BarChart3 className="w-4 h-4" />
-            </Button>
             <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
               <span className="text-white text-xs font-medium">SE</span>
             </div>
@@ -112,18 +101,18 @@ export function ChatInterface() {
         </div>
       </div>
 
-      {/* Main Content - Centered Chat Interface */}
+      {/* Main Content - Centered */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
-        <div className="max-w-4xl w-full">
-          {/* Centered Main Title and Input */}
-          <div className="text-center mb-12">
-            <h1 className="text-3xl font-normal text-gray-900 mb-8">
+        <div className="max-w-3xl w-full">
+          {/* Main Title */}
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-normal text-gray-900 mb-6">
               What's on the agenda today?
             </h1>
             
-            {/* ChatGPT Style Input */}
-            <div className="max-w-2xl mx-auto">
-              <div className="relative bg-white border border-gray-300 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+            {/* Chat Input */}
+            <div className="relative">
+              <div className="bg-white border border-gray-300 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center px-4 py-3">
                   <Button 
                     variant="ghost" 
@@ -160,33 +149,18 @@ export function ChatInterface() {
                       size="sm" 
                       className="text-white bg-black hover:bg-gray-800 rounded-full p-2"
                     >
-                      <BarChart3 className="w-4 h-4" />
+                      <Send className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Quick Access Section */}
-          <div className="mb-16">
-            <div className="grid grid-cols-5 gap-4 max-w-2xl mx-auto">
-              {quickAccessItems.map((item) => (
-                <button
-                  key={item.id}
-                  className="flex flex-col items-center p-4 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-colors"
-                >
-                  <item.icon className={`w-6 h-6 mb-2 ${item.color}`} />
-                  <span className="text-sm text-gray-700 font-medium">{item.title}</span>
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* Recent Projects Section - Bottom of page */}
-      <div className="border-t border-gray-100 bg-gray-50/50 px-6 py-8 mt-auto">
+      {/* Recent Projects Section - Bottom */}
+      <div className="border-t border-gray-100 bg-gray-50/30 px-6 py-8 mt-auto">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-lg font-medium text-gray-900 mb-6 text-center">Recent Projects</h2>
           <div className="grid grid-cols-4 gap-6">
