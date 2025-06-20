@@ -3,6 +3,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { 
   Plus, 
   Settings, 
   Mic, 
@@ -16,6 +23,8 @@ import {
 } from "lucide-react";
 
 export function ChatInterface() {
+  const [selectedModel, setSelectedModel] = useState("o3");
+
   const quickAccessItems = [
     { id: "agents", title: "Agents", icon: Code, color: "text-green-600" },
     { id: "analytics", title: "Analytics", icon: BarChart3, color: "text-blue-600" },
@@ -52,12 +61,46 @@ export function ChatInterface() {
       {/* Header */}
       <div className="border-b border-gray-200 px-4 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
+            {/* OpenAI Logo */}
             <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
               <div className="w-3 h-3 bg-white rounded-full"></div>
             </div>
-            <span className="text-sm text-gray-600">Schneider Studio o3</span>
+            
+            {/* Model Picker */}
+            <Select value={selectedModel} onValueChange={setSelectedModel}>
+              <SelectTrigger className="w-[200px] h-8 text-sm border-gray-300">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gpt-4o">
+                  <div className="flex flex-col">
+                    <span className="font-medium">GPT-4o</span>
+                    <span className="text-xs text-gray-500">Great for most tasks</span>
+                  </div>
+                </SelectItem>
+                <SelectItem value="o3">
+                  <div className="flex flex-col">
+                    <span className="font-medium">o3</span>
+                    <span className="text-xs text-gray-500">Uses advanced reasoning</span>
+                  </div>
+                </SelectItem>
+                <SelectItem value="o4-mini">
+                  <div className="flex flex-col">
+                    <span className="font-medium">o4-mini</span>
+                    <span className="text-xs text-gray-500">Fastest at advanced reasoning</span>
+                  </div>
+                </SelectItem>
+                <SelectItem value="o4-mini-high">
+                  <div className="flex flex-col">
+                    <span className="font-medium">o4-mini-high</span>
+                    <span className="text-xs text-gray-500">Great at coding and visual reasoning</span>
+                  </div>
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </div>
+          
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" className="text-gray-600">
               <BarChart3 className="w-4 h-4" />
