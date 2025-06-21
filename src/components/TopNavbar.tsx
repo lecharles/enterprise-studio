@@ -108,8 +108,13 @@ export function TopNavbar({
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <p className="font-medium text-gray-900">Audrey</p>
+                    <p className="text-sm text-gray-600">audrey@schneider.com</p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      <span className="text-sm text-gray-600">SSO</span>
+                    </div>
                   </div>
                 </div>
                 
