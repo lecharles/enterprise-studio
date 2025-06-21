@@ -140,7 +140,10 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="start" className="w-56 bg-white">
-                      <DropdownMenuItem className="flex items-center gap-3 cursor-pointer">
+                      <DropdownMenuItem 
+                        className="flex items-center gap-3 cursor-pointer"
+                        onClick={() => setShowConnectMoreModal(true)}
+                      >
                         <div className="w-4 h-4 flex items-center justify-center">🔗</div>
                         <div>
                           <div className="font-medium text-sm">Search connectors</div>
