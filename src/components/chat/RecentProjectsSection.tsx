@@ -6,22 +6,22 @@ export function RecentProjectsSection({}: RecentProjectsSectionProps) {
     { 
       title: "Solar Energy Solutions", 
       type: "Agent",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=250&fit=crop&crop=center"
+      image: "/lovable-uploads/2162f0b6-fcc0-45e1-b6ce-a8b133f9d3ce.png"
     },
     { 
       title: "Hotel Energy Management", 
       type: "App",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop&crop=center"
+      image: "/lovable-uploads/b272c7bb-790e-481a-b619-94f5d7673f8c.png"
     },
     { 
       title: "Infrastructure Renewal", 
       type: "Automation",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop&crop=center"
+      image: "/lovable-uploads/93d7e55c-295e-485a-bc93-1bf69f1b4f3d.png"
     },
     { 
       title: "Smart Grid Technology", 
       type: "Analytics",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop&crop=center"
+      image: "/lovable-uploads/aad527f7-4c32-4b4e-89b8-a07d64574f75.png"
     },
   ];
 
