@@ -33,7 +33,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   const [selectedCitation, setSelectedCitation] = useState<string | null>(null);
   const [typingText, setTypingText] = useState("");
   const [isAnalysisComplete, setIsAnalysisComplete] = useState(false);
-  const [showLeftSidebar, setShowLeftSidebar] = useState(true);
+  const [showLeftSidebar, setShowLeftSidebar] = useState(false);
 
   const researchSteps: ResearchStep[] = [
     {
@@ -101,7 +101,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
       sourceType: "Regional Sales Insights:",
       description: "Thread: \"Q4 Win/Loss Analysis\" (1,247 messages)\nParticipants: Pierre Dubois (FR), Klaus Mueller (DE), Sofia Andersson (SE)\nKey Topics: Integration objections, regional requirements, workshop effectiveness",
       lastUpdated: "Today",
-      excerpt: "Klaus Mueller: \"German market requires ISO 50001 messaging - it's non-negotiable.\" Sofia Andersson: \"Technical workshops in Stockholm converted 4.7x better than digital.\" Pierre Dubois: \"Integration complexity stops 34% of our deals...\""
+      excerpt: "Klaus Mueller: \"German market requires ISO 50001 messaging - it's non-negotiable.\" Sofia Andersson: \"Technical workshops in Stockholm converted 4.7x better than digital.\" Pierre Dubois: \"Integration complexity stops 34% of deals...\""
     }
   ];
 
@@ -185,26 +185,19 @@ Total Qualified Leads Identified: **3,847** meeting both engagement and fit crit
 
   return (
     <div className="min-h-screen bg-white flex">
-      {/* Left Sidebar */}
-      <div className={`${showLeftSidebar ? 'w-64' : 'w-0'} transition-all duration-300 overflow-hidden bg-gray-50 border-r border-gray-200 flex flex-col`}>
-        <div className="p-4 border-b border-gray-200">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
-              <span className="text-white text-sm">⚡</span>
-            </div>
-            <span className="font-medium">ChatGPT o3</span>
+      {/* Left Sidebar - Collapsed by default */}
+      {showLeftSidebar && (
+        <div className="w-64 bg-gray-50 border-r border-gray-200 flex flex-col">
+          <div className="flex-1 p-4">
+            <Button
+              variant="ghost"
+              className="w-full justify-start p-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              📝 New chat
+            </Button>
           </div>
         </div>
-        
-        <div className="flex-1 p-4">
-          <Button
-            variant="ghost"
-            className="w-full justify-start p-2 text-sm text-gray-700 hover:bg-gray-100"
-          >
-            📝 New chat
-          </Button>
-        </div>
-      </div>
+      )}
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col">
