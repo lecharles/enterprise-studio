@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -41,7 +40,7 @@ export function ResearchTool({
     { id: 'linear', label: 'Linear', icon: <img src="/lovable-uploads/e5d60a42-015d-42a4-a952-200a715b281d.png" alt="Linear" className="w-4 h-4" />, enabled: enabledSources.linear },
     { id: 'outlookCalendar', label: 'Outlook Calendar', icon: <img src="/lovable-uploads/667b69ec-3dd7-4560-8627-7e1a6449024d.png" alt="Outlook Calendar" className="w-4 h-4" />, enabled: enabledSources.outlookCalendar },
     { id: 'outlookEmail', label: 'Outlook Email', icon: <img src="/lovable-uploads/73c3916a-6f7a-4114-b6c5-9bdad02b84a4.png" alt="Outlook Email" className="w-4 h-4" />, enabled: enabledSources.outlookEmail },
-    { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <img src="/lovable-uploads/2e277bb9-838d-4cd5-9694-1871b505aa22.png" alt="Salesforce Marketing Cloud" className="w-4 h-4" />, enabled: enabledSources.salesforceMarketingCloud },
+    { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Salesforce Marketing Cloud" className="w-4 h-4" />, enabled: enabledSources.salesforceMarketingCloud },
     { id: 'sharepoint', label: 'SharePoint', icon: <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="w-4 h-4" />, enabled: enabledSources.sharepoint },
     { id: 'teams', label: 'Teams', icon: <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="w-4 h-4" />, enabled: enabledSources.teams },
   ];
