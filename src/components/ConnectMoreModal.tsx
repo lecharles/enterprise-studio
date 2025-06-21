@@ -44,8 +44,8 @@ export function ConnectMoreModal({
     { id: 'hubspot', label: 'HubSpot', icon: <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="w-8 h-8" />, type: 'data', enabled: enabledSources.hubspot },
     { id: 'linear', label: 'Linear', icon: <img src="/lovable-uploads/e5d60a42-015d-42a4-a952-200a715b281d.png" alt="Linear" className="w-8 h-8" />, type: 'data', enabled: enabledSources.linear },
     { id: 'outlookCalendar', label: 'Outlook Calendar', icon: <img src="/lovable-uploads/667b69ec-3dd7-4560-8627-7e1a6449024d.png" alt="Outlook Calendar" className="w-8 h-8" />, type: 'data', enabled: enabledSources.outlookCalendar },
-    { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <img src="/lovable-uploads/f4896c1d-8eff-4fe2-a45e-970707f0610e.png" alt="Salesforce Marketing Cloud" className="w-8 h-8" />, type: 'data', enabled: enabledSources.salesforceMarketingCloud },
-    { id: 'sharepoint', label: 'SharePoint', icon: <img src="/lovable-uploads/2200876f-72f7-4232-ac55-c0a95cd341e9.png" alt="SharePoint" className="w-8 h-8" />, type: 'data', enabled: enabledSources.sharepoint },
+    { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <img src="/lovable-uploads/7290cda8-cab3-4ac6-85dd-7ca4f7f54a49.png" alt="Salesforce Marketing Cloud" className="w-8 h-8" />, type: 'data', enabled: enabledSources.salesforceMarketingCloud },
+    { id: 'sharepoint', label: 'SharePoint', icon: <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="w-8 h-8" />, type: 'data', enabled: enabledSources.sharepoint },
     
     // Channel connectors
     { id: 'gmail', label: 'Gmail', icon: <img src="/lovable-uploads/ee57e9a8-5a7c-4b2f-9d6a-a58a5c4c03f5.png" alt="Gmail" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.gmail },
