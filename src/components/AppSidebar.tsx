@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { 
   MessageSquare,
@@ -59,8 +60,8 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
   ];
 
   return (
-    <Sidebar className="border-r border-gray-200 bg-gray-50">
-      <SidebarHeader className="border-b border-gray-200 p-4">
+    <Sidebar className="bg-gray-50">
+      <SidebarHeader className="p-4">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
             <div className="w-3 h-3 bg-white rounded-full"></div>

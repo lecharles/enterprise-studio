@@ -33,31 +33,52 @@ export function TopNavbar({
   selectedModel,
   onModelChange 
 }: TopNavbarProps) {
+  const getModelDisplayName = (model: string) => {
+    switch (model) {
+      case "gpt-4o": return "GPT-4o";
+      case "o3": return "o3";
+      case "o4-mini": return "o4-mini";
+      case "o4-mini-high": return "o4-mini-high";
+      default: return model;
+    }
+  };
+
   return (
-    <header className="border-b border-gray-200 bg-white pl-4 pr-6 py-4">
+    <header className="bg-white pl-4 pr-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Model Picker */}
           <Select value={selectedModel} onValueChange={onModelChange}>
-            <SelectTrigger className="w-[140px] h-8 text-sm border-none bg-transparent hover:bg-gray-100 rounded-lg">
-              <SelectValue />
+            <SelectTrigger className="w-[200px] h-8 text-sm border-none bg-transparent hover:bg-gray-100 rounded-lg">
+              <div className="flex items-center gap-2">
+                <span className="text-gray-900">ChatGPT</span>
+                <span className="text-gray-500">{getModelDisplayName(selectedModel)}</span>
+              </div>
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="gpt-4o">
-                <span className="font-medium">GPT-4o</span>
-                <span className="text-xs text-gray-500 ml-2">Great for most tasks</span>
+                <div className="flex flex-col">
+                  <span className="font-medium">GPT-4o</span>
+                  <span className="text-xs text-gray-500">Great for most tasks</span>
+                </div>
               </SelectItem>
               <SelectItem value="o3">
-                <span className="font-medium">o3</span>
-                <span className="text-xs text-gray-500 ml-2">Uses advanced reasoning</span>
+                <div className="flex flex-col">
+                  <span className="font-medium">o3</span>
+                  <span className="text-xs text-gray-500">Uses advanced reasoning</span>
+                </div>
               </SelectItem>
               <SelectItem value="o4-mini">
-                <span className="font-medium">o4-mini</span>
-                <span className="text-xs text-gray-500 ml-2">Fastest at advanced reasoning</span>
+                <div className="flex flex-col">
+                  <span className="font-medium">o4-mini</span>
+                  <span className="text-xs text-gray-500">Fastest at advanced reasoning</span>
+                </div>
               </SelectItem>
               <SelectItem value="o4-mini-high">
-                <span className="font-medium">o4-mini-high</span>
-                <span className="text-xs text-gray-500 ml-2">Great at coding and visual reasoning</span>
+                <div className="flex flex-col">
+                  <span className="font-medium">o4-mini-high</span>
+                  <span className="text-xs text-gray-500">Great at coding and visual reasoning</span>
+                </div>
               </SelectItem>
             </SelectContent>
           </Select>
