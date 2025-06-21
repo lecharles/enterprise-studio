@@ -33,7 +33,7 @@ export function ResearchTool({
     { id: 'webSearch', label: 'Web search', icon: '🌐', enabled: enabledSources.webSearch },
     { id: 'box', label: 'Box', icon: <img src="/lovable-uploads/77ce685e-5dd7-47f6-be09-f785a2f366db.png" alt="Box" className="w-4 h-4" />, enabled: enabledSources.box },
     { id: 'dropbox', label: 'Dropbox', icon: <img src="/lovable-uploads/0f78cd6e-c64d-45cc-87bf-7297132f4164.png" alt="Dropbox" className="w-4 h-4" />, enabled: enabledSources.dropbox },
-    { id: 'github', label: 'GitHub', icon: '🐙', enabled: enabledSources.github },
+    { id: 'github', label: 'GitHub', icon: <img src="/lovable-uploads/c1d25069-039d-4ba9-bf56-2785c848ab10.png" alt="GitHub" className="w-4 h-4" />, enabled: enabledSources.github },
     { id: 'gmail', label: 'Gmail', icon: <img src="/lovable-uploads/ee57e9a8-5a7c-4b2f-9d6a-a58a5c4c03f5.png" alt="Gmail" className="w-4 h-4" />, enabled: enabledSources.gmail },
     { id: 'googleCalendar', label: 'Google Calendar', icon: <img src="/lovable-uploads/7828fd40-fa53-4bee-a57d-6e1e18fc896a.png" alt="Google Calendar" className="w-4 h-4" />, enabled: enabledSources.googleCalendar },
     { id: 'googleDrive', label: 'Google Drive', icon: <img src="/lovable-uploads/c950b919-5d4d-4d66-b873-ba4b4e140293.png" alt="Google Drive" className="w-4 h-4" />, enabled: enabledSources.googleDrive },
@@ -42,8 +42,8 @@ export function ResearchTool({
     { id: 'outlookCalendar', label: 'Outlook Calendar', icon: <img src="/lovable-uploads/667b69ec-3dd7-4560-8627-7e1a6449024d.png" alt="Outlook Calendar" className="w-4 h-4" />, enabled: enabledSources.outlookCalendar },
     { id: 'outlookEmail', label: 'Outlook Email', icon: <img src="/lovable-uploads/73c3916a-6f7a-4114-b6c5-9bdad02b84a4.png" alt="Outlook Email" className="w-4 h-4" />, enabled: enabledSources.outlookEmail },
     { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <img src="/lovable-uploads/f4896c1d-8eff-4fe2-a45e-970707f0610e.png" alt="Salesforce Marketing Cloud" className="w-4 h-4" />, enabled: enabledSources.salesforceMarketingCloud },
-    { id: 'sharepoint', label: 'SharePoint', icon: '🟢', enabled: enabledSources.sharepoint },
-    { id: 'teams', label: 'Teams', icon: '👥', enabled: enabledSources.teams },
+    { id: 'sharepoint', label: 'SharePoint', icon: <img src="/lovable-uploads/2200876f-72f7-4232-ac55-c0a95cd341e9.png" alt="SharePoint" className="w-4 h-4" />, enabled: enabledSources.sharepoint },
+    { id: 'teams', label: 'Teams', icon: <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="w-4 h-4" />, enabled: enabledSources.teams },
   ];
 
   if (!showResearchTool) return null;

@@ -38,22 +38,22 @@ export function ConnectMoreModal({
     { id: 'webSearch', label: 'Web search', icon: '🌐', type: 'data', enabled: enabledSources.webSearch },
     { id: 'box', label: 'Box', icon: <img src="/lovable-uploads/77ce685e-5dd7-47f6-be09-f785a2f366db.png" alt="Box" className="w-8 h-8" />, type: 'data', enabled: enabledSources.box },
     { id: 'dropbox', label: 'Dropbox', icon: <img src="/lovable-uploads/0f78cd6e-c64d-45cc-87bf-7297132f4164.png" alt="Dropbox" className="w-8 h-8" />, type: 'data', enabled: enabledSources.dropbox },
-    { id: 'github', label: 'GitHub', icon: '🐙', type: 'data', enabled: enabledSources.github },
+    { id: 'github', label: 'GitHub', icon: <img src="/lovable-uploads/c1d25069-039d-4ba9-bf56-2785c848ab10.png" alt="GitHub" className="w-8 h-8" />, type: 'data', enabled: enabledSources.github },
     { id: 'googleCalendar', label: 'Google Calendar', icon: <img src="/lovable-uploads/7828fd40-fa53-4bee-a57d-6e1e18fc896a.png" alt="Google Calendar" className="w-8 h-8" />, type: 'data', enabled: enabledSources.googleCalendar },
     { id: 'googleDrive', label: 'Google Drive', icon: <img src="/lovable-uploads/c950b919-5d4d-4d66-b873-ba4b4e140293.png" alt="Google Drive" className="w-8 h-8" />, type: 'data', enabled: enabledSources.googleDrive },
     { id: 'hubspot', label: 'HubSpot', icon: <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="w-8 h-8" />, type: 'data', enabled: enabledSources.hubspot },
     { id: 'linear', label: 'Linear', icon: <img src="/lovable-uploads/e5d60a42-015d-42a4-a952-200a715b281d.png" alt="Linear" className="w-8 h-8" />, type: 'data', enabled: enabledSources.linear },
     { id: 'outlookCalendar', label: 'Outlook Calendar', icon: <img src="/lovable-uploads/667b69ec-3dd7-4560-8627-7e1a6449024d.png" alt="Outlook Calendar" className="w-8 h-8" />, type: 'data', enabled: enabledSources.outlookCalendar },
     { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <img src="/lovable-uploads/f4896c1d-8eff-4fe2-a45e-970707f0610e.png" alt="Salesforce Marketing Cloud" className="w-8 h-8" />, type: 'data', enabled: enabledSources.salesforceMarketingCloud },
-    { id: 'sharepoint', label: 'SharePoint', icon: '🟢', type: 'data', enabled: enabledSources.sharepoint },
+    { id: 'sharepoint', label: 'SharePoint', icon: <img src="/lovable-uploads/2200876f-72f7-4232-ac55-c0a95cd341e9.png" alt="SharePoint" className="w-8 h-8" />, type: 'data', enabled: enabledSources.sharepoint },
     
     // Channel connectors
     { id: 'gmail', label: 'Gmail', icon: <img src="/lovable-uploads/ee57e9a8-5a7c-4b2f-9d6a-a58a5c4c03f5.png" alt="Gmail" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.gmail },
     { id: 'outlookEmail', label: 'Outlook Email', icon: <img src="/lovable-uploads/73c3916a-6f7a-4114-b6c5-9bdad02b84a4.png" alt="Outlook Email" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.outlookEmail },
-    { id: 'teams', label: 'Teams', icon: '👥', type: 'channel', enabled: enabledSources.teams },
-    { id: 'linkedin', label: 'LinkedIn', icon: '💼', type: 'channel', enabled: false, isNew: true },
-    { id: 'whatsapp', label: 'WhatsApp', icon: '📱', type: 'channel', enabled: false, isNew: true },
-    { id: 'twilio', label: 'Twilio (SMS)', icon: '💬', type: 'channel', enabled: false, isNew: true },
+    { id: 'teams', label: 'Teams', icon: <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.teams },
+    { id: 'linkedin', label: 'LinkedIn', icon: <img src="/lovable-uploads/d714029c-55c2-4ca0-bc7a-e651c82e23cd.png" alt="LinkedIn" className="w-8 h-8" />, type: 'channel', enabled: false, isNew: true },
+    { id: 'whatsapp', label: 'WhatsApp', icon: <img src="/lovable-uploads/ff21a3b9-4cda-4164-a4e9-2b3f2f98a3f4.png" alt="WhatsApp" className="w-8 h-8" />, type: 'channel', enabled: false, isNew: true },
+    { id: 'twilio', label: 'Twilio (SMS)', icon: <img src="/lovable-uploads/2200876f-72f7-4232-ac55-c0a95cd341e9.png" alt="Twilio" className="w-8 h-8" />, type: 'channel', enabled: false, isNew: true },
   ];
 
   const filteredConnectors = allConnectors.filter(connector => {
