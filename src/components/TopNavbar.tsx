@@ -37,14 +37,6 @@ export function TopNavbar({
     <header className="border-b border-gray-200 bg-white px-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          {/* Schneider Studio Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
-              <div className="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-            <span className="font-medium text-gray-900">Schneider Studio</span>
-          </div>
-          
           {/* Model Picker */}
           <Select value={selectedModel} onValueChange={onModelChange}>
             <SelectTrigger className="w-[140px] h-8 text-sm border-none bg-transparent hover:bg-gray-100 rounded-lg">
