@@ -61,8 +61,8 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
 
   return (
     <Sidebar className="bg-gray-50">
-      <SidebarHeader className="px-4 pt-5 pb-4">
-        <div className="flex items-center gap-2">
+      <SidebarHeader className="px-4 pt-6 pb-4">
+        <div className="flex items-center gap-2 mt-1">
           <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
             <div className="w-3 h-3 bg-white rounded-full"></div>
           </div>
