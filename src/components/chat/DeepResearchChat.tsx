@@ -208,7 +208,7 @@ Total Qualified Leads Identified: **3,847** meeting both engagement and fit crit
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col">
-        {/* Top Bar */}
+        {/* Single Top Bar */}
         <div className="flex justify-between items-center p-4 border-b border-gray-200">
           <div className="flex items-center gap-3">
             <Button
@@ -219,15 +219,24 @@ Total Qualified Leads Identified: **3,847** meeting both engagement and fit crit
             >
               {showLeftSidebar ? <PanelLeft className="w-4 h-4" /> : <PanelRight className="w-4 h-4" />}
             </Button>
-            <h1 className="text-lg font-medium">ChatGPT o3</h1>
+            <img 
+              src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
+              alt="Schneider Studio"
+              className="w-6 h-6"
+            />
+            <span className="font-medium text-gray-900">Schneider Studio</span>
           </div>
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm" className="flex items-center gap-2">
               <Share className="w-4 h-4" />
               Share
             </Button>
-            <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-              <User className="w-4 h-4 text-white" />
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+              <img 
+                src="/lovable-uploads/3d9dae14-5b23-4399-9919-ecf50ed251ee.png" 
+                alt="Audrey"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -237,12 +246,9 @@ Total Qualified Leads Identified: **3,847** meeting both engagement and fit crit
           {/* Chat Messages */}
           <div className={`${showCitations ? 'flex-1' : 'w-full'} flex flex-col`}>
             <div className="flex-1 px-6 py-8 overflow-y-auto max-w-4xl mx-auto w-full">
-              {/* User Message */}
+              {/* User Message - Clean ChatGPT style */}
               <div className="mb-8">
                 <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <User className="w-4 h-4 text-white" />
-                  </div>
                   <div className="flex-1">
                     <p className="text-gray-900 leading-relaxed">
                       I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?
@@ -251,12 +257,9 @@ Total Qualified Leads Identified: **3,847** meeting both engagement and fit crit
                 </div>
               </div>
 
-              {/* AI Response */}
+              {/* AI Response - Clean ChatGPT style */}
               <div className="mb-8">
                 <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-medium">⚡</span>
-                  </div>
                   <div className="flex-1">
                     {/* Research Progress */}
                     {currentStep <= researchSteps.length && (
