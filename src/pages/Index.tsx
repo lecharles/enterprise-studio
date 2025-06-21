@@ -10,6 +10,7 @@ const Index = () => {
   const [currentView, setCurrentView] = useState("chat");
   const [businessToggle, setBusinessToggle] = useState(true);
   const [builderToggle, setBuilderToggle] = useState(true);
+  const [selectedModel, setSelectedModel] = useState("o3");
 
   const renderMainContent = () => {
     switch (currentView) {
@@ -36,6 +37,8 @@ const Index = () => {
             builderToggle={builderToggle}
             onBusinessToggle={setBusinessToggle}
             onBuilderToggle={setBuilderToggle}
+            selectedModel={selectedModel}
+            onModelChange={setSelectedModel}
           />
           {renderMainContent()}
         </SidebarInset>

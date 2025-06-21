@@ -1,13 +1,7 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,7 +31,6 @@ interface ChatInterfaceProps {
 }
 
 export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
-  const [selectedModel, setSelectedModel] = useState("o3");
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
   const [enabledSources, setEnabledSources] = useState({
@@ -113,49 +106,6 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
 
   return (
     <div className="flex-1 flex flex-col bg-white min-h-screen">
-      {/* Header */}
-      <div className="border-b border-gray-200 px-4 py-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            {/* OpenAI Logo */}
-            <div className="w-6 h-6 bg-black rounded-sm flex items-center justify-center">
-              <div className="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-            
-            {/* Model Picker */}
-            <Select value={selectedModel} onValueChange={setSelectedModel}>
-              <SelectTrigger className="w-[140px] h-8 text-sm border-none bg-transparent hover:bg-gray-100 rounded-lg">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="gpt-4o">
-                  <span className="font-medium">GPT-4o</span>
-                  <span className="text-xs text-gray-500 ml-2">Great for most tasks</span>
-                </SelectItem>
-                <SelectItem value="o3">
-                  <span className="font-medium">o3</span>
-                  <span className="text-xs text-gray-500 ml-2">Uses advanced reasoning</span>
-                </SelectItem>
-                <SelectItem value="o4-mini">
-                  <span className="font-medium">o4-mini</span>
-                  <span className="text-xs text-gray-500 ml-2">Fastest at advanced reasoning</span>
-                </SelectItem>
-                <SelectItem value="o4-mini-high">
-                  <span className="font-medium">o4-mini-high</span>
-                  <span className="text-xs text-gray-500 ml-2">Great at coding and visual reasoning</span>
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-              <span className="text-white text-xs font-medium">SE</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Content - Centered */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         <div className="max-w-3xl w-full">
