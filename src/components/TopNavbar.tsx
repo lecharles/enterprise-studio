@@ -49,10 +49,10 @@ export function TopNavbar({
         <div className="flex items-center gap-4">
           {/* Model Picker */}
           <Select value={selectedModel} onValueChange={onModelChange}>
-            <SelectTrigger className="w-[200px] h-8 text-sm border-none bg-transparent hover:bg-gray-100 rounded-lg">
+            <SelectTrigger className="w-[200px] h-8 text-base border-none bg-transparent hover:bg-gray-100 rounded-lg">
               <div className="flex items-center gap-2">
-                <span className="text-gray-900">ChatGPT</span>
-                <span className="text-gray-500">{getModelDisplayName(selectedModel)}</span>
+                <span className="text-gray-900 font-medium text-lg">ChatGPT</span>
+                <span className="text-gray-500 text-sm">{getModelDisplayName(selectedModel)}</span>
               </div>
             </SelectTrigger>
             <SelectContent>
