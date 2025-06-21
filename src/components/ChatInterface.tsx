@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,7 +32,11 @@ import {
   Building2
 } from "lucide-react";
 
-export function ChatInterface() {
+interface ChatInterfaceProps {
+  builderToggle: boolean;
+}
+
+export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
   const [selectedModel, setSelectedModel] = useState("o3");
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
@@ -102,7 +105,7 @@ export function ChatInterface() {
   };
 
   const quickAccessItems = [
-    { id: 'agents', label: 'Agents', icon: Code, color: 'text-green-600' },
+    ...(builderToggle ? [{ id: 'agents', label: 'Agents', icon: Code, color: 'text-green-600' }] : []),
     { id: 'assets', label: 'Assets', icon: Building2, color: 'text-orange-600' },
     { id: 'campaigns', label: 'Campaigns', icon: Users, color: 'text-purple-600' },
     { id: 'leads', label: 'Leads', icon: Briefcase, color: 'text-red-600' },
@@ -294,7 +297,7 @@ export function ChatInterface() {
             </div>
 
             {/* Quick Access Buttons */}
-            <div className="flex justify-center gap-4 mt-6">
+            <div className={`flex justify-center gap-4 mt-6 ${quickAccessItems.length === 3 ? 'max-w-md mx-auto' : ''}`}>
               {quickAccessItems.map((item) => (
                 <button
                   key={item.id}
@@ -340,4 +343,3 @@ export function ChatInterface() {
     </div>
   );
 }
-

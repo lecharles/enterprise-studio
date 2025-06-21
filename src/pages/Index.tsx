@@ -1,45 +1,44 @@
 
 import { useState } from "react";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { TopNavbar } from "@/components/TopNavbar";
 import { AppSidebar } from "@/components/AppSidebar";
-import { DashboardView } from "@/components/views/DashboardView";
-import { AgentsView } from "@/components/views/AgentsView";
-import { AnalyticsView } from "@/components/views/AnalyticsView";
-import { ProjectView } from "@/components/views/ProjectView";
-import { NewProjectView } from "@/components/views/NewProjectView";
 import { ChatInterface } from "@/components/ChatInterface";
+import { DashboardView } from "@/components/views/DashboardView";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState("chat");
+  const [businessToggle, setBusinessToggle] = useState(true);
+  const [builderToggle, setBuilderToggle] = useState(true);
 
-  const renderView = () => {
+  const renderMainContent = () => {
     switch (currentView) {
+      case "chat":
+        return <ChatInterface builderToggle={builderToggle} />;
       case "dashboard":
         return <DashboardView />;
-      case "chat":
-        return <ChatInterface />;
-      case "agents":
-        return <AgentsView />;
-      case "analytics":
-        return <AnalyticsView />;
-      case "new-project":
-        return <NewProjectView />;
       default:
-        if (currentView.startsWith("project-")) {
-          const projectId = currentView.replace("project-", "");
-          return <ProjectView projectId={projectId} />;
-        }
-        return <ChatInterface />;
+        return <ChatInterface builderToggle={builderToggle} />;
     }
   };
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-white">
-        <AppSidebar currentView={currentView} onViewChange={setCurrentView} />
-        <main className="flex-1 bg-white">
-          {renderView()}
-        </main>
+      <div className="min-h-screen flex w-full">
+        <AppSidebar 
+          currentView={currentView} 
+          onViewChange={setCurrentView}
+          builderToggle={builderToggle}
+        />
+        <SidebarInset className="flex-1">
+          <TopNavbar 
+            businessToggle={businessToggle}
+            builderToggle={builderToggle}
+            onBusinessToggle={setBusinessToggle}
+            onBuilderToggle={setBuilderToggle}
+          />
+          {renderMainContent()}
+        </SidebarInset>
       </div>
     </SidebarProvider>
   );

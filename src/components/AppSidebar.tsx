@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { 
   MessageSquare,
@@ -9,7 +8,8 @@ import {
   Users,
   Palette,
   Plus,
-  Zap
+  Zap,
+  Layers
 } from "lucide-react";
 import {
   Sidebar,
@@ -26,17 +26,19 @@ import {
 interface AppSidebarProps {
   currentView: string;
   onViewChange: (view: string) => void;
+  builderToggle: boolean;
 }
 
-export function AppSidebar({ currentView, onViewChange }: AppSidebarProps) {
+export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSidebarProps) {
   const mainMenuItems = [
     { id: "chat", title: "New chat", icon: MessageSquare },
     { id: "search", title: "Search chats", icon: Search },
     { id: "library", title: "Library", icon: Library },
+    ...(builderToggle ? [{ id: "platform", title: "Platform", icon: Layers }] : []),
   ];
 
   const toolItems = [
-    { id: "agents", title: "Agents", icon: Code, color: "text-green-600" },
+    ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
     { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600" },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
     { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600" },
