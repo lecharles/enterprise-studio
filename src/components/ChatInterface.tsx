@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,6 +24,7 @@ import {
   Briefcase,
   Building2
 } from "lucide-react";
+import { ConnectMoreModal } from "./ConnectMoreModal";
 
 interface ChatInterfaceProps {
   builderToggle: boolean;
@@ -33,6 +33,7 @@ interface ChatInterfaceProps {
 export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
+  const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
   const [enabledSources, setEnabledSources] = useState({
     webSearch: true,
     box: false,
@@ -212,7 +213,10 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
                             </DropdownMenuItem>
                           ))}
                           <DropdownMenuSeparator />
-                          <DropdownMenuItem className="flex items-center gap-3 cursor-pointer">
+                          <DropdownMenuItem 
+                            className="flex items-center gap-3 cursor-pointer"
+                            onClick={() => setShowConnectMoreModal(true)}
+                          >
                             <span>🔗</span>
                             <span className="text-sm">Connect more</span>
                           </DropdownMenuItem>
@@ -290,6 +294,14 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
           </div>
         </div>
       </div>
+
+      {/* Connect More Modal */}
+      <ConnectMoreModal
+        open={showConnectMoreModal}
+        onOpenChange={setShowConnectMoreModal}
+        enabledSources={enabledSources}
+        onToggleSource={toggleSource}
+      />
     </div>
   );
 }
