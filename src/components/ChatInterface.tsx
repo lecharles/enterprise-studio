@@ -4,6 +4,7 @@ import { ConnectMoreModal } from "./ConnectMoreModal";
 import { ChatInputArea } from "./chat/ChatInputArea";
 import { QuickAccessButtons } from "./chat/QuickAccessButtons";
 import { RecentProjectsSection } from "./chat/RecentProjectsSection";
+import { DeepResearchChat } from "./chat/DeepResearchChat";
 
 interface ChatInterfaceProps {
   builderToggle: boolean;
@@ -13,6 +14,7 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
   const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
+  const [showDeepResearch, setShowDeepResearch] = useState(false);
   const [enabledSources, setEnabledSources] = useState({
     webSearch: true,
     box: false,
@@ -37,6 +39,23 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
     }));
   };
 
+  const handleSendMessage = (message: string) => {
+    const keywords = ['dormant leads', 'mqls', '6 months', 'conversion', 'outreach'];
+    const hasKeywords = keywords.some(keyword => 
+      message.toLowerCase().includes(keyword) || 
+      message.toLowerCase().includes(keyword.replace(' ', ''))
+    );
+    
+    if (hasKeywords) {
+      console.log("Keywords detected, triggering deep research...");
+      setShowDeepResearch(true);
+    }
+  };
+
+  if (showDeepResearch) {
+    return <DeepResearchChat onComplete={() => setShowDeepResearch(false)} />;
+  }
+
   return (
     <div className="flex-1 flex flex-col bg-white min-h-screen">
       {/* Main Content - Centered */}
@@ -57,6 +76,7 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
               setShowConnectMoreModal={setShowConnectMoreModal}
               enabledSources={enabledSources}
               onToggleSource={toggleSource}
+              onSendMessage={handleSendMessage}
             />
 
             {/* Quick Access Buttons */}

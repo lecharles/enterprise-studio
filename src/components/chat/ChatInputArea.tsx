@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Plus, Mic, Send } from "lucide-react";
@@ -13,6 +14,7 @@ interface ChatInputAreaProps {
   setShowConnectMoreModal: (show: boolean) => void;
   enabledSources: Record<string, boolean>;
   onToggleSource: (sourceId: string) => void;
+  onSendMessage?: (message: string) => void;
 }
 
 export function ChatInputArea({
@@ -22,8 +24,25 @@ export function ChatInputArea({
   setShowSourcesDropdown,
   setShowConnectMoreModal,
   enabledSources,
-  onToggleSource
+  onToggleSource,
+  onSendMessage
 }: ChatInputAreaProps) {
+  const [message, setMessage] = useState("");
+
+  const handleSend = () => {
+    if (message.trim() && onSendMessage) {
+      onSendMessage(message.trim());
+      setMessage("");
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   return (
     <div className="relative">
       <div className="bg-white border border-gray-300 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
@@ -53,6 +72,9 @@ export function ChatInputArea({
           
           <Input
             placeholder="Ask anything"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
             className="flex-1 border-0 bg-transparent focus:ring-0 focus:outline-none text-gray-900 placeholder-gray-500"
           />
           
@@ -68,6 +90,8 @@ export function ChatInputArea({
               variant="ghost" 
               size="sm" 
               className="text-white bg-black hover:bg-gray-800 rounded-full p-2"
+              onClick={handleSend}
+              disabled={!message.trim()}
             >
               <Send className="w-4 h-4" />
             </Button>
