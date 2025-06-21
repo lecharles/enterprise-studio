@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   Dialog,
@@ -37,20 +36,20 @@ export function ConnectMoreModal({
   const allConnectors: Connector[] = [
     // Data connectors
     { id: 'webSearch', label: 'Web search', icon: '🌐', type: 'data', enabled: enabledSources.webSearch },
-    { id: 'box', label: 'Box', icon: '📦', type: 'data', enabled: enabledSources.box },
-    { id: 'dropbox', label: 'Dropbox', icon: '📦', type: 'data', enabled: enabledSources.dropbox },
+    { id: 'box', label: 'Box', icon: <img src="/lovable-uploads/77ce685e-5dd7-47f6-be09-f785a2f366db.png" alt="Box" className="w-8 h-8" />, type: 'data', enabled: enabledSources.box },
+    { id: 'dropbox', label: 'Dropbox', icon: <img src="/lovable-uploads/0f78cd6e-c64d-45cc-87bf-7297132f4164.png" alt="Dropbox" className="w-8 h-8" />, type: 'data', enabled: enabledSources.dropbox },
     { id: 'github', label: 'GitHub', icon: '🐙', type: 'data', enabled: enabledSources.github },
-    { id: 'googleCalendar', label: 'Google Calendar', icon: '📅', type: 'data', enabled: enabledSources.googleCalendar },
-    { id: 'googleDrive', label: 'Google Drive', icon: '💾', type: 'data', enabled: enabledSources.googleDrive },
-    { id: 'hubspot', label: 'HubSpot', icon: '🟠', type: 'data', enabled: enabledSources.hubspot },
-    { id: 'linear', label: 'Linear', icon: '📐', type: 'data', enabled: enabledSources.linear },
-    { id: 'outlookCalendar', label: 'Outlook Calendar', icon: '📅', type: 'data', enabled: enabledSources.outlookCalendar },
-    { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <Cloud className="w-4 h-4 text-blue-500" />, type: 'data', enabled: enabledSources.salesforceMarketingCloud },
+    { id: 'googleCalendar', label: 'Google Calendar', icon: <img src="/lovable-uploads/7828fd40-fa53-4bee-a57d-6e1e18fc896a.png" alt="Google Calendar" className="w-8 h-8" />, type: 'data', enabled: enabledSources.googleCalendar },
+    { id: 'googleDrive', label: 'Google Drive', icon: <img src="/lovable-uploads/c950b919-5d4d-4d66-b873-ba4b4e140293.png" alt="Google Drive" className="w-8 h-8" />, type: 'data', enabled: enabledSources.googleDrive },
+    { id: 'hubspot', label: 'HubSpot', icon: <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="w-8 h-8" />, type: 'data', enabled: enabledSources.hubspot },
+    { id: 'linear', label: 'Linear', icon: <img src="/lovable-uploads/e5d60a42-015d-42a4-a952-200a715b281d.png" alt="Linear" className="w-8 h-8" />, type: 'data', enabled: enabledSources.linear },
+    { id: 'outlookCalendar', label: 'Outlook Calendar', icon: <img src="/lovable-uploads/667b69ec-3dd7-4560-8627-7e1a6449024d.png" alt="Outlook Calendar" className="w-8 h-8" />, type: 'data', enabled: enabledSources.outlookCalendar },
+    { id: 'salesforceMarketingCloud', label: 'Salesforce Marketing Cloud', icon: <img src="/lovable-uploads/f4896c1d-8eff-4fe2-a45e-970707f0610e.png" alt="Salesforce Marketing Cloud" className="w-8 h-8" />, type: 'data', enabled: enabledSources.salesforceMarketingCloud },
     { id: 'sharepoint', label: 'SharePoint', icon: '🟢', type: 'data', enabled: enabledSources.sharepoint },
     
     // Channel connectors
-    { id: 'gmail', label: 'Gmail', icon: '📧', type: 'channel', enabled: enabledSources.gmail },
-    { id: 'outlookEmail', label: 'Outlook Email', icon: '📧', type: 'channel', enabled: enabledSources.outlookEmail },
+    { id: 'gmail', label: 'Gmail', icon: <img src="/lovable-uploads/ee57e9a8-5a7c-4b2f-9d6a-a58a5c4c03f5.png" alt="Gmail" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.gmail },
+    { id: 'outlookEmail', label: 'Outlook Email', icon: <img src="/lovable-uploads/73c3916a-6f7a-4114-b6c5-9bdad02b84a4.png" alt="Outlook Email" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.outlookEmail },
     { id: 'teams', label: 'Teams', icon: '👥', type: 'channel', enabled: enabledSources.teams },
     { id: 'linkedin', label: 'LinkedIn', icon: '💼', type: 'channel', enabled: false, isNew: true },
     { id: 'whatsapp', label: 'WhatsApp', icon: '📱', type: 'channel', enabled: false, isNew: true },
