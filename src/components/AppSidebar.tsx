@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { 
   MessageSquare,
@@ -23,6 +24,7 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 
 interface AppSidebarProps {
@@ -32,6 +34,9 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSidebarProps) {
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
   const mainMenuItems = [
     { id: "chat", title: "New chat", icon: MessageSquare },
     { id: "search", title: "Search chats", icon: Search },
@@ -62,19 +67,27 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
 
   return (
     <Sidebar className="bg-gray-50">
-      <SidebarHeader className="px-4 pt-6 pb-4">
-        <div className="flex items-center justify-between mt-1">
-          <div className="flex items-center gap-2">
-            <img 
-              src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
-              alt="Schneider Studio"
-              className="w-6 h-6"
-            />
-            <span className="font-medium text-gray-900">Schneider Studio</span>
+      {!isCollapsed && (
+        <SidebarHeader className="px-4 pt-6 pb-4">
+          <div className="flex items-center justify-between mt-1">
+            <div className="flex items-center gap-2">
+              <img 
+                src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
+                alt="Schneider Studio"
+                className="w-6 h-6"
+              />
+              <span className="font-medium text-gray-900">Schneider Studio</span>
+            </div>
+            <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100" />
           </div>
-          <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100" />
+        </SidebarHeader>
+      )}
+
+      {isCollapsed && (
+        <div className="p-2 pt-6">
+          <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100 mx-auto block" />
         </div>
-      </SidebarHeader>
+      )}
 
       <SidebarContent className="p-2">
         <SidebarGroup>
@@ -88,10 +101,10 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
-                    }`}
+                    } ${isCollapsed ? 'justify-center px-2' : ''}`}
                   >
                     <item.icon className="w-4 h-4" />
-                    <span>{item.title}</span>
+                    {!isCollapsed && <span>{item.title}</span>}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -110,10 +123,10 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
-                    }`}
+                    } ${isCollapsed ? 'justify-center px-2' : ''}`}
                   >
                     <item.icon className={`w-4 h-4 ${item.color}`} />
-                    <span>{item.title}</span>
+                    {!isCollapsed && <span>{item.title}</span>}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -121,35 +134,39 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarGroup className="mt-4">
-          <SidebarMenuButton
-            onClick={() => onViewChange("new-project")}
-            className="w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-colors"
-          >
-            <Plus className="w-4 h-4" />
-            <span>New project</span>
-          </SidebarMenuButton>
-        </SidebarGroup>
+        {!isCollapsed && (
+          <>
+            <SidebarGroup className="mt-4">
+              <SidebarMenuButton
+                onClick={() => onViewChange("new-project")}
+                className="w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+                <span>New project</span>
+              </SidebarMenuButton>
+            </SidebarGroup>
 
-        <SidebarGroup className="mt-6">
-          <SidebarGroupLabel className="text-xs text-gray-500 px-3 py-1">
-            Chats
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {recentChats.map((chat, index) => (
-                <SidebarMenuItem key={index}>
-                  <SidebarMenuButton
-                    onClick={() => onViewChange(`chat-${index}`)}
-                    className="w-full justify-start px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-colors truncate"
-                  >
-                    <span className="truncate">{chat}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+            <SidebarGroup className="mt-6">
+              <SidebarGroupLabel className="text-xs text-gray-500 px-3 py-1">
+                Chats
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {recentChats.map((chat, index) => (
+                    <SidebarMenuItem key={index}>
+                      <SidebarMenuButton
+                        onClick={() => onViewChange(`chat-${index}`)}
+                        className="w-full justify-start px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-colors truncate"
+                      >
+                        <span className="truncate">{chat}</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </>
+        )}
       </SidebarContent>
     </Sidebar>
   );
