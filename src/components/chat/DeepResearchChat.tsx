@@ -22,9 +22,25 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
     <div className="h-screen bg-white flex flex-col overflow-hidden">
       <LeftSidebar show={showLeftSidebar} />
 
-      {/* Fixed Header - stays at top */}
-      <div className="flex-shrink-0 bg-white border-b border-white z-10">
-        {/* Add any header content here if needed */}
+      {/* Fixed Header - adjusts width when citations are shown */}
+      <div className={`flex-shrink-0 bg-white border-b border-white z-10 transition-all duration-300 ${
+        showCitations && !showLeftSidebar ? 'w-[66.67%]' : 'w-full'
+      }`}>
+        <div className="flex items-center justify-between px-6 py-3">
+          <div className="flex items-center gap-3">
+            <span className="text-lg font-medium">ChatGPT</span>
+            <span className="text-sm text-gray-500">o3</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/badcce40-bc8f-450b-ad36-d375876a0067.png" 
+                alt="User" 
+                className="w-6 h-6 rounded-full"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Main Content Area - scrollable */}
