@@ -1,5 +1,5 @@
 
-import { Rocket } from "lucide-react";
+import { Megaphone } from "lucide-react";
 
 interface LaunchOptionsSectionProps {
   isVisible: boolean;
@@ -56,17 +56,17 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
-          <Rocket className="w-4 h-4 text-purple-500" />
+          <Megaphone className="w-4 h-4 text-purple-500" />
           Launch Now
         </button>
 
         <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
-          <Rocket className="w-4 h-4 text-purple-500" />
+          <Megaphone className="w-4 h-4 text-purple-500" />
           Launch Now
         </button>
 
         <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
-          <Rocket className="w-4 h-4 text-purple-500" />
+          <Megaphone className="w-4 h-4 text-purple-500" />
           Launch Now
         </button>
       </div>
