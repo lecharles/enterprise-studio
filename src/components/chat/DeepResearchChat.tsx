@@ -49,8 +49,8 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   const headerWidth = showCitations ? 'w-[calc(66.67%-24px)]' : 'w-full';
   const contentWidth = showCitations ? 'w-[66.67%]' : 'w-full';
   
-  // Calculate chat input positioning based on left sidebar visibility
-  const chatInputLeft = showLeftSidebar ? 'left-64' : 'left-0';
+  // Calculate chat input positioning - use the same width as the main sidebar (16rem = 256px)
+  const chatInputLeft = showLeftSidebar ? 'left-[16rem]' : 'left-0';
 
   return (
     <div className="h-screen bg-white flex flex-col overflow-hidden">
