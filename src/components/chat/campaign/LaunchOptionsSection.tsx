@@ -109,17 +109,9 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
         <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
           🎉 Campaign Status: READY FOR LAUNCH
         </h3>
-        <p className="text-gray-700 mb-4">
+        <p className="text-gray-700 text-sm">
           All content approved by compliance. GDPR consent verified. Technical integrations tested.
         </p>
-        <div className="flex flex-wrap gap-3">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            📊 Preview Analytics
-          </button>
-          <button className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-            ⚙️ Advanced Settings
-          </button>
-        </div>
       </div>
     </div>
   );
