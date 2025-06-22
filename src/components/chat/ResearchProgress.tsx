@@ -13,7 +13,10 @@ export function ResearchProgress({ currentStep, researchSteps }: ResearchProgres
   return (
     <div className="mb-6">
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
+        <div className="w-4 h-4 bg-gray-300 rounded-full animate-pulse" style={{
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          backgroundColor: '#d1d5db'
+        }}></div>
         <span className="text-sm text-gray-600">
           Analyzing {currentStep} sources • {currentStep} searches
         </span>
