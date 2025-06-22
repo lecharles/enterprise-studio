@@ -104,7 +104,7 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
         </h3>
         
         <div className="flex flex-col items-center mb-4">
-          <div className="w-96 h-96 mb-6">
+          <div className="w-72 h-72 mb-4">
             <ChartContainer config={chartConfig}>
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -112,8 +112,8 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
                     data={personaData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={80}
-                    outerRadius={160}
+                    innerRadius={60}
+                    outerRadius={120}
                     paddingAngle={2}
                     dataKey="value"
                   >
