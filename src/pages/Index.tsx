@@ -31,16 +31,22 @@ const Index = () => {
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
         />
-        <SidebarInset className="flex-1">
-          <TopNavbar 
-            businessToggle={businessToggle}
-            builderToggle={builderToggle}
-            onBusinessToggle={setBusinessToggle}
-            onBuilderToggle={setBuilderToggle}
-            selectedModel={selectedModel}
-            onModelChange={setSelectedModel}
-          />
-          {renderMainContent()}
+        <SidebarInset className="flex-1 flex flex-col">
+          {/* Fixed TopNavbar */}
+          <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+            <TopNavbar 
+              businessToggle={businessToggle}
+              builderToggle={builderToggle}
+              onBusinessToggle={setBusinessToggle}
+              onBuilderToggle={setBuilderToggle}
+              selectedModel={selectedModel}
+              onModelChange={setSelectedModel}
+            />
+          </div>
+          {/* Main content with top padding to account for fixed header */}
+          <div className="flex-1 pt-16 overflow-hidden">
+            {renderMainContent()}
+          </div>
         </SidebarInset>
       </div>
     </SidebarProvider>

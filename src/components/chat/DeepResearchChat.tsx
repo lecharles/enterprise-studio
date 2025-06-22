@@ -50,7 +50,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
       <LeftSidebar show={showLeftSidebar} />
 
       <div className="flex-1 flex flex-col overflow-hidden relative">
-        {/* Main Content Area - the main TopNavbar is rendered by the parent layout */}
+        {/* Main Content Area - the main TopNavbar is rendered by the parent layout and stays fixed */}
         <div className="flex-1 flex overflow-hidden">
           {/* Chat Messages - width adjusts based on citations visibility */}
           <div className={`${showCitations ? 'w-[66.67%]' : 'w-full'} flex flex-col overflow-hidden transition-all duration-200 relative`}>
