@@ -8,6 +8,15 @@ interface AnalysisDisplayProps {
 
 export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisplayProps) {
   const formatAnalysisText = (text: string) => {
+    // Replace text references with logo icons
+    const replaceLogos = (content: string) => {
+      return content
+        .replace(/\[HubSpot\]/g, '<img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" class="inline-block w-4 h-4 mx-1" />')
+        .replace(/\[Marketing Cloud\]/g, '<img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" class="inline-block w-4 h-4 mx-1" />')
+        .replace(/\[Teams\]/g, '<img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" class="inline-block w-4 h-4 mx-1" />')
+        .replace(/\[SharePoint\]/g, '<img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" class="inline-block w-4 h-4 mx-1" />');
+    };
+
     // Split the text into sections and format appropriately
     const sections = text.split(/(?=(?:🎯|📊|🚀))/);
     
@@ -24,13 +33,13 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
                 <h3 className="text-lg font-bold text-gray-900 mb-4">1. Dormant MQL Assessment</h3>
                 <ul className="space-y-4 ml-4">
                   <li className="text-gray-900">
-                    <span className="font-bold">Energy Efficiency Segment:</span> Identified 12,847 leads with strong engagement indicators. These contacts showed 73% email open rates on sustainability content but haven't converted in 90+ days—indicating high interest but missing activation trigger 📊 [HubSpot].
+                    <span className="font-bold">Energy Efficiency Segment:</span> Identified 12,847 leads with strong engagement indicators. These contacts showed 73% email open rates on sustainability content but haven't converted in 90+ days—indicating high interest but missing activation trigger 📊 <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                   <li className="text-gray-900">
-                    <span className="font-bold">Industrial Automation Prospects:</span> Discovered 8,432 leads who downloaded 3+ technical whitepapers on EcoStruxure™ automation. Analysis shows 67% work at companies with 500+ employees and have budget authority indicators 🏭 [HubSpot] [Marketing Cloud].
+                    <span className="font-bold">Industrial Automation Prospects:</span> Discovered 8,432 leads who downloaded 3+ technical whitepapers on EcoStruxure™ automation. Analysis shows 67% work at companies with 500+ employees and have budget authority indicators 🏭 <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="inline-block w-4 h-4 mx-1" /> <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                   <li className="text-gray-900">
-                    <span className="font-bold">Building Management Specialists:</span> Found 15,234 webinar attendees from DACH and Nordic regions. Cross-reference with CRM data reveals 82% have active building renovation projects but haven't engaged with sales 🏢 [HubSpot].
+                    <span className="font-bold">Building Management Specialists:</span> Found 15,234 webinar attendees from DACH and Nordic regions. Cross-reference with CRM data reveals 82% have active building renovation projects but haven't engaged with sales 🏢 <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                 </ul>
               </div>
@@ -39,13 +48,13 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
                 <h3 className="text-lg font-bold text-gray-900 mb-4">2. Engagement Pattern Insights</h3>
                 <ul className="space-y-4 ml-4">
                   <li className="text-gray-900">
-                    <span className="font-bold">Content Performance Analysis:</span> EcoStruxure™ Power campaign achieved 42% open rates but only 2.3% CTR. Deep dive shows technical specification PDFs get 5x more downloads than product brochures among engineer personas 📈 [Marketing Cloud].
+                    <span className="font-bold">Content Performance Analysis:</span> EcoStruxure™ Power campaign achieved 42% open rates but only 2.3% CTR. Deep dive shows technical specification PDFs get 5x more downloads than product brochures among engineer personas 📈 <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                   <li className="text-gray-900">
-                    <span className="font-bold">Geographic Intelligence:</span> Nordic countries show 61% higher engagement with ESG content. German market specifically requires ISO 50001 compliance messaging based on 89% correlation with successful conversions 🌍 [Marketing Cloud] [Teams].
+                    <span className="font-bold">Geographic Intelligence:</span> Nordic countries show 61% higher engagement with ESG content. German market specifically requires ISO 50001 compliance messaging based on 89% correlation with successful conversions 🌍 <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" className="inline-block w-4 h-4 mx-1" /> <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                   <li className="text-gray-900">
-                    <span className="font-bold">Optimal Timing Discovered:</span> Machine learning analysis identifies Tuesday 10:00 CET as peak engagement for DACH region (37% higher open rates), while Southern Europe responds best Thursday 14:00 CET 🕐 [Marketing Cloud].
+                    <span className="font-bold">Optimal Timing Discovered:</span> Machine learning analysis identifies Tuesday 10:00 CET as peak engagement for DACH region (37% higher open rates), while Southern Europe responds best Thursday 14:00 CET 🕐 <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                 </ul>
               </div>
@@ -54,13 +63,13 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
                 <h3 className="text-lg font-bold text-gray-900 mb-4">3. Sales Intelligence Mining</h3>
                 <ul className="space-y-4 ml-4">
                   <li className="text-gray-900">
-                    <span className="font-bold">Win/Loss Patterns:</span> Analysis of 1,247 sales conversations reveals "integration complexity" as primary objection in 34% of lost deals. Successful deals included technical workshop attendance (4.7x higher close rate) 💬 [Teams].
+                    <span className="font-bold">Win/Loss Patterns:</span> Analysis of 1,247 sales conversations reveals "integration complexity" as primary objection in 34% of lost deals. Successful deals included technical workshop attendance (4.7x higher close rate) 💬 <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                   <li className="text-gray-900">
-                    <span className="font-bold">Competitive Positioning:</span> Schneider solutions show 15-20% lower TCO vs. Siemens for mid-size installations. ROI calculator demonstrates 18-month average payback period—key differentiator not being communicated 💰 [SharePoint] [Teams].
+                    <span className="font-bold">Competitive Positioning:</span> Schneider solutions show 15-20% lower TCO vs. Siemens for mid-size installations. ROI calculator demonstrates 18-month average payback period—key differentiator not being communicated 💰 <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="inline-block w-4 h-4 mx-1" /> <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                   <li className="text-gray-900">
-                    <span className="font-bold">Regional Feedback:</span> "French energy consultants need local case studies and technical validation before engaging. Generic content doesn't resonate" - Pierre Dubois, Sales Director 🇫🇷 [Teams].
+                    <span className="font-bold">Regional Feedback:</span> "French energy consultants need local case studies and technical validation before engaging. Generic content doesn't resonate" - Pierre Dubois, Sales Director 🇫🇷 <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" />.
                   </li>
                 </ul>
               </div>
@@ -96,25 +105,41 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
                   <TableCell className="font-medium">Energy Efficiency Consultants</TableCell>
                   <TableCell>847</TableCell>
                   <TableCell>€12.3M</TableCell>
-                  <TableCell>Technical workshops + ROI tools 🔧 [HubSpot] [SharePoint]</TableCell>
+                  <TableCell className="flex items-center gap-1">
+                    Technical workshops + ROI tools 🔧 
+                    <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="inline-block w-4 h-4 mx-1" />
+                    <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="inline-block w-4 h-4 mx-1" />
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-medium">Industrial Automation Engineers</TableCell>
                   <TableCell>1,234</TableCell>
                   <TableCell>€8.7M</TableCell>
-                  <TableCell>Integration demos + success stories 🏭 [HubSpot] [Marketing Cloud]</TableCell>
+                  <TableCell className="flex items-center gap-1">
+                    Integration demos + success stories 🏭 
+                    <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="inline-block w-4 h-4 mx-1" />
+                    <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" className="inline-block w-4 h-4 mx-1" />
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-medium">Building Management Specialists</TableCell>
                   <TableCell>1,123</TableCell>
                   <TableCell>€6.4M</TableCell>
-                  <TableCell>Virtual tours + case studies 🏢 [HubSpot] [SharePoint]</TableCell>
+                  <TableCell className="flex items-center gap-1">
+                    Virtual tours + case studies 🏢 
+                    <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="inline-block w-4 h-4 mx-1" />
+                    <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="inline-block w-4 h-4 mx-1" />
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-medium">Sustainability Officers</TableCell>
                   <TableCell>643</TableCell>
                   <TableCell>€3.8M</TableCell>
-                  <TableCell>Executive briefings + ESG reports 🌱 [HubSpot] [Teams]</TableCell>
+                  <TableCell className="flex items-center gap-1">
+                    Executive briefings + ESG reports 🌱 
+                    <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="inline-block w-4 h-4 mx-1" />
+                    <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" />
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
@@ -135,16 +160,16 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
             
             <ul className="space-y-4 ml-4">
               <li className="text-gray-900">
-                <span className="font-bold">Launch Personalized Sequences:</span> 4 persona-specific email campaigns ready for deployment within 48 hours. Each sequence includes 6 touchpoints over 21 days with dynamic content based on engagement 📧 [Marketing Cloud].
+                <span className="font-bold">Launch Personalized Sequences:</span> 4 persona-specific email campaigns ready for deployment within 48 hours. Each sequence includes 6 touchpoints over 21 days with dynamic content based on engagement 📧 <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" className="inline-block w-4 h-4 mx-1" />.
               </li>
               <li className="text-gray-900">
-                <span className="font-bold">Technical Workshop Series:</span> Schedule 12 workshops across EMEA Q1 2025. Focus on hands-on EcoStruxure™ integration addressing the #1 sales objection 🛠️ [Teams] [SharePoint].
+                <span className="font-bold">Technical Workshop Series:</span> Schedule 12 workshops across EMEA Q1 2025. Focus on hands-on EcoStruxure™ integration addressing the #1 sales objection 🛠️ <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" /> <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="inline-block w-4 h-4 mx-1" />.
               </li>
               <li className="text-gray-900">
-                <span className="font-bold">ABM Activation:</span> Target top 500 accounts with LinkedIn campaigns. Budget allocation: €75K for Q1 with expected 23% engagement rate based on similar campaigns 🎯 [Marketing Cloud].
+                <span className="font-bold">ABM Activation:</span> Target top 500 accounts with LinkedIn campaigns. Budget allocation: €75K for Q1 with expected 23% engagement rate based on similar campaigns 🎯 <img src="/lovable-uploads/0bb6b1e8-2df1-4dbb-9108-725e56f45682.png" alt="Marketing Cloud" className="inline-block w-4 h-4 mx-1" />.
               </li>
               <li className="text-gray-900">
-                <span className="font-bold">Sales Enablement:</span> Deliver persona-specific battle cards and local case studies to address regional nuances identified in research 📋 [SharePoint] [Teams].
+                <span className="font-bold">Sales Enablement:</span> Deliver persona-specific battle cards and local case studies to address regional nuances identified in research 📋 <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="inline-block w-4 h-4 mx-1" /> <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" />.
               </li>
             </ul>
 
