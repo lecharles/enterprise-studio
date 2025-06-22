@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Share, User, ChevronRight, PanelLeft, PanelRight, X } from "lucide-react";
+import { Share, User, ChevronRight, PanelLeft, PanelRight, X, Menu } from "lucide-react";
 
 interface ResearchStep {
   source: string;
@@ -200,6 +200,39 @@ Total Qualified Leads Identified: **3,847** meeting both engagement and fit crit
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col">
+        {/* Top Header Bar */}
+        <div className="flex justify-between items-center px-4 py-3 border-b border-gray-200">
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowLeftSidebar(!showLeftSidebar)}
+              className="p-2 hover:bg-gray-100"
+            >
+              <Menu className="w-4 h-4" />
+            </Button>
+            <img 
+              src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
+              alt="Schneider Studio"
+              className="w-6 h-6"
+            />
+            <span className="font-medium text-gray-900">Schneider Studio</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:bg-gray-100">
+              <Share className="w-4 h-4" />
+              Share
+            </Button>
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+              <img 
+                src="/lovable-uploads/3d9dae14-5b23-4399-9919-ecf50ed251ee.png" 
+                alt="Audrey"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Chat Content */}
         <div className="flex-1 flex">
           {/* Chat Messages */}
