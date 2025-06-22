@@ -30,9 +30,9 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
       {/* Main Content Area - scrollable */}
       <div className="flex-1 flex overflow-hidden">
         {/* Chat Messages - scrollable content */}
-        <div className={`${showCitations ? 'w-[calc(100%-320px)]' : 'w-full'} flex flex-col overflow-hidden`}>
+        <div className={`${showCitations ? 'w-[calc(100%-400px)]' : 'w-full'} flex flex-col overflow-hidden`}>
           <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-8 max-w-3xl mx-auto w-full">
+            <div className="px-6 py-8 max-w-2xl mx-auto w-full">
               <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
 
               <AIResponse 
