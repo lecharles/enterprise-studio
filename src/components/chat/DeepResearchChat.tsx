@@ -79,7 +79,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
             </div>
 
             {/* Fixed Chat Input at Bottom - positioned relative to the center content area */}
-            <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4 z-20">
+            <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-white px-6 py-4 z-20">
               <div className="max-w-2xl mx-auto">
                 <ChatInputArea
                   showResearchTool={showResearchTool}
