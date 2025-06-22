@@ -9,21 +9,6 @@ interface CitationsPanelProps {
 }
 
 export function CitationsPanel({ citations, onClose }: CitationsPanelProps) {
-  const getBorderColor = (source: string) => {
-    switch (source.toLowerCase()) {
-      case 'hubspot':
-        return 'border-orange-400';
-      case 'marketing cloud':
-        return 'border-blue-400';
-      case 'sharepoint':
-        return 'border-teal-500';
-      case 'teams':
-        return 'border-purple-500';
-      default:
-        return 'border-gray-300';
-    }
-  };
-
   return (
     <div className="w-80 border-l border-gray-200 flex flex-col h-full bg-white">
       <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
@@ -43,7 +28,7 @@ export function CitationsPanel({ citations, onClose }: CitationsPanelProps) {
           {citations.map((citation) => (
             <div
               key={citation.id}
-              className={`space-y-3 border-l-4 ${getBorderColor(citation.source)} pl-3`}
+              className="space-y-3"
             >
               <div className="flex items-start gap-3">
                 <div className="w-4 h-4 mt-1 flex-shrink-0">
@@ -65,7 +50,7 @@ export function CitationsPanel({ citations, onClose }: CitationsPanelProps) {
             <h4 className="font-medium text-sm text-gray-900 mb-3">More</h4>
             <div className="space-y-3">
               {citations.slice(0, 3).map((citation) => (
-                <div key={`more-${citation.id}`} className={`flex items-start gap-3 border-l-4 ${getBorderColor(citation.source)} pl-3`}>
+                <div key={`more-${citation.id}`} className="flex items-start gap-3">
                   <div className="w-4 h-4 mt-0.5 flex-shrink-0">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   </div>
