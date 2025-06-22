@@ -84,8 +84,8 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
       )}
 
       {isCollapsed && (
-        <div className="p-2 pt-6">
-          <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100 mx-auto block" />
+        <div className="p-2 pt-6 flex justify-center">
+          <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100" />
         </div>
       )}
 
@@ -97,11 +97,11 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
                     onClick={() => onViewChange(item.id)}
-                    className={`w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                    className={`w-full gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
-                    } ${isCollapsed ? 'justify-center px-2 min-w-0' : ''}`}
+                    } ${isCollapsed ? 'justify-center px-2 min-w-0' : 'justify-start'}`}
                     tooltip={isCollapsed ? item.title : undefined}
                   >
                     <item.icon className="w-4 h-4 shrink-0" />
@@ -120,11 +120,11 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
                     onClick={() => onViewChange(item.id)}
-                    className={`w-full justify-start gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                    className={`w-full gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
-                    } ${isCollapsed ? 'justify-center px-2 min-w-0' : ''}`}
+                    } ${isCollapsed ? 'justify-center px-2 min-w-0' : 'justify-start'}`}
                     tooltip={isCollapsed ? item.title : undefined}
                   >
                     <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
