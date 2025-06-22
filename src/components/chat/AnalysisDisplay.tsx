@@ -6,6 +6,7 @@ import { EngagementPatternInsightsSection } from "./analysis/EngagementPatternIn
 import { SegmentSummarySection } from "./analysis/SegmentSummarySection";
 import { ActionPlanSection } from "./analysis/ActionPlanSection";
 import { SourcesButton } from "./SourcesButton";
+import { RecommendedActions } from "./RecommendedActions";
 
 interface AnalysisDisplayProps {
   typingText: string;
@@ -105,9 +106,11 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations,
             />
             
             <div className="px-6 max-w-4xl mx-auto w-full">
-              <p className="text-sm text-gray-600 italic">
+              <p className="text-sm text-gray-600 italic mb-6">
                 Research completed in 8 minutes 47 seconds | 4 enterprise systems analyzed | 127,492 data points processed
               </p>
+              
+              <RecommendedActions />
             </div>
           </div>
         )}
