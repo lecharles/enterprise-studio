@@ -1,3 +1,4 @@
+
 import { ChevronDown, PanelLeft } from "lucide-react";
 import {
   DropdownMenu,
@@ -34,8 +35,7 @@ export function TopNavbar({
   selectedModel,
   onModelChange 
 }: TopNavbarProps) {
-  const { state, setOpen } = useSidebar();
-  const [isHovered, setIsHovered] = useState(false);
+  const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
   const getModelDisplayName = (model: string) => {
@@ -48,36 +48,10 @@ export function TopNavbar({
     }
   };
 
-  const handleLogoClick = () => {
-    if (isCollapsed) {
-      setOpen(true);
-    }
-  };
-
   return (
     <header className="bg-white pl-4 pr-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          {/* Logo with hover effect when sidebar is collapsed */}
-          {isCollapsed && (
-            <div 
-              className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 rounded-lg p-2 transition-colors"
-              onClick={handleLogoClick}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {isHovered ? (
-                <PanelLeft className="w-6 h-6 text-gray-600" />
-              ) : (
-                <img 
-                  src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
-                  alt="Schneider Studio"
-                  className="w-6 h-6"
-                />
-              )}
-            </div>
-          )}
-
           {/* Model Picker */}
           <Select value={selectedModel} onValueChange={onModelChange}>
             <SelectTrigger className="w-[200px] h-8 text-base border-none bg-transparent hover:bg-gray-100 rounded-lg">
