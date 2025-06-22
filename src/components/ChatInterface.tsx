@@ -40,14 +40,35 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
   };
 
   const handleSendMessage = (message: string) => {
-    const keywords = ['dormant leads', 'mqls', '6 months', 'conversion', 'outreach'];
-    const hasKeywords = keywords.some(keyword => 
-      message.toLowerCase().includes(keyword) || 
-      message.toLowerCase().includes(keyword.replace(' ', ''))
+    // Check for the specific lead demo prompt
+    const leadDemoPrompt = "I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?";
+    
+    // Normalize both strings for comparison (remove extra spaces, case insensitive)
+    const normalizeString = (str: string) => str.toLowerCase().replace(/\s+/g, ' ').trim();
+    
+    if (normalizeString(message) === normalizeString(leadDemoPrompt)) {
+      console.log("Lead demo prompt detected, triggering deep research...");
+      setShowDeepResearch(true);
+      return;
+    }
+    
+    // Fallback: Check for key phrases from the lead demo prompt
+    const keyPhrases = [
+      'revive dormant leads',
+      'data center cooling',
+      'mqls from the last 6 months',
+      'highest potential for conversion',
+      'personalized outreach'
+    ];
+    
+    const messageNormalized = normalizeString(message);
+    const matchingPhrases = keyPhrases.filter(phrase => 
+      messageNormalized.includes(normalizeString(phrase))
     );
     
-    if (hasKeywords) {
-      console.log("Keywords detected, triggering deep research...");
+    // If at least 3 key phrases match, trigger the demo
+    if (matchingPhrases.length >= 3) {
+      console.log("Lead demo keywords detected, triggering deep research...");
       setShowDeepResearch(true);
     }
   };
