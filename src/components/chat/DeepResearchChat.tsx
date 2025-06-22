@@ -3,7 +3,6 @@ import { useState } from "react";
 import { DeepResearchChatProps } from "./types";
 import { CitationsPanel } from "./CitationsPanel";
 import { LeftSidebar } from "./LeftSidebar";
-import { SourcesButton } from "./SourcesButton";
 import { UserMessage } from "./UserMessage";
 import { AIResponse } from "./AIResponse";
 import { useResearchProgress } from "./hooks/useResearchProgress";
@@ -41,19 +40,11 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
                 researchSteps={researchSteps}
                 showAnalysis={showAnalysis}
                 isAnalysisComplete={isAnalysisComplete}
+                showCitations={showCitations}
+                onToggleCitations={() => setShowCitations(!showCitations)}
               />
             </div>
           </div>
-
-          {/* Fixed Sources Button at bottom */}
-          {isAnalysisComplete && (
-            <div className="flex-shrink-0 bg-white border-t border-gray-200">
-              <SourcesButton 
-                showCitations={showCitations}
-                onToggle={() => setShowCitations(!showCitations)}
-              />
-            </div>
-          )}
         </div>
 
         {/* Citations Panel - if shown */}

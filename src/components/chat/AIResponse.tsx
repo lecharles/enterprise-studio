@@ -8,13 +8,17 @@ interface AIResponseProps {
   researchSteps: ResearchStep[];
   showAnalysis: boolean;
   isAnalysisComplete: boolean;
+  showCitations: boolean;
+  onToggleCitations: () => void;
 }
 
 export function AIResponse({ 
   currentStep, 
   researchSteps, 
   showAnalysis, 
-  isAnalysisComplete 
+  isAnalysisComplete,
+  showCitations,
+  onToggleCitations
 }: AIResponseProps) {
   return (
     <div className="mb-8">
@@ -29,6 +33,8 @@ export function AIResponse({
             <AnalysisDisplay 
               typingText="analysis"
               isAnalysisComplete={isAnalysisComplete}
+              showCitations={showCitations}
+              onToggleCitations={onToggleCitations}
             />
           )}
         </div>

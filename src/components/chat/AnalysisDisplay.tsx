@@ -5,10 +5,13 @@ import { LeadAnalysisSection } from "./analysis/LeadAnalysisSection";
 import { EngagementPatternInsightsSection } from "./analysis/EngagementPatternInsightsSection";
 import { SegmentSummarySection } from "./analysis/SegmentSummarySection";
 import { ActionPlanSection } from "./analysis/ActionPlanSection";
+import { SourcesButton } from "./SourcesButton";
 
 interface AnalysisDisplayProps {
   typingText: string;
   isAnalysisComplete: boolean;
+  showCitations: boolean;
+  onToggleCitations: () => void;
 }
 
 interface ContentSection {
@@ -18,7 +21,7 @@ interface ContentSection {
   delay: number;
 }
 
-export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisplayProps) {
+export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations, onToggleCitations }: AnalysisDisplayProps) {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
@@ -90,6 +93,16 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
         })}
         {!isAnalysisComplete && visibleSections.length > 0 && (
           <span className="animate-pulse">|</span>
+        )}
+        
+        {/* Sources button as part of content when analysis is complete */}
+        {isAnalysisComplete && (
+          <div className="mt-6">
+            <SourcesButton 
+              showCitations={showCitations}
+              onToggle={onToggleCitations}
+            />
+          </div>
         )}
       </div>
     </div>
