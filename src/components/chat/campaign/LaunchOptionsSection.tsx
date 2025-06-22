@@ -89,7 +89,7 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
           <ul className="space-y-2 ml-4">
             <li className="text-gray-900"><strong>Hot lead notification:</strong> Response within 5 minutes → Slack alert to SDR</li>
             <li className="text-gray-900"><strong>Meeting booked:</strong> Auto-sync to Salesforce + prep packet sent</li>
-            <li className="text-gray-900"><strong>High-value engagement:</strong> Score >85 → Account Executive notified</li>
+            <li className="text-gray-900"><strong>High-value engagement:</strong> Score &gt; 85 → Account Executive notified</li>
           </ul>
         </div>
       </div>
