@@ -50,12 +50,12 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
       <LeftSidebar show={showLeftSidebar} />
 
       <div className="flex-1 flex flex-col overflow-hidden relative">
-        {/* Main Content Area - the main TopNavbar is rendered by the parent layout and stays fixed */}
+        {/* Main Content Area */}
         <div className="flex-1 flex overflow-hidden">
           {/* Chat Messages - width adjusts based on citations visibility */}
           <div className={`${showCitations ? 'w-[66.67%]' : 'w-full'} flex flex-col overflow-hidden transition-all duration-200 relative`}>
             <div className="flex-1 overflow-y-auto pb-24">
-              <div className="px-6 py-8 max-w-2xl mx-auto w-full">
+              <div className="px-6 py-4 max-w-2xl mx-auto w-full">
                 <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
 
                 <AIResponse 
@@ -69,7 +69,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
               </div>
             </div>
 
-            {/* Fixed Chat Input at Bottom - positioned relative to the center content area */}
+            {/* Fixed Chat Input at Bottom */}
             <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-white px-6 py-4 z-20">
               <div className="max-w-2xl mx-auto">
                 <ChatInputArea
@@ -85,7 +85,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
             </div>
           </div>
 
-          {/* Citations Panel - full height from top */}
+          {/* Citations Panel */}
           {showCitations && (
             <div className="w-[33.33%] flex-shrink-0 h-full">
               <CitationsPanel 
