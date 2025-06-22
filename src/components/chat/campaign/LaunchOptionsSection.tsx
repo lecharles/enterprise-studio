@@ -1,5 +1,3 @@
-
-
 interface LaunchOptionsSectionProps {
   isVisible: boolean;
 }
@@ -15,20 +13,17 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
       
       <p className="font-medium text-gray-900 mb-4">Quick Actions:</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         <div className="bg-gray-50 p-4 rounded-lg border">
           <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center gap-2">
             <img src="/lovable-uploads/869c213f-f2e5-431e-991b-134e94eb2bcf.png" alt="Outlook" className="w-5 h-5" />
-            Email Campaign
+            Launch Email Campaign
           </h4>
-          <ul className="text-sm text-gray-700 space-y-1 mb-3">
+          <ul className="text-sm text-gray-700 space-y-1">
             <li>2,410 contacts queued</li>
             <li>A/B test configured</li>
             <li>Suppression list applied</li>
           </ul>
-          <button className="text-blue-600 hover:text-blue-800 font-medium text-sm">
-            [Launch Now →]
-          </button>
         </div>
 
         <div className="bg-gray-50 p-4 rounded-lg border">
@@ -36,14 +31,11 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
             <img src="/lovable-uploads/50e9c6c0-bc6f-4ca1-a5db-c32643632f8e.png" alt="WhatsApp" className="w-5 h-5" />
             Activate WhatsApp
           </h4>
-          <ul className="text-sm text-gray-700 space-y-1 mb-3">
+          <ul className="text-sm text-gray-700 space-y-1">
             <li>1,847 opted-in numbers</li>
             <li>Business API connected</li>
             <li>GDPR compliant</li>
           </ul>
-          <button className="text-blue-600 hover:text-blue-800 font-medium text-sm">
-            [Launch Now →]
-          </button>
         </div>
 
         <div className="bg-gray-50 p-4 rounded-lg border">
@@ -51,15 +43,38 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
             <img src="/lovable-uploads/0ad025ba-2f43-4df0-ae9c-a128daac84c3.png" alt="LinkedIn" className="w-5 h-5" />
             Deploy LinkedIn
           </h4>
-          <ul className="text-sm text-gray-700 space-y-1 mb-3">
+          <ul className="text-sm text-gray-700 space-y-1">
             <li>1,623 InMails ready</li>
             <li>Sales Nav integrated</li>
             <li>SDR assignments complete</li>
           </ul>
-          <button className="text-blue-600 hover:text-blue-800 font-medium text-sm">
-            [Launch Now →]
-          </button>
         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
+          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+          </svg>
+          Launch Now
+        </button>
+
+        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
+          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+          </svg>
+          Launch Now
+        </button>
+
+        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
+          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
+          </svg>
+          Launch Now
+        </button>
       </div>
 
       <div className="text-center mb-8">
@@ -120,4 +135,3 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
     </div>
   );
 }
-
