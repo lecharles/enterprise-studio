@@ -4,7 +4,7 @@ import { TopNavbar } from "@/components/TopNavbar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ChatInterface } from "@/components/ChatInterface";
 import { DashboardView } from "@/components/views/DashboardView";
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset, useSidebar } from "@/components/ui/sidebar";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState("chat");
@@ -31,9 +31,9 @@ const Index = () => {
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
         />
-        <SidebarInset className="flex-1 flex flex-col">
-          {/* Fixed TopNavbar */}
-          <div className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+        <SidebarInset className="flex-1 flex flex-col relative">
+          {/* Fixed TopNavbar - positioned relative to the SidebarInset */}
+          <div className="fixed top-0 z-50 bg-white border-b border-gray-100 left-0 right-0 md:left-64 peer-data-[state=collapsed]:md:left-12">
             <TopNavbar 
               businessToggle={businessToggle}
               builderToggle={builderToggle}
