@@ -103,8 +103,8 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
           📊 Persona Response Distribution
         </h3>
         
-        <div className="flex flex-col lg:flex-row items-center gap-6 mb-4">
-          <div className="w-64 h-64">
+        <div className="flex flex-col lg:flex-row items-start gap-8 mb-4">
+          <div className="w-80 h-80 flex-shrink-0">
             <ChartContainer config={chartConfig}>
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -112,8 +112,8 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
                     data={personaData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
+                    innerRadius={80}
+                    outerRadius={140}
                     paddingAngle={2}
                     dataKey="value"
                   >
@@ -127,20 +127,26 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
             </ChartContainer>
           </div>
           
-          <ul className="space-y-2 ml-4">
-            <li className="text-gray-900 flex items-center gap-2">
-              <div className="w-4 h-4 bg-blue-500 rounded"></div>
-              <strong>Building Managers:</strong> 45% of responses
-            </li>
-            <li className="text-gray-900 flex items-center gap-2">
-              <div className="w-4 h-4 bg-green-500 rounded"></div>
-              <strong>Sustainability Officers:</strong> 35% of responses
-            </li>
-            <li className="text-gray-900 flex items-center gap-2">
-              <div className="w-4 h-4 bg-yellow-500 rounded"></div>
-              <strong>Executive Sponsors:</strong> 20% of responses
-            </li>
-          </ul>
+          <div className="flex flex-col space-y-3">
+            <div className="text-gray-900 flex items-center gap-3 text-sm">
+              <div className="w-4 h-4 bg-blue-500 rounded flex-shrink-0"></div>
+              <div>
+                <strong>Building Managers:</strong> 45% of responses
+              </div>
+            </div>
+            <div className="text-gray-900 flex items-center gap-3 text-sm">
+              <div className="w-4 h-4 bg-green-500 rounded flex-shrink-0"></div>
+              <div>
+                <strong>Sustainability Officers:</strong> 35% of responses
+              </div>
+            </div>
+            <div className="text-gray-900 flex items-center gap-3 text-sm">
+              <div className="w-4 h-4 bg-yellow-500 rounded flex-shrink-0"></div>
+              <div>
+                <strong>Executive Sponsors:</strong> 20% of responses
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
