@@ -1,5 +1,5 @@
 
-import { Users } from "lucide-react";
+import { Users, Code, Film } from "lucide-react";
 
 interface LaunchOptionsSectionProps {
   isVisible: boolean;
@@ -105,13 +105,31 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
         </div>
       </div>
 
-      <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+      <div className="bg-green-50 border border-green-200 p-4 rounded-lg mb-8">
         <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
           🎉 Campaign Status: READY FOR LAUNCH
         </h3>
         <p className="text-gray-700 text-sm">
           All content approved by compliance. GDPR consent verified. Technical integrations tested.
         </p>
+      </div>
+
+      {/* Recommended Actions Section */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 hover:border-gray-300 hover:shadow-sm">
+          <Code className="w-4 h-4 text-green-600" />
+          <span>Open in Platform</span>
+        </button>
+
+        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 hover:border-gray-300 hover:shadow-sm">
+          <Film className="w-4 h-4 text-blue-600" />
+          <span>Preview Analytics</span>
+        </button>
+
+        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 hover:border-gray-300 hover:shadow-sm">
+          <Users className="w-4 h-4 text-purple-600" />
+          <span>Launch All Campaigns</span>
+        </button>
       </div>
     </div>
   );
