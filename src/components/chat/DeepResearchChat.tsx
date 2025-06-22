@@ -62,7 +62,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
         {/* Main Content Area - scrollable, but leaves space for chat input */}
         <div className="flex-1 flex overflow-hidden">
           {/* Chat Messages - width adjusts based on citations visibility */}
-          <div className={`${contentWidth} flex flex-col overflow-hidden transition-all duration-200`}>
+          <div className={`${contentWidth} flex flex-col overflow-hidden transition-all duration-200 relative`}>
             <div className="flex-1 overflow-y-auto pb-24">
               <div className="px-6 py-8 max-w-2xl mx-auto w-full">
                 <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
@@ -78,9 +78,9 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
               </div>
             </div>
 
-            {/* Fixed Chat Input at Bottom - positioned within the chat messages area */}
+            {/* Fixed Chat Input at Bottom - positioned relative to the center content area */}
             <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4 z-20">
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-2xl mx-auto">
                 <ChatInputArea
                   showResearchTool={showResearchTool}
                   setShowResearchTool={setShowResearchTool}
