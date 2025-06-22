@@ -10,6 +10,7 @@ interface AIResponseProps {
   isAnalysisComplete: boolean;
   showCitations: boolean;
   onToggleCitations: () => void;
+  onPrepareCampaign?: () => void;
 }
 
 export function AIResponse({ 
@@ -18,7 +19,8 @@ export function AIResponse({
   showAnalysis, 
   isAnalysisComplete,
   showCitations,
-  onToggleCitations
+  onToggleCitations,
+  onPrepareCampaign
 }: AIResponseProps) {
   return (
     <div className="mb-8">
@@ -35,6 +37,7 @@ export function AIResponse({
               isAnalysisComplete={isAnalysisComplete}
               showCitations={showCitations}
               onToggleCitations={onToggleCitations}
+              onPrepareCampaign={onPrepareCampaign}
             />
           )}
         </div>

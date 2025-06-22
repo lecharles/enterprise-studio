@@ -6,6 +6,7 @@ import { LeftSidebar } from "./LeftSidebar";
 import { UserMessage } from "./UserMessage";
 import { AIResponse } from "./AIResponse";
 import { ChatInputArea } from "./ChatInputArea";
+import { CampaignPreparationDisplay } from "./CampaignPreparationDisplay";
 import { useResearchProgress } from "./hooks/useResearchProgress";
 import { researchSteps } from "./data/researchSteps";
 import { citations } from "./data/citations";
@@ -17,6 +18,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
   const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
+  const [showCampaignPreparation, setShowCampaignPreparation] = useState(false);
   const [enabledSources, setEnabledSources] = useState({
     webSearch: true,
     box: false,
@@ -45,6 +47,10 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
     }));
   };
 
+  const handlePrepareCampaign = () => {
+    setShowCampaignPreparation(true);
+  };
+
   // Calculate widths based on citations visibility
   const headerWidth = showCitations ? 'w-[calc(66.67%-24px)]' : 'w-full';
   const contentWidth = showCitations ? 'w-[66.67%]' : 'w-full';
@@ -67,14 +73,19 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
               <div className="px-6 py-8 max-w-2xl mx-auto w-full">
                 <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
 
-                <AIResponse 
-                  currentStep={currentStep}
-                  researchSteps={researchSteps}
-                  showAnalysis={showAnalysis}
-                  isAnalysisComplete={isAnalysisComplete}
-                  showCitations={showCitations}
-                  onToggleCitations={() => setShowCitations(!showCitations)}
-                />
+                {!showCampaignPreparation ? (
+                  <AIResponse 
+                    currentStep={currentStep}
+                    researchSteps={researchSteps}
+                    showAnalysis={showAnalysis}
+                    isAnalysisComplete={isAnalysisComplete}
+                    showCitations={showCitations}
+                    onToggleCitations={() => setShowCitations(!showCitations)}
+                    onPrepareCampaign={handlePrepareCampaign}
+                  />
+                ) : (
+                  <CampaignPreparationDisplay isActive={showCampaignPreparation} />
+                )}
               </div>
             </div>
 

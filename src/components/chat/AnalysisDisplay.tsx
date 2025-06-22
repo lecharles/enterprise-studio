@@ -13,6 +13,7 @@ interface AnalysisDisplayProps {
   isAnalysisComplete: boolean;
   showCitations: boolean;
   onToggleCitations: () => void;
+  onPrepareCampaign?: () => void;
 }
 
 interface ContentSection {
@@ -22,7 +23,13 @@ interface ContentSection {
   delay: number;
 }
 
-export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations, onToggleCitations }: AnalysisDisplayProps) {
+export function AnalysisDisplay({ 
+  typingText, 
+  isAnalysisComplete, 
+  showCitations, 
+  onToggleCitations,
+  onPrepareCampaign 
+}: AnalysisDisplayProps) {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
@@ -110,7 +117,7 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations,
                 Research completed in 8 minutes 47 seconds | 4 enterprise systems analyzed | 127,492 data points processed
               </p>
               
-              <RecommendedActions />
+              <RecommendedActions onPrepareCampaign={onPrepareCampaign} />
             </div>
           </div>
         )}
