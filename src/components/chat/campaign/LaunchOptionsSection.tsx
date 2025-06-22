@@ -1,3 +1,4 @@
+
 import { Users } from "lucide-react";
 
 interface LaunchOptionsSectionProps {
@@ -84,21 +85,22 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
         <div className="mb-6">
           <p className="font-medium text-gray-900 mb-3">Real-Time Dashboard Access</p>
           <ul className="space-y-2 ml-4">
-            <li className="text-gray-900"><strong>HubSpot:</strong> Email performance, lead scoring updates</li>
-            <li className="text-gray-900"><strong>Salesforce:</strong> Pipeline tracking, SDR activity</li>
-            <li className="text-gray-900"><strong>LinkedIn Sales Nav:</strong> Social selling scores, InMail responses</li>
-            <li className="text-gray-900"><strong>Custom Dashboard:</strong> Unified view across all platforms</li>
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <p className="font-medium text-gray-900 mb-3 flex items-center gap-2">
-            🔔 Smart Alerts Configured
-          </p>
-          <ul className="space-y-2 ml-4">
-            <li className="text-gray-900"><strong>Hot lead notification:</strong> Response within 5 minutes → Slack alert to SDR</li>
-            <li className="text-gray-900"><strong>Meeting booked:</strong> Auto-sync to Salesforce + prep packet sent</li>
-            <li className="text-gray-900"><strong>High-value engagement:</strong> Score &gt; 85 → Account Executive notified</li>
+            <li className="text-gray-900 flex items-center gap-2">
+              <img src="/lovable-uploads/149398fa-2c54-4830-9d79-ee0cabe16dfe.png" alt="HubSpot" className="w-5 h-5" />
+              <strong>HubSpot:</strong> Email performance, lead scoring updates
+            </li>
+            <li className="text-gray-900 flex items-center gap-2">
+              <img src="/lovable-uploads/34fa05a0-fc32-4a6c-b0a7-a3b62c6fbd5b.png" alt="Salesforce" className="w-5 h-5" />
+              <strong>Salesforce:</strong> Pipeline tracking, SDR activity
+            </li>
+            <li className="text-gray-900 flex items-center gap-2">
+              <img src="/lovable-uploads/999d4d98-d5f4-41a8-8674-6b09f5796ed2.png" alt="LinkedIn" className="w-5 h-5" />
+              <strong>LinkedIn Sales Nav:</strong> Social selling scores, InMail responses
+            </li>
+            <li className="text-gray-900 flex items-center gap-2">
+              <span className="text-lg">📈</span>
+              <strong>Custom Dashboard:</strong> Unified view across all platforms
+            </li>
           </ul>
         </div>
       </div>
@@ -111,9 +113,6 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
           All content approved by compliance. GDPR consent verified. Technical integrations tested.
         </p>
         <div className="flex flex-wrap gap-3">
-          <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            ▶️ LAUNCH ALL CAMPAIGNS NOW
-          </button>
           <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             📊 Preview Analytics
           </button>
