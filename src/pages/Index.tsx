@@ -32,8 +32,8 @@ const Index = () => {
           builderToggle={builderToggle}
         />
         <SidebarInset className="flex-1 flex flex-col relative">
-          {/* Fixed TopNavbar - positioned relative to the SidebarInset */}
-          <div className="fixed top-0 z-50 bg-white border-b border-gray-100 left-0 right-0 md:left-64 peer-data-[state=collapsed]:md:left-12">
+          {/* Fixed TopNavbar - positioned to account for sidebar */}
+          <div className="fixed top-0 z-50 bg-white border-b border-gray-100 right-0 left-0 peer-data-[state=open]:left-64 peer-data-[state=collapsed]:left-12">
             <TopNavbar 
               businessToggle={businessToggle}
               builderToggle={builderToggle}
