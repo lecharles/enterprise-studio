@@ -77,6 +77,21 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
                 />
               </div>
             </div>
+
+            {/* Fixed Chat Input at Bottom - positioned within the chat messages area */}
+            <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4 z-20">
+              <div className="max-w-4xl mx-auto">
+                <ChatInputArea
+                  showResearchTool={showResearchTool}
+                  setShowResearchTool={setShowResearchTool}
+                  showSourcesDropdown={showSourcesDropdown}
+                  setShowSourcesDropdown={setShowSourcesDropdown}
+                  setShowConnectMoreModal={setShowConnectMoreModal}
+                  enabledSources={enabledSources}
+                  onToggleSource={toggleSource}
+                />
+              </div>
+            </div>
           </div>
 
           {/* Citations Panel - fixed width on the right */}
@@ -88,21 +103,6 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
               />
             </div>
           )}
-        </div>
-
-        {/* Fixed Chat Input at Bottom - positioned within the main content area */}
-        <div className="bg-white border-t border-gray-200 px-6 py-4 z-20">
-          <div className="max-w-4xl mx-auto">
-            <ChatInputArea
-              showResearchTool={showResearchTool}
-              setShowResearchTool={setShowResearchTool}
-              showSourcesDropdown={showSourcesDropdown}
-              setShowSourcesDropdown={setShowSourcesDropdown}
-              setShowConnectMoreModal={setShowConnectMoreModal}
-              enabledSources={enabledSources}
-              onToggleSource={toggleSource}
-            />
-          </div>
         </div>
       </div>
     </div>
