@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 export function RecommendedActions() {
   const actions = [
     {
-      id: "playground",
-      label: "Open in Playground",
+      id: "platform",
+      label: "Open in Platform",
       icon: Code,
       color: "text-green-600"
     },
@@ -18,7 +18,7 @@ export function RecommendedActions() {
     },
     {
       id: "analysis",
-      label: "Finetune Lead Analysis", 
+      label: "Automate MQL Analysis", 
       icon: Briefcase,
       color: "text-red-600"
     }
