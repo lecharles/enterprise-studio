@@ -20,16 +20,20 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   });
 
   return (
-    <div className="min-h-screen bg-white flex">
+    <div className="h-screen bg-white flex flex-col overflow-hidden">
       <LeftSidebar show={showLeftSidebar} />
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Chat Content */}
-        <div className="flex-1 flex">
-          {/* Chat Messages */}
-          <div className={`${showCitations ? 'flex-1' : 'w-full'} flex flex-col`}>
-            <div className="flex-1 px-6 py-8 overflow-y-auto max-w-4xl mx-auto w-full">
+      {/* Fixed Header - stays at top */}
+      <div className="flex-shrink-0 bg-white border-b border-gray-200 z-10">
+        {/* Add any header content here if needed */}
+      </div>
+
+      {/* Main Content Area - scrollable */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Chat Messages - scrollable content */}
+        <div className={`${showCitations ? 'flex-1' : 'w-full'} flex flex-col overflow-hidden`}>
+          <div className="flex-1 overflow-y-auto">
+            <div className="px-6 py-8 max-w-4xl mx-auto w-full">
               <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
 
               <AIResponse 
@@ -39,22 +43,26 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
                 isAnalysisComplete={isAnalysisComplete}
               />
             </div>
+          </div>
 
-            {isAnalysisComplete && (
+          {/* Fixed Sources Button at bottom */}
+          {isAnalysisComplete && (
+            <div className="flex-shrink-0 bg-white border-t border-gray-200">
               <SourcesButton 
                 showCitations={showCitations}
                 onToggle={() => setShowCitations(!showCitations)}
               />
-            )}
-          </div>
-
-          {showCitations && (
-            <CitationsPanel 
-              citations={citations}
-              onClose={() => setShowCitations(false)}
-            />
+            </div>
           )}
         </div>
+
+        {/* Citations Panel - if shown */}
+        {showCitations && (
+          <CitationsPanel 
+            citations={citations}
+            onClose={() => setShowCitations(false)}
+          />
+        )}
       </div>
     </div>
   );
