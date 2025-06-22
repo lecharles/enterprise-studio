@@ -4,7 +4,7 @@ import { TopNavbar } from "@/components/TopNavbar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { ChatInterface } from "@/components/ChatInterface";
 import { DashboardView } from "@/components/views/DashboardView";
-import { SidebarProvider, SidebarInset, useSidebar } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState("chat");
@@ -31,9 +31,9 @@ const Index = () => {
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
         />
-        <SidebarInset className="flex-1 flex flex-col relative">
-          {/* Fixed TopNavbar - positioned to account for sidebar */}
-          <div className="fixed top-0 z-50 bg-white border-b border-gray-100 right-0 left-0 peer-data-[state=open]:left-64 peer-data-[state=collapsed]:left-12">
+        <SidebarInset className="flex-1 flex flex-col">
+          {/* Fixed TopNavbar with dynamic width */}
+          <div className="fixed top-0 z-50 bg-white border-b border-gray-100 left-0 right-0 peer-data-[state=expanded]:left-64 peer-data-[state=collapsed]:left-12 transition-[left] duration-200 ease-linear">
             <TopNavbar 
               businessToggle={businessToggle}
               builderToggle={builderToggle}
@@ -43,7 +43,7 @@ const Index = () => {
               onModelChange={setSelectedModel}
             />
           </div>
-          {/* Main content with top padding to account for fixed header */}
+          {/* Main content with top padding */}
           <div className="flex-1 pt-16 overflow-hidden">
             {renderMainContent()}
           </div>
