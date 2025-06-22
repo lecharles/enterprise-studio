@@ -1,3 +1,5 @@
+import { Campaign } from "lucide-react";
+
 interface LaunchOptionsSectionProps {
   isVisible: boolean;
 }
@@ -53,26 +55,17 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
-          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-            <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-          </svg>
+          <Campaign className="w-4 h-4 text-purple-500" />
           Launch Now
         </button>
 
         <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
-          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-            <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-          </svg>
+          <Campaign className="w-4 h-4 text-purple-500" />
           Launch Now
         </button>
 
         <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center justify-center gap-2">
-          <svg className="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-            <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
-          </svg>
+          <Campaign className="w-4 h-4 text-purple-500" />
           Launch Now
         </button>
       </div>
