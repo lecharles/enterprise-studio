@@ -1,13 +1,40 @@
 
+import { Separator } from "@/components/ui/separator";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+
 interface PerformanceProjectionsSectionProps {
   isVisible: boolean;
 }
+
+const personaData = [
+  { name: "Building Managers", value: 45, fill: "#3b82f6" },
+  { name: "Sustainability Officers", value: 35, fill: "#10b981" },
+  { name: "Executive Sponsors", value: 20, fill: "#f59e0b" },
+];
+
+const chartConfig = {
+  "Building Managers": {
+    label: "Building Managers",
+    color: "#3b82f6",
+  },
+  "Sustainability Officers": {
+    label: "Sustainability Officers", 
+    color: "#10b981",
+  },
+  "Executive Sponsors": {
+    label: "Executive Sponsors",
+    color: "#f59e0b",
+  },
+};
 
 export function PerformanceProjectionsSection({ isVisible }: PerformanceProjectionsSectionProps) {
   if (!isVisible) return null;
 
   return (
     <div className={`mb-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <Separator className="my-8" />
+      
       <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
         📈 Campaign Performance Projections
       </h2>
@@ -75,13 +102,45 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
         <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
           📊 Persona Response Distribution
         </h3>
-        <p className="text-gray-600 italic mb-4">[Donut Chart Visualization]</p>
-
-        <ul className="space-y-2 ml-4">
-          <li className="text-gray-900"><strong>Building Managers:</strong> 45% of responses</li>
-          <li className="text-gray-900"><strong>Sustainability Officers:</strong> 35% of responses</li>
-          <li className="text-gray-900"><strong>Executive Sponsors:</strong> 20% of responses</li>
-        </ul>
+        
+        <div className="flex items-center gap-8">
+          <div className="w-64 h-64">
+            <ChartContainer config={chartConfig}>
+              <PieChart>
+                <Pie
+                  data={personaData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={100}
+                  dataKey="value"
+                >
+                  {personaData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                  ))}
+                </Pie>
+                <ChartTooltip content={<ChartTooltipContent />} />
+              </PieChart>
+            </ChartContainer>
+          </div>
+          
+          <div className="flex-1">
+            <ul className="space-y-2">
+              <li className="text-gray-900 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                <strong>Building Managers:</strong> 45% of responses
+              </li>
+              <li className="text-gray-900 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <strong>Sustainability Officers:</strong> 35% of responses
+              </li>
+              <li className="text-gray-900 flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <strong>Executive Sponsors:</strong> 20% of responses
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 
+import { Separator } from "@/components/ui/separator";
+
 interface CampaignIntroSectionProps {
   isVisible: boolean;
 }
@@ -9,7 +11,7 @@ export function CampaignIntroSection({ isVisible }: CampaignIntroSectionProps) {
   return (
     <div className={`transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-        🤖 AI Campaign Preparation Assistant Activated
+        🤖 Campaign Preparation Agent Activation
       </h2>
       
       <p className="text-gray-900 mb-6">
@@ -34,13 +36,11 @@ export function CampaignIntroSection({ isVisible }: CampaignIntroSectionProps) {
         </li>
       </ul>
 
-      <p className="text-gray-900 mb-4">
+      <p className="text-gray-900 mb-6">
         💡 At any point, you can click the [?] icons to see how calculations were made, which data sources were used, or why specific recommendations were chosen.
       </p>
 
-      <p className="text-gray-900 font-medium">
-        Let me build your campaign now...
-      </p>
+      <Separator className="my-6" />
     </div>
   );
 }
