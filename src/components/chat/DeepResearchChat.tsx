@@ -48,62 +48,61 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   // Calculate widths based on citations visibility
   const headerWidth = showCitations ? 'w-[calc(66.67%-24px)]' : 'w-full';
   const contentWidth = showCitations ? 'w-[66.67%]' : 'w-full';
-  
-  // Calculate chat input positioning - use the same width as the main sidebar (16rem = 256px)
-  const chatInputLeft = showLeftSidebar ? 'left-[16rem]' : 'left-0';
 
   return (
-    <div className="h-screen bg-white flex flex-col overflow-hidden">
+    <div className="h-screen bg-white flex overflow-hidden">
       <LeftSidebar show={showLeftSidebar} />
 
-      {/* Fixed Header - width adjusts based on citations visibility */}
-      <div className={`flex-shrink-0 bg-white border-b border-white z-10 ${headerWidth} transition-all duration-200`}>
-        {/* Add any header content here if needed */}
-      </div>
-
-      {/* Main Content Area - scrollable, but leaves space for chat input */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Chat Messages - width adjusts based on citations visibility */}
-        <div className={`${contentWidth} flex flex-col overflow-hidden transition-all duration-200`}>
-          <div className="flex-1 overflow-y-auto pb-24">
-            <div className="px-6 py-8 max-w-2xl mx-auto w-full">
-              <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
-
-              <AIResponse 
-                currentStep={currentStep}
-                researchSteps={researchSteps}
-                showAnalysis={showAnalysis}
-                isAnalysisComplete={isAnalysisComplete}
-                showCitations={showCitations}
-                onToggleCitations={() => setShowCitations(!showCitations)}
-              />
-            </div>
-          </div>
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Fixed Header - width adjusts based on citations visibility */}
+        <div className={`flex-shrink-0 bg-white border-b border-white z-10 ${headerWidth} transition-all duration-200`}>
+          {/* Add any header content here if needed */}
         </div>
 
-        {/* Citations Panel - fixed width on the right */}
-        {showCitations && (
-          <div className="w-[33.33%] flex-shrink-0">
-            <CitationsPanel 
-              citations={citations}
-              onClose={() => setShowCitations(false)}
+        {/* Main Content Area - scrollable, but leaves space for chat input */}
+        <div className="flex-1 flex overflow-hidden">
+          {/* Chat Messages - width adjusts based on citations visibility */}
+          <div className={`${contentWidth} flex flex-col overflow-hidden transition-all duration-200`}>
+            <div className="flex-1 overflow-y-auto pb-24">
+              <div className="px-6 py-8 max-w-2xl mx-auto w-full">
+                <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
+
+                <AIResponse 
+                  currentStep={currentStep}
+                  researchSteps={researchSteps}
+                  showAnalysis={showAnalysis}
+                  isAnalysisComplete={isAnalysisComplete}
+                  showCitations={showCitations}
+                  onToggleCitations={() => setShowCitations(!showCitations)}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Citations Panel - fixed width on the right */}
+          {showCitations && (
+            <div className="w-[33.33%] flex-shrink-0">
+              <CitationsPanel 
+                citations={citations}
+                onClose={() => setShowCitations(false)}
+              />
+            </div>
+          )}
+        </div>
+
+        {/* Fixed Chat Input at Bottom - positioned within the main content area */}
+        <div className="bg-white border-t border-gray-200 px-6 py-4 z-20">
+          <div className="max-w-4xl mx-auto">
+            <ChatInputArea
+              showResearchTool={showResearchTool}
+              setShowResearchTool={setShowResearchTool}
+              showSourcesDropdown={showSourcesDropdown}
+              setShowSourcesDropdown={setShowSourcesDropdown}
+              setShowConnectMoreModal={setShowConnectMoreModal}
+              enabledSources={enabledSources}
+              onToggleSource={toggleSource}
             />
           </div>
-        )}
-      </div>
-
-      {/* Fixed Chat Input at Bottom - positioned to avoid left sidebar */}
-      <div className={`fixed bottom-0 ${chatInputLeft} right-0 bg-white border-t border-gray-200 px-6 py-4 z-20`}>
-        <div className="max-w-4xl mx-auto">
-          <ChatInputArea
-            showResearchTool={showResearchTool}
-            setShowResearchTool={setShowResearchTool}
-            showSourcesDropdown={showSourcesDropdown}
-            setShowSourcesDropdown={setShowSourcesDropdown}
-            setShowConnectMoreModal={setShowConnectMoreModal}
-            enabledSources={enabledSources}
-            onToggleSource={toggleSource}
-          />
         </div>
       </div>
     </div>
