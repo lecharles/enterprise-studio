@@ -18,49 +18,43 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
     researchSteps 
   });
 
-  // Calculate widths based on citations visibility
-  const headerWidth = showCitations ? 'w-[calc(66.67%-24px)]' : 'w-full';
-  const contentWidth = showCitations ? 'w-[66.67%]' : 'w-full';
-
   return (
-    <div className="h-screen bg-white flex flex-col overflow-hidden">
+    <div className="h-screen bg-white flex overflow-hidden">
       <LeftSidebar show={showLeftSidebar} />
 
-      {/* Fixed Header - width adjusts based on citations visibility */}
-      <div className={`flex-shrink-0 bg-white border-b border-white z-10 ${headerWidth} transition-all duration-200`}>
-        {/* Add any header content here if needed */}
-      </div>
-
-      {/* Main Content Area - scrollable */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Chat Messages - width adjusts based on citations visibility */}
-        <div className={`${contentWidth} flex flex-col overflow-hidden transition-all duration-200`}>
-          <div className="flex-1 overflow-y-auto">
-            <div className="px-6 py-8 max-w-2xl mx-auto w-full">
-              <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
-
-              <AIResponse 
-                currentStep={currentStep}
-                researchSteps={researchSteps}
-                showAnalysis={showAnalysis}
-                isAnalysisComplete={isAnalysisComplete}
-                showCitations={showCitations}
-                onToggleCitations={() => setShowCitations(!showCitations)}
-              />
-            </div>
-          </div>
+      {/* Main container that adjusts based on citations visibility */}
+      <div className={`flex flex-col flex-1 overflow-hidden ${showCitations ? 'w-[66.67%]' : 'w-full'} transition-all duration-200`}>
+        {/* Fixed Header */}
+        <div className="flex-shrink-0 bg-white border-b border-white z-10">
+          {/* Add any header content here if needed */}
         </div>
 
-        {/* Citations Panel - fixed width on the right */}
-        {showCitations && (
-          <div className="w-[33.33%] flex-shrink-0">
-            <CitationsPanel 
-              citations={citations}
-              onClose={() => setShowCitations(false)}
+        {/* Chat Messages - scrollable content */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="px-6 py-8 max-w-2xl mx-auto w-full">
+            <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
+
+            <AIResponse 
+              currentStep={currentStep}
+              researchSteps={researchSteps}
+              showAnalysis={showAnalysis}
+              isAnalysisComplete={isAnalysisComplete}
+              showCitations={showCitations}
+              onToggleCitations={() => setShowCitations(!showCitations)}
             />
           </div>
-        )}
+        </div>
       </div>
+
+      {/* Citations Panel - fixed width on the right, full height */}
+      {showCitations && (
+        <div className="w-[33.33%] flex-shrink-0 h-full">
+          <CitationsPanel 
+            citations={citations}
+            onClose={() => setShowCitations(false)}
+          />
+        </div>
+      )}
     </div>
   );
 }
