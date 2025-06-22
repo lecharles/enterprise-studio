@@ -48,6 +48,9 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   // Calculate widths based on citations visibility
   const headerWidth = showCitations ? 'w-[calc(66.67%-24px)]' : 'w-full';
   const contentWidth = showCitations ? 'w-[66.67%]' : 'w-full';
+  
+  // Calculate chat input positioning based on left sidebar visibility
+  const chatInputLeft = showLeftSidebar ? 'left-64' : 'left-0';
 
   return (
     <div className="h-screen bg-white flex flex-col overflow-hidden">
@@ -76,21 +79,6 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
               />
             </div>
           </div>
-
-          {/* Fixed Chat Input at Bottom */}
-          <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4 z-20">
-            <div className="max-w-4xl mx-auto">
-              <ChatInputArea
-                showResearchTool={showResearchTool}
-                setShowResearchTool={setShowResearchTool}
-                showSourcesDropdown={showSourcesDropdown}
-                setShowSourcesDropdown={setShowSourcesDropdown}
-                setShowConnectMoreModal={setShowConnectMoreModal}
-                enabledSources={enabledSources}
-                onToggleSource={toggleSource}
-              />
-            </div>
-          </div>
         </div>
 
         {/* Citations Panel - fixed width on the right */}
@@ -102,6 +90,21 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
             />
           </div>
         )}
+      </div>
+
+      {/* Fixed Chat Input at Bottom - positioned to avoid left sidebar */}
+      <div className={`fixed bottom-0 ${chatInputLeft} right-0 bg-white border-t border-gray-200 px-6 py-4 z-20`}>
+        <div className="max-w-4xl mx-auto">
+          <ChatInputArea
+            showResearchTool={showResearchTool}
+            setShowResearchTool={setShowResearchTool}
+            showSourcesDropdown={showSourcesDropdown}
+            setShowSourcesDropdown={setShowSourcesDropdown}
+            setShowConnectMoreModal={setShowConnectMoreModal}
+            enabledSources={enabledSources}
+            onToggleSource={toggleSource}
+          />
+        </div>
       </div>
     </div>
   );
