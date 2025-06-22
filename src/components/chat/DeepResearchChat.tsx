@@ -13,7 +13,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [showCitations, setShowCitations] = useState(false);
   const [selectedCitation, setSelectedCitation] = useState<string | null>(null);
-  const [typingText, setTypingText] = useState("");
+  const [showAnalysis, setShowAnalysis] = useState(false);
   const [isAnalysisComplete, setIsAnalysisComplete] = useState(false);
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
 
@@ -87,83 +87,23 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
     }
   ];
 
-  const finalAnalysis = `Here's a comprehensive analysis of Schneider Electric's dormant lead opportunities, with actionable insights for immediate nurture campaign activation:
-
-🎯 **Lead Analysis & Segmentation**
-
-**1. Dormant MQL Assessment**
-
-• **Energy Efficiency Segment**: Identified 12,847 leads with strong engagement indicators. These contacts showed 73% email open rates on sustainability content but haven't converted in 90+ days—indicating high interest but missing activation trigger 📊 [HubSpot].
-
-• **Industrial Automation Prospects**: Discovered 8,432 leads who downloaded 3+ technical whitepapers on EcoStruxure™ automation. Analysis shows 67% work at companies with 500+ employees and have budget authority indicators 🏭 [HubSpot] [Marketing Cloud].
-
-• **Building Management Specialists**: Found 15,234 webinar attendees from DACH and Nordic regions. Cross-reference with CRM data reveals 82% have active building renovation projects but haven't engaged with sales 🏢 [HubSpot].
-
-**2. Engagement Pattern Insights**
-
-• **Content Performance Analysis**: EcoStruxure™ Power campaign achieved 42% open rates but only 2.3% CTR. Deep dive shows technical specification PDFs get 5x more downloads than product brochures among engineer personas 📈 [Marketing Cloud].
-
-• **Geographic Intelligence**: Nordic countries show 61% higher engagement with ESG content. German market specifically requires ISO 50001 compliance messaging based on 89% correlation with successful conversions 🌍 [Marketing Cloud] [Teams].
-
-• **Optimal Timing Discovered**: Machine learning analysis identifies Tuesday 10:00 CET as peak engagement for DACH region (37% higher open rates), while Southern Europe responds best Thursday 14:00 CET 🕐 [Marketing Cloud].
-
-**3. Sales Intelligence Mining**
-
-• **Win/Loss Patterns**: Analysis of 1,247 sales conversations reveals "integration complexity" as primary objection in 34% of lost deals. Successful deals included technical workshop attendance (4.7x higher close rate) 💬 [Teams].
-
-• **Competitive Positioning**: Schneider solutions show 15-20% lower TCO vs. Siemens for mid-size installations. ROI calculator demonstrates 18-month average payback period—key differentiator not being communicated 💰 [SharePoint] [Teams].
-
-• **Regional Feedback**: "French energy consultants need local case studies and technical validation before engaging. Generic content doesn't resonate" - Pierre Dubois, Sales Director 🇫🇷 [Teams].
-
-**📊 High-Potential Segment Summary**
-Total Qualified Leads Identified: **3,847** meeting both engagement and fit criteria
-
-**Revenue Potential by Segment:**
-
-| Segment | Lead Count | Est. Pipeline Value | Recommended Strategy |
-|---------|------------|-------------------|---------------------|
-| Energy Efficiency Consultants | 847 | €12.3M | Technical workshops + ROI tools 🔧 |
-| Industrial Automation Engineers | 1,234 | €8.7M | Integration demos + success stories 🏭 |
-| Building Management Specialists | 1,123 | €6.4M | Virtual tours + case studies 🏢 |
-| Sustainability Officers | 643 | €3.8M | Executive briefings + ESG reports 🌱 |
-
-**Total Estimated Pipeline Impact: €31.2M** 💼
-
-**🚀 Immediate Action Plan**
-
-1. **Launch Personalized Sequences**: 4 persona-specific email campaigns ready for deployment within 48 hours. Each sequence includes 6 touchpoints over 21 days with dynamic content based on engagement 📧 [Marketing Cloud].
-
-2. **Technical Workshop Series**: Schedule 12 workshops across EMEA Q1 2025. Focus on hands-on EcoStruxure™ integration addressing the #1 sales objection 🛠️ [Teams] [SharePoint].
-
-3. **ABM Activation**: Target top 500 accounts with LinkedIn campaigns. Budget allocation: €75K for Q1 with expected 23% engagement rate based on similar campaigns 🎯 [Marketing Cloud].
-
-4. **Sales Enablement**: Deliver persona-specific battle cards and local case studies to address regional nuances identified in research 📋 [SharePoint] [Teams].
-
----
-*Research completed in 8 minutes 47 seconds | 4 enterprise systems analyzed | 127,492 data points processed*`;
-
   useEffect(() => {
     if (currentStep < researchSteps.length) {
       const timer = setTimeout(() => {
         setCurrentStep(prev => prev + 1);
-      }, 1500);
+      }, 1200); // Reduced from 1500ms for faster progression
       return () => clearTimeout(timer);
-    } else if (!isAnalysisComplete) {
+    } else if (currentStep >= researchSteps.length && !showAnalysis) {
       const timer = setTimeout(() => {
-        let index = 0;
-        const typeInterval = setInterval(() => {
-          if (index < finalAnalysis.length) {
-            setTypingText(finalAnalysis.slice(0, index + 1));
-            index++;
-          } else {
-            clearInterval(typeInterval);
-            setIsAnalysisComplete(true);
-          }
-        }, 20);
-      }, 1000);
+        setShowAnalysis(true);
+        // Set analysis complete after 8 seconds instead of waiting for typing
+        setTimeout(() => {
+          setIsAnalysisComplete(true);
+        }, 8000);
+      }, 500);
       return () => clearTimeout(timer);
     }
-  }, [currentStep, finalAnalysis.length, isAnalysisComplete]);
+  }, [currentStep, showAnalysis]);
 
   return (
     <div className="min-h-screen bg-white flex">
@@ -196,9 +136,9 @@ Total Qualified Leads Identified: **3,847** meeting both engagement and fit crit
                       researchSteps={researchSteps} 
                     />
 
-                    {currentStep >= researchSteps.length && (
+                    {showAnalysis && (
                       <AnalysisDisplay 
-                        typingText={typingText}
+                        typingText="analysis"
                         isAnalysisComplete={isAnalysisComplete}
                       />
                     )}
