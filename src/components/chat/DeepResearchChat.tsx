@@ -6,7 +6,6 @@ import { LeftSidebar } from "./LeftSidebar";
 import { UserMessage } from "./UserMessage";
 import { AIResponse } from "./AIResponse";
 import { ChatInputArea } from "./ChatInputArea";
-import { TopNavbar } from "../TopNavbar";
 import { useResearchProgress } from "./hooks/useResearchProgress";
 import { researchSteps } from "./data/researchSteps";
 import { citations } from "./data/citations";
@@ -18,9 +17,6 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
   const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
-  const [businessToggle, setBusinessToggle] = useState(true);
-  const [builderToggle, setBuilderToggle] = useState(false);
-  const [selectedModel, setSelectedModel] = useState("gpt-4o");
   const [enabledSources, setEnabledSources] = useState({
     webSearch: true,
     box: false,
@@ -49,36 +45,13 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
     }));
   };
 
-  // Calculate header positioning based on panel visibility
-  const leftSidebarWidth = showLeftSidebar ? 256 : 0; // w-64 = 256px
-  const headerLeft = showLeftSidebar ? '256px' : '0px';
-  const headerWidth = showCitations ? 'calc(66.67% - 0px)' : showLeftSidebar ? 'calc(100% - 256px)' : '100%';
-
   return (
-    <div className="h-screen bg-white flex overflow-hidden">
+    <div className="h-full bg-white flex overflow-hidden">
       <LeftSidebar show={showLeftSidebar} />
 
       <div className="flex-1 flex flex-col overflow-hidden relative">
-        {/* Fixed Header - always visible, positioned over the content area only */}
-        <div 
-          className="fixed top-0 bg-white border-b border-gray-100 z-30 transition-all duration-200"
-          style={{
-            left: headerLeft,
-            width: headerWidth,
-          }}
-        >
-          <TopNavbar
-            businessToggle={businessToggle}
-            builderToggle={builderToggle}
-            onBusinessToggle={setBusinessToggle}
-            onBuilderToggle={setBuilderToggle}
-            selectedModel={selectedModel}
-            onModelChange={setSelectedModel}
-          />
-        </div>
-
-        {/* Main Content Area - with top padding to account for fixed header */}
-        <div className="flex-1 flex overflow-hidden pt-16">
+        {/* Main Content Area - the main TopNavbar is rendered by the parent layout */}
+        <div className="flex-1 flex overflow-hidden">
           {/* Chat Messages - width adjusts based on citations visibility */}
           <div className={`${showCitations ? 'w-[66.67%]' : 'w-full'} flex flex-col overflow-hidden transition-all duration-200 relative`}>
             <div className="flex-1 overflow-y-auto pb-24">
@@ -112,9 +85,9 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
             </div>
           </div>
 
-          {/* Citations Panel - starts from the very top, full height */}
+          {/* Citations Panel - full height from top */}
           {showCitations && (
-            <div className="w-[33.33%] flex-shrink-0">
+            <div className="w-[33.33%] flex-shrink-0 h-full">
               <CitationsPanel 
                 citations={citations}
                 onClose={() => setShowCitations(false)}
