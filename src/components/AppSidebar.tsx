@@ -66,7 +66,7 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
   ];
 
   return (
-    <Sidebar className="bg-gray-50">
+    <Sidebar className="bg-gray-50" collapsible="icon">
       {!isCollapsed && (
         <SidebarHeader className="px-4 pt-6 pb-4">
           <div className="flex items-center justify-between mt-1">
@@ -101,9 +101,10 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
-                    } ${isCollapsed ? 'justify-center px-2' : ''}`}
+                    } ${isCollapsed ? 'justify-center px-2 min-w-0' : ''}`}
+                    tooltip={isCollapsed ? item.title : undefined}
                   >
-                    <item.icon className="w-4 h-4" />
+                    <item.icon className="w-4 h-4 shrink-0" />
                     {!isCollapsed && <span>{item.title}</span>}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -123,9 +124,10 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
-                    } ${isCollapsed ? 'justify-center px-2' : ''}`}
+                    } ${isCollapsed ? 'justify-center px-2 min-w-0' : ''}`}
+                    tooltip={isCollapsed ? item.title : undefined}
                   >
-                    <item.icon className={`w-4 h-4 ${item.color}`} />
+                    <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
                     {!isCollapsed && <span>{item.title}</span>}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
