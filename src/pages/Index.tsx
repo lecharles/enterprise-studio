@@ -31,22 +31,16 @@ const Index = () => {
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
         />
-        <SidebarInset className="flex-1 flex flex-col">
-          {/* Header that adjusts to sidebar state */}
-          <div className="bg-white border-b border-gray-100">
-            <TopNavbar 
-              businessToggle={businessToggle}
-              builderToggle={builderToggle}
-              onBusinessToggle={setBusinessToggle}
-              onBuilderToggle={setBuilderToggle}
-              selectedModel={selectedModel}
-              onModelChange={setSelectedModel}
-            />
-          </div>
-          {/* Main content */}
-          <div className="flex-1 overflow-hidden">
-            {renderMainContent()}
-          </div>
+        <SidebarInset className="flex-1">
+          <TopNavbar 
+            businessToggle={businessToggle}
+            builderToggle={builderToggle}
+            onBusinessToggle={setBusinessToggle}
+            onBuilderToggle={setBuilderToggle}
+            selectedModel={selectedModel}
+            onModelChange={setSelectedModel}
+          />
+          {renderMainContent()}
         </SidebarInset>
       </div>
     </SidebarProvider>

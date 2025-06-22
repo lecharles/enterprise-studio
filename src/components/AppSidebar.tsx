@@ -67,21 +67,27 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
 
   return (
     <Sidebar className="bg-gray-50" collapsible="icon">
-      <SidebarHeader className="px-4 pt-6 pb-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 flex-1">
-            <img 
-              src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
-              alt="Schneider Studio"
-              className="w-6 h-6 flex-shrink-0"
-            />
-            {!isCollapsed && (
+      {!isCollapsed && (
+        <SidebarHeader className="px-4 pt-6 pb-4">
+          <div className="flex items-center justify-between mt-1">
+            <div className="flex items-center gap-2">
+              <img 
+                src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
+                alt="Schneider Studio"
+                className="w-6 h-6"
+              />
               <span className="font-medium text-gray-900">Schneider Studio</span>
-            )}
+            </div>
+            <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100" />
           </div>
-          <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100 flex-shrink-0" />
+        </SidebarHeader>
+      )}
+
+      {isCollapsed && (
+        <div className="pt-6 pb-4 flex justify-center">
+          <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100" />
         </div>
-      </SidebarHeader>
+      )}
 
       <SidebarContent className="px-2">
         <SidebarGroup>
