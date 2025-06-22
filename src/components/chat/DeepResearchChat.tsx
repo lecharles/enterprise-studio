@@ -6,6 +6,7 @@ import { LeftSidebar } from "./LeftSidebar";
 import { UserMessage } from "./UserMessage";
 import { AIResponse } from "./AIResponse";
 import { ChatInputArea } from "./ChatInputArea";
+import { TopNavbar } from "../TopNavbar";
 import { useResearchProgress } from "./hooks/useResearchProgress";
 import { researchSteps } from "./data/researchSteps";
 import { citations } from "./data/citations";
@@ -17,6 +18,9 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
   const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
+  const [businessToggle, setBusinessToggle] = useState(true);
+  const [builderToggle, setBuilderToggle] = useState(false);
+  const [selectedModel, setSelectedModel] = useState("gpt-4o");
   const [enabledSources, setEnabledSources] = useState({
     webSearch: true,
     box: false,
@@ -45,24 +49,42 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
     }));
   };
 
-  // Calculate widths based on citations visibility
-  const headerWidth = showCitations ? 'w-[calc(66.67%-24px)]' : 'w-full';
-  const contentWidth = showCitations ? 'w-[66.67%]' : 'w-full';
+  // Calculate widths and positions based on panel visibility
+  const leftSidebarWidth = showLeftSidebar ? 256 : 0; // 64 * 4 = 256px (w-64)
+  const rightPanelWidth = showCitations ? '33.33%' : '0%';
+  const contentWidth = showCitations ? '66.67%' : '100%';
+  
+  // Header positioning - starts after left sidebar and takes up content area width
+  const headerLeft = showLeftSidebar ? '256px' : '0px';
+  const headerWidth = showCitations ? 'calc(66.67% - 0px)' : showLeftSidebar ? 'calc(100% - 256px)' : '100%';
 
   return (
     <div className="h-screen bg-white flex overflow-hidden">
       <LeftSidebar show={showLeftSidebar} />
 
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Fixed Header - width adjusts based on citations visibility */}
-        <div className={`flex-shrink-0 bg-white border-b border-white z-10 ${headerWidth} transition-all duration-200`}>
-          {/* Add any header content here if needed */}
+      <div className="flex-1 flex flex-col overflow-hidden relative">
+        {/* Fixed Header - positioned absolutely to stay on top during scroll */}
+        <div 
+          className="fixed top-0 bg-white border-b border-gray-100 z-30 transition-all duration-200"
+          style={{
+            left: headerLeft,
+            width: headerWidth,
+          }}
+        >
+          <TopNavbar
+            businessToggle={businessToggle}
+            builderToggle={builderToggle}
+            onBusinessToggle={setBusinessToggle}
+            onBuilderToggle={setBuilderToggle}
+            selectedModel={selectedModel}
+            onModelChange={setSelectedModel}
+          />
         </div>
 
-        {/* Main Content Area - scrollable, but leaves space for chat input */}
-        <div className="flex-1 flex overflow-hidden">
+        {/* Main Content Area - with top padding to account for fixed header */}
+        <div className="flex-1 flex overflow-hidden pt-16">
           {/* Chat Messages - width adjusts based on citations visibility */}
-          <div className={`${contentWidth} flex flex-col overflow-hidden transition-all duration-200 relative`}>
+          <div className={`${showCitations ? 'w-[66.67%]' : 'w-full'} flex flex-col overflow-hidden transition-all duration-200 relative`}>
             <div className="flex-1 overflow-y-auto pb-24">
               <div className="px-6 py-8 max-w-2xl mx-auto w-full">
                 <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
