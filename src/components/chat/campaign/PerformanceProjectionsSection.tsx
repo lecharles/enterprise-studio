@@ -1,7 +1,6 @@
 
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Separator } from "@/components/ui/separator";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 interface PerformanceProjectionsSectionProps {
   isVisible: boolean;
@@ -12,21 +11,6 @@ const personaData = [
   { name: "Sustainability Officers", value: 35, color: "#10b981" },
   { name: "Executive Sponsors", value: 20, color: "#f59e0b" }
 ];
-
-const chartConfig = {
-  buildingManagers: {
-    label: "Building Managers",
-    color: "#3b82f6",
-  },
-  sustainabilityOfficers: {
-    label: "Sustainability Officers", 
-    color: "#10b981",
-  },
-  executiveSponsors: {
-    label: "Executive Sponsors",
-    color: "#f59e0b",
-  },
-};
 
 export function PerformanceProjectionsSection({ isVisible }: PerformanceProjectionsSectionProps) {
   if (!isVisible) return null;
@@ -103,50 +87,30 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
           📊 Persona Response Distribution
         </h3>
         
-        <div className="flex flex-col items-center mb-4">
-          <div className="w-72 h-72 mb-4">
-            <ChartContainer config={chartConfig}>
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={personaData}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={120}
-                    paddingAngle={2}
-                    dataKey="value"
-                  >
-                    {personaData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <ChartTooltip content={<ChartTooltipContent />} />
-                </PieChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-          </div>
-          
-          <div className="flex flex-col space-y-3 items-center">
-            <div className="text-gray-900 flex items-center gap-3 text-sm">
-              <div className="w-4 h-4 bg-blue-500 rounded flex-shrink-0"></div>
-              <div>
-                <strong>Building Managers:</strong> 45% of responses
-              </div>
-            </div>
-            <div className="text-gray-900 flex items-center gap-3 text-sm">
-              <div className="w-4 h-4 bg-green-500 rounded flex-shrink-0"></div>
-              <div>
-                <strong>Sustainability Officers:</strong> 35% of responses
-              </div>
-            </div>
-            <div className="text-gray-900 flex items-center gap-3 text-sm">
-              <div className="w-4 h-4 bg-yellow-500 rounded flex-shrink-0"></div>
-              <div>
-                <strong>Executive Sponsors:</strong> 20% of responses
-              </div>
-            </div>
-          </div>
+        <div className="max-w-md mx-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-4"></TableHead>
+                <TableHead>Persona</TableHead>
+                <TableHead className="text-right">Response %</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {personaData.map((persona, index) => (
+                <TableRow key={index}>
+                  <TableCell>
+                    <div 
+                      className="w-4 h-4 rounded" 
+                      style={{ backgroundColor: persona.color }}
+                    ></div>
+                  </TableCell>
+                  <TableCell className="font-medium">{persona.name}</TableCell>
+                  <TableCell className="text-right font-bold">{persona.value}%</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </div>
     </div>
