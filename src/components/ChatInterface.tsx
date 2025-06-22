@@ -57,36 +57,43 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
   }
 
   return (
-    <div className="flex-1 flex flex-col bg-white min-h-screen">
-      {/* Main Content - Centered */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
-        <div className="max-w-3xl w-full">
-          {/* Main Title */}
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-normal text-gray-900 mb-6">
-              What can I help with?
-            </h1>
-            
-            {/* Chat Input */}
-            <ChatInputArea
-              showResearchTool={showResearchTool}
-              setShowResearchTool={setShowResearchTool}
-              showSourcesDropdown={showSourcesDropdown}
-              setShowSourcesDropdown={setShowSourcesDropdown}
-              setShowConnectMoreModal={setShowConnectMoreModal}
-              enabledSources={enabledSources}
-              onToggleSource={toggleSource}
-              onSendMessage={handleSendMessage}
-            />
-
-            {/* Quick Access Buttons */}
-            <QuickAccessButtons builderToggle={builderToggle} />
+    <>
+      {/* Main Content - Scrollable */}
+      <div className="flex-1 flex flex-col bg-white">
+        {/* Centered Content */}
+        <div className="flex-1 flex flex-col items-center justify-center px-6 py-12">
+          <div className="max-w-3xl w-full">
+            {/* Main Title */}
+            <div className="text-center mb-8">
+              <h1 className="text-2xl font-normal text-gray-900 mb-6">
+                What can I help with?
+              </h1>
+              
+              {/* Quick Access Buttons */}
+              <QuickAccessButtons builderToggle={builderToggle} />
+            </div>
           </div>
         </div>
+
+        {/* Recent Projects Section */}
+        <RecentProjectsSection />
       </div>
 
-      {/* Recent Projects Section - Bottom */}
-      <RecentProjectsSection />
+      {/* Fixed Chat Input - Rendered via Portal to bottom of page */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-200">
+        <div className="px-6 py-4 max-w-4xl mx-auto">
+          <ChatInputArea
+            showResearchTool={showResearchTool}
+            setShowResearchTool={setShowResearchTool}
+            showSourcesDropdown={showSourcesDropdown}
+            setShowSourcesDropdown={setShowSourcesDropdown}
+            setShowConnectMoreModal={setShowConnectMoreModal}
+            enabledSources={enabledSources}
+            onToggleSource={toggleSource}
+            onSendMessage={handleSendMessage}
+          />
+        </div>
+      </div>
 
       {/* Connect More Modal */}
       <ConnectMoreModal
@@ -95,6 +102,6 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
         enabledSources={enabledSources}
         onToggleSource={toggleSource}
       />
-    </div>
+    </>
   );
 }
