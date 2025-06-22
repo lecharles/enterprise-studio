@@ -71,7 +71,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
           <div className={`${contentWidth} flex flex-col overflow-hidden transition-all duration-200 relative`}>
             <div className="flex-1 overflow-y-auto pb-24">
               <div className="px-6 py-8 max-w-2xl mx-auto w-full">
-                <UserMessage message="I need to revive dormant leads for our Data Center Cooling line. Which MQLs from the last 6 months have the highest potential for conversion, and what personalized outreach should we create?" />
+                <UserMessage message="Prepare Campaign" />
 
                 {!showCampaignPreparation ? (
                   <AIResponse 

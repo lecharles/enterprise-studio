@@ -1,4 +1,6 @@
 
+import { Separator } from "@/components/ui/separator";
+
 interface PersonaContentSectionProps {
   isVisible: boolean;
 }
@@ -70,6 +72,8 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         </div>
       </div>
 
+      <Separator className="my-6" />
+
       {/* Segment 2: Sustainability Officers */}
       <div className="mb-8">
         <h4 className="text-lg font-bold text-gray-900 mb-2">
@@ -124,6 +128,8 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
           <p className="text-gray-600 italic text-sm">Approach: Recognition + peer pressure</p>
         </div>
       </div>
+
+      <Separator className="my-6" />
 
       {/* Segment 3: Executive Decision Makers */}
       <div className="mb-8">
