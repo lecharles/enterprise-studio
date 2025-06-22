@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { IntroSection } from "./analysis/IntroSection";
 import { LeadAnalysisSection } from "./analysis/LeadAnalysisSection";
+import { EngagementPatternInsightsSection } from "./analysis/EngagementPatternInsightsSection";
 import { SegmentSummarySection } from "./analysis/SegmentSummarySection";
 import { ActionPlanSection } from "./analysis/ActionPlanSection";
 
@@ -35,16 +36,22 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
       delay: 800,
     },
     {
+      id: "engagement-insights",
+      title: "Engagement Pattern Insights",
+      component: EngagementPatternInsightsSection,
+      delay: 1600,
+    },
+    {
       id: "segment-summary",
       title: "High-Potential Segment Summary",
       component: SegmentSummarySection,
-      delay: 1600,
+      delay: 2400,
     },
     {
       id: "action-plan",
       title: "Immediate Action Plan",
       component: ActionPlanSection,
-      delay: 2400,
+      delay: 3200,
     }
   ];
 
