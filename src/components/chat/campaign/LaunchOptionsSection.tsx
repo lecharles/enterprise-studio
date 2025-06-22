@@ -1,4 +1,5 @@
 
+
 interface LaunchOptionsSectionProps {
   isVisible: boolean;
 }
@@ -17,7 +18,8 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div className="bg-gray-50 p-4 rounded-lg border">
           <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            📧 Launch Email Campaign
+            <img src="/lovable-uploads/869c213f-f2e5-431e-991b-134e94eb2bcf.png" alt="Outlook" className="w-5 h-5" />
+            Launch Email Campaign
           </h4>
           <ul className="text-sm text-gray-700 space-y-1 mb-3">
             <li>2,410 contacts queued</li>
@@ -31,7 +33,8 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
 
         <div className="bg-gray-50 p-4 rounded-lg border">
           <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            💬 Activate WhatsApp
+            <img src="/lovable-uploads/50e9c6c0-bc6f-4ca1-a5db-c32643632f8e.png" alt="WhatsApp" className="w-5 h-5" />
+            Activate WhatsApp
           </h4>
           <ul className="text-sm text-gray-700 space-y-1 mb-3">
             <li>1,847 opted-in numbers</li>
@@ -45,7 +48,8 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
 
         <div className="bg-gray-50 p-4 rounded-lg border">
           <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-            💼 Deploy LinkedIn
+            <img src="/lovable-uploads/0ad025ba-2f43-4df0-ae9c-a128daac84c3.png" alt="LinkedIn" className="w-5 h-5" />
+            Deploy LinkedIn
           </h4>
           <ul className="text-sm text-gray-700 space-y-1 mb-3">
             <li>1,623 InMails ready</li>
@@ -116,3 +120,4 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
     </div>
   );
 }
+
