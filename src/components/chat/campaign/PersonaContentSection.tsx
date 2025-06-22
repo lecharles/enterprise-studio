@@ -26,7 +26,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         <p className="text-gray-600 italic mb-4">High-value segment with immediate budget authority</p>
 
         <div className="mb-6">
-          <h5 className="font-bold text-gray-900 mb-3">✉️ Email Campaign Options</h5>
+          <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src="/lovable-uploads/8d108dbd-0b63-47c1-b531-cee74a2add99.png" alt="Outlook" className="w-5 h-5" />
+            Email Campaign Options
+          </h5>
           <p className="font-medium text-gray-900 mb-2">Subject Line A/B Testing:</p>
           
           <ul className="space-y-2 ml-4 mb-4">
@@ -51,7 +54,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         </div>
 
         <div className="mb-6">
-          <h5 className="font-bold text-gray-900 mb-3">📱 WhatsApp Business Message</h5>
+          <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src="/lovable-uploads/c2819ce4-a316-48e1-bd6b-4cfe58df79ef.png" alt="WhatsApp" className="w-5 h-5" />
+            WhatsApp Business Message
+          </h5>
           <div className="bg-gray-100 p-4 rounded-lg mb-2">
             <p className="text-gray-800 text-sm">
               Hi [First Name]! 👋 Quick question - did you see the new EU energy efficiency requirements for 2025? We helped 3 buildings in [City] get compliant + save 40% on costs. 15-min call this week?
@@ -61,7 +67,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         </div>
 
         <div className="mb-8">
-          <h5 className="font-bold text-gray-900 mb-3">💼 LinkedIn InMail Template</h5>
+          <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src="/lovable-uploads/af8c2ab2-6c4e-4451-982c-ffc97c63b971.png" alt="LinkedIn" className="w-5 h-5" />
+            LinkedIn InMail Template
+          </h5>
           <div className="bg-gray-100 p-4 rounded-lg mb-2">
             <p className="text-gray-800 text-sm">
               Hi [First Name], I saw your post about sustainable building management challenges. We just published a case study on how [Similar Company] achieved carbon neutrality 18 months ahead of schedule.<br/><br/>
@@ -82,7 +91,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         <p className="text-gray-600 italic mb-4">ESG-focused, long sales cycle but high strategic value</p>
 
         <div className="mb-6">
-          <h5 className="font-bold text-gray-900 mb-3">✉️ Email Campaign Options</h5>
+          <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src="/lovable-uploads/8d108dbd-0b63-47c1-b531-cee74a2add99.png" alt="Outlook" className="w-5 h-5" />
+            Email Campaign Options
+          </h5>
           <p className="font-medium text-gray-900 mb-2">Subject Line A/B Testing:</p>
           
           <ul className="space-y-2 ml-4 mb-4">
@@ -107,7 +119,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         </div>
 
         <div className="mb-6">
-          <h5 className="font-bold text-gray-900 mb-3">📱 WhatsApp Business Message</h5>
+          <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src="/lovable-uploads/c2819ce4-a316-48e1-bd6b-4cfe58df79ef.png" alt="WhatsApp" className="w-5 h-5" />
+            WhatsApp Business Message
+          </h5>
           <div className="bg-gray-100 p-4 rounded-lg mb-2">
             <p className="text-gray-800 text-sm">
               Hi [First Name]! Saw [Company]'s sustainability commitment 🌱 Our platform just helped Deutsche Bank hit 45% carbon reduction. Free ESG assessment for your portfolio? Takes 20 min ⏱️
@@ -117,7 +132,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         </div>
 
         <div className="mb-8">
-          <h5 className="font-bold text-gray-900 mb-3">💼 LinkedIn InMail Template</h5>
+          <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src="/lovable-uploads/af8c2ab2-6c4e-4451-982c-ffc97c63b971.png" alt="LinkedIn" className="w-5 h-5" />
+            LinkedIn InMail Template
+          </h5>
           <div className="bg-gray-100 p-4 rounded-lg mb-2">
             <p className="text-gray-800 text-sm">
               [First Name], congrats on the sustainability award! 🏆<br/><br/>
@@ -139,7 +157,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
         <p className="text-gray-600 italic mb-4">C-suite oversight, strategic partnership potential</p>
 
         <div className="mb-6">
-          <h5 className="font-bold text-gray-900 mb-3">✉️ Email Campaign Options</h5>
+          <h5 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+            <img src="/lovable-uploads/8d108dbd-0b63-47c1-b531-cee74a2add99.png" alt="Outlook" className="w-5 h-5" />
+            Email Campaign Options
+          </h5>
           <p className="font-medium text-gray-900 mb-2">Subject Line A/B Testing:</p>
           
           <ul className="space-y-2 ml-4 mb-4">
