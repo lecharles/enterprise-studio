@@ -103,8 +103,8 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
           📊 Persona Response Distribution
         </h3>
         
-        <div className="flex flex-col lg:flex-row items-start gap-8 mb-4">
-          <div className="w-80 h-80 flex-shrink-0">
+        <div className="flex flex-col items-center mb-4">
+          <div className="w-96 h-96 mb-6">
             <ChartContainer config={chartConfig}>
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -113,7 +113,7 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
                     cx="50%"
                     cy="50%"
                     innerRadius={80}
-                    outerRadius={140}
+                    outerRadius={160}
                     paddingAngle={2}
                     dataKey="value"
                   >
@@ -127,7 +127,7 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
             </ChartContainer>
           </div>
           
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col space-y-3 items-center">
             <div className="text-gray-900 flex items-center gap-3 text-sm">
               <div className="w-4 h-4 bg-blue-500 rounded flex-shrink-0"></div>
               <div>
