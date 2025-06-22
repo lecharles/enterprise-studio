@@ -9,7 +9,7 @@ interface SourcesButtonProps {
 
 export function SourcesButton({ showCitations, onToggle }: SourcesButtonProps) {
   return (
-    <div className="px-6 py-4 border-t border-gray-200 max-w-4xl mx-auto w-full">
+    <div className="px-6 py-4 max-w-4xl mx-auto w-full">
       <Button
         variant="ghost"
         size="sm"
