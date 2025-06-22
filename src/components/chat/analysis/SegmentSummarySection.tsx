@@ -10,12 +10,14 @@ export function SegmentSummarySection({ isVisible }: SegmentSummarySectionProps)
 
   return (
     <div className={`mb-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-      <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+      <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
         📊 High-Potential Segment Summary
       </h2>
+      
       <p className="text-gray-900 mb-4">
         <span className="font-bold">Total Qualified Leads Identified: 3,847</span> meeting both engagement and fit criteria
       </p>
+      
       <p className="text-gray-900 mb-6 font-medium">
         Let me show you the revenue potential breakdown by segment with personalized nurture strategies:
       </p>

@@ -36,31 +36,31 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations,
       id: "lead-analysis",
       title: "Lead Analysis & Segmentation",
       component: LeadAnalysisSection,
-      delay: 800,
+      delay: 1000,
     },
     {
       id: "engagement-insights",
       title: "Engagement Pattern Insights",
       component: EngagementPatternInsightsSection,
-      delay: 1600,
+      delay: 2000,
     },
     {
       id: "segment-summary",
       title: "High-Potential Segment Summary",
       component: SegmentSummarySection,
-      delay: 2400,
+      delay: 3000,
     },
     {
       id: "action-plan",
       title: "Immediate Action Plan",
       component: ActionPlanSection,
-      delay: 3200,
+      delay: 4000,
     }
   ];
 
   useEffect(() => {
     if (typingText && !isAnalysisComplete) {
-      const timer = setInterval(() => {
+      const processNextSection = () => {
         if (currentSectionIndex < contentSections.length) {
           const currentSection = contentSections[currentSectionIndex];
           
@@ -69,11 +69,11 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations,
             setCurrentSectionIndex(prev => prev + 1);
           }, currentSection.delay);
         }
-      }, 100);
+      };
 
-      return () => clearInterval(timer);
+      processNextSection();
     }
-  }, [typingText, isAnalysisComplete, currentSectionIndex]);
+  }, [typingText, isAnalysisComplete, currentSectionIndex, contentSections.length]);
 
   if (!typingText) {
     return null;
@@ -91,6 +91,7 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations,
             />
           );
         })}
+        
         {!isAnalysisComplete && visibleSections.length > 0 && (
           <span className="animate-pulse">|</span>
         )}
