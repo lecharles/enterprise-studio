@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { DeepResearchChatProps } from "./types";
 import { CitationsPanel } from "./CitationsPanel";
@@ -33,7 +32,9 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
     outlookEmail: true,
     sharepoint: false,
     teams: false,
-    salesforceMarketingCloud: false
+    salesforceMarketingCloud: false,
+    linkedin: false,
+    whatsapp: false
   });
 
   const { currentStep, showAnalysis, isAnalysisComplete } = useResearchProgress({ 

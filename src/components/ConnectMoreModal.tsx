@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   Dialog,
@@ -51,8 +52,8 @@ export function ConnectMoreModal({
     { id: 'gmail', label: 'Gmail', icon: <img src="/lovable-uploads/ee57e9a8-5a7c-4b2f-9d6a-a58a5c4c03f5.png" alt="Gmail" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.gmail },
     { id: 'outlookEmail', label: 'Outlook Email', icon: <img src="/lovable-uploads/73c3916a-6f7a-4114-b6c5-9bdad02b84a4.png" alt="Outlook Email" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.outlookEmail },
     { id: 'teams', label: 'Teams', icon: <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.teams },
-    { id: 'linkedin', label: 'LinkedIn', icon: <img src="/lovable-uploads/d714029c-55c2-4ca0-bc7a-e651c82e23cd.png" alt="LinkedIn" className="w-8 h-8" />, type: 'channel', enabled: false, isNew: true },
-    { id: 'whatsapp', label: 'WhatsApp', icon: <img src="/lovable-uploads/ff21a3b9-4cda-4164-a4e9-2b3f2f98a3f4.png" alt="WhatsApp" className="w-8 h-8" />, type: 'channel', enabled: false, isNew: true },
+    { id: 'linkedin', label: 'LinkedIn', icon: <img src="/lovable-uploads/d714029c-55c2-4ca0-bc7a-e651c82e23cd.png" alt="LinkedIn" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.linkedin || false, isNew: true },
+    { id: 'whatsapp', label: 'WhatsApp', icon: <img src="/lovable-uploads/ff21a3b9-4cda-4164-a4e9-2b3f2f98a3f4.png" alt="WhatsApp" className="w-8 h-8" />, type: 'channel', enabled: enabledSources.whatsapp || false, isNew: true },
     { id: 'twilio', label: 'Twilio (SMS)', icon: <img src="/lovable-uploads/2200876f-72f7-4232-ac55-c0a95cd341e9.png" alt="Twilio" className="w-8 h-8" />, type: 'channel', enabled: false, isNew: true },
   ];
 
@@ -124,7 +125,7 @@ export function ConnectMoreModal({
                 </div>
               </div>
               
-              {connector.isNew ? (
+              {connector.id === 'twilio' ? (
                 <Button
                   variant="outline"
                   size="sm"
