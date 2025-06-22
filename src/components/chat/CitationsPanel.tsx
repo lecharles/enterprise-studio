@@ -10,8 +10,8 @@ interface CitationsPanelProps {
 
 export function CitationsPanel({ citations, onClose }: CitationsPanelProps) {
   return (
-    <div className="w-80 border-l border-gray-200 flex flex-col h-full bg-white">
-      <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+    <div className="w-full h-full border-l border-gray-200 flex flex-col bg-white">
+      <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
         <h3 className="font-semibold text-gray-900">Citations</h3>
         <Button
           variant="ghost"
