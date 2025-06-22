@@ -23,7 +23,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
       <LeftSidebar show={showLeftSidebar} />
 
       {/* Fixed Header - stays at top */}
-      <div className="flex-shrink-0 bg-white border-b border-gray-200 z-10">
+      <div className="flex-shrink-0 bg-white border-b border-white z-10">
         {/* Add any header content here if needed */}
       </div>
 
