@@ -32,19 +32,19 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete }: AnalysisDisp
       id: "lead-analysis",
       title: "Lead Analysis & Segmentation",
       component: LeadAnalysisSection,
-      delay: 1000,
+      delay: 800,
     },
     {
       id: "segment-summary",
       title: "High-Potential Segment Summary",
       component: SegmentSummarySection,
-      delay: 2000,
+      delay: 1600,
     },
     {
       id: "action-plan",
       title: "Immediate Action Plan",
       component: ActionPlanSection,
-      delay: 3000,
+      delay: 2400,
     }
   ];
 
