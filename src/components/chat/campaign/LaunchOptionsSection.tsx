@@ -1,5 +1,3 @@
-
-
 import { Users } from "lucide-react";
 
 interface LaunchOptionsSectionProps {
@@ -21,7 +19,7 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
         <div className="bg-gray-50 p-4 rounded-lg border">
           <h4 className="font-semibold text-sm text-gray-900 mb-2 flex items-center gap-2">
             <img src="/lovable-uploads/869c213f-f2e5-431e-991b-134e94eb2bcf.png" alt="Outlook" className="w-5 h-5" />
-            Launch Email Campaign
+            Email Campaign
           </h4>
           <ul className="text-sm text-gray-700 space-y-1">
             <li>2,410 contacts queued</li>
@@ -130,4 +128,3 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
     </div>
   );
 }
-
