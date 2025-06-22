@@ -69,7 +69,7 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
     <Sidebar className="bg-gray-50" collapsible="icon">
       <SidebarHeader className="px-4 pt-6 pb-4">
         <div className="flex items-center justify-between mt-1">
-          {!isCollapsed && (
+          {!isCollapsed ? (
             <div className="flex items-center gap-2">
               <img 
                 src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
@@ -78,6 +78,12 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
               />
               <span className="font-medium text-gray-900">Schneider Studio</span>
             </div>
+          ) : (
+            <img 
+              src="/lovable-uploads/767aed11-ad2d-4763-b5d1-76d73bc1c047.png" 
+              alt="Schneider Studio"
+              className="w-6 h-6 mx-auto"
+            />
           )}
           <SidebarTrigger className="h-8 w-8 text-gray-600 hover:text-gray-800 hover:bg-gray-100" />
         </div>
