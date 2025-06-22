@@ -96,13 +96,19 @@ export function AnalysisDisplay({ typingText, isAnalysisComplete, showCitations,
           <span className="animate-pulse">|</span>
         )}
         
-        {/* Sources button as part of content when analysis is complete */}
+        {/* Sources button and research footer when analysis is complete */}
         {isAnalysisComplete && (
-          <div className="mt-6">
+          <div>
             <SourcesButton 
               showCitations={showCitations}
               onToggle={onToggleCitations}
             />
+            
+            <div className="px-6 max-w-4xl mx-auto w-full">
+              <p className="text-sm text-gray-600 italic">
+                Research completed in 8 minutes 47 seconds | 4 enterprise systems analyzed | 127,492 data points processed
+              </p>
+            </div>
           </div>
         )}
       </div>

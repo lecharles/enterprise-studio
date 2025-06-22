@@ -26,12 +26,6 @@ export function ActionPlanSection({ isVisible }: ActionPlanSectionProps) {
           <span className="font-bold">Sales Enablement:</span> Deliver persona-specific battle cards and local case studies to address regional nuances identified in research 📋 <img src="/lovable-uploads/2ef48d52-614e-4444-914c-3507c1217888.png" alt="SharePoint" className="inline-block w-4 h-4 mx-1" /> <img src="/lovable-uploads/0e655971-0ee4-4575-9f2d-3d419372b950.png" alt="Teams" className="inline-block w-4 h-4 mx-1" />.
         </li>
       </ul>
-
-      <div className="mt-8 pt-4 border-t border-gray-300">
-        <p className="text-sm text-gray-600 italic">
-          Research completed in 8 minutes 47 seconds | 4 enterprise systems analyzed | 127,492 data points processed
-        </p>
-      </div>
     </div>
   );
 }
