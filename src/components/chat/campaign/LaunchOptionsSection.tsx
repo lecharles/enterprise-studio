@@ -71,9 +71,6 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
       </div>
 
       <div className="text-center mb-8">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg">
-          🎬 [LAUNCH ALL CAMPAIGNS]
-        </button>
         <p className="text-gray-600 text-sm mt-2">
           Synchronized multi-channel deployment with 2-hour delays between touchpoints
         </p>
