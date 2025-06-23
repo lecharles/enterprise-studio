@@ -118,7 +118,13 @@ export function LaunchOptionsSection({ isVisible, onLaunchAllCampaigns, campaign
 
       {/* Recommended Actions Section */}
       <div className="flex flex-wrap gap-3 justify-center">
-        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 hover:border-gray-300 hover:shadow-sm">
+        <button 
+          onClick={() => {
+            console.log("=== PLATFORM BUTTON CLICKED FROM CAMPAIGN SECTION ===");
+            window.location.href = "/platform/builder";
+          }}
+          className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 hover:border-gray-300 hover:shadow-sm"
+        >
           <Code className="w-4 h-4 text-green-600" />
           <span>Open in Platform</span>
         </button>
