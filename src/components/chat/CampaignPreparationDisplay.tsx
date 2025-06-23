@@ -7,16 +7,18 @@ import { LaunchOptionsSection } from "./campaign/LaunchOptionsSection";
 
 interface CampaignPreparationDisplayProps {
   isActive: boolean;
+  onLaunchAllCampaigns?: () => void;
+  campaignLaunched?: boolean;
 }
 
 interface ContentSection {
   id: string;
   title: string;
-  component: React.ComponentType<{ isVisible: boolean }>;
+  component: React.ComponentType<{ isVisible: boolean; onLaunchAllCampaigns?: () => void; campaignLaunched?: boolean }>;
   delay: number;
 }
 
-export function CampaignPreparationDisplay({ isActive }: CampaignPreparationDisplayProps) {
+export function CampaignPreparationDisplay({ isActive, onLaunchAllCampaigns, campaignLaunched = false }: CampaignPreparationDisplayProps) {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -93,6 +95,8 @@ export function CampaignPreparationDisplay({ isActive }: CampaignPreparationDisp
             <Component
               key={section.id}
               isVisible={visibleSections.includes(section.id)}
+              onLaunchAllCampaigns={onLaunchAllCampaigns}
+              campaignLaunched={campaignLaunched}
             />
           );
         })}

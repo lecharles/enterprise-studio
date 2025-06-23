@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { DeepResearchChatProps } from "./types";
 import { CitationsPanel } from "./CitationsPanel";
@@ -11,7 +10,12 @@ import { useResearchProgress } from "./hooks/useResearchProgress";
 import { researchSteps } from "./data/researchSteps";
 import { citations } from "./data/citations";
 
-export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
+interface DeepResearchChatProps {
+  onComplete: () => void;
+  onCampaignLaunch?: (launched: boolean) => void;
+}
+
+export function DeepResearchChat({ onComplete, onCampaignLaunch }: DeepResearchChatProps) {
   const [showCitations, setShowCitations] = useState(false);
   const [selectedCitation, setSelectedCitation] = useState<string | null>(null);
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
@@ -56,6 +60,9 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
 
   const handleLaunchAllCampaigns = () => {
     setCampaignLaunched(true);
+    if (onCampaignLaunch) {
+      onCampaignLaunch(true);
+    }
   };
 
   // Calculate widths based on citations visibility

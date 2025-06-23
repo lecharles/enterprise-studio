@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ConnectMoreModal } from "./ConnectMoreModal";
 import { ChatInputArea } from "./chat/ChatInputArea";
@@ -8,9 +7,10 @@ import { DeepResearchChat } from "./chat/DeepResearchChat";
 
 interface ChatInterfaceProps {
   builderToggle: boolean;
+  onCampaignLaunch?: (launched: boolean) => void;
 }
 
-export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
+export function ChatInterface({ builderToggle, onCampaignLaunch }: ChatInterfaceProps) {
   const [showResearchTool, setShowResearchTool] = useState(false);
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
   const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
@@ -74,7 +74,7 @@ export function ChatInterface({ builderToggle }: ChatInterfaceProps) {
   };
 
   if (showDeepResearch) {
-    return <DeepResearchChat onComplete={() => setShowDeepResearch(false)} />;
+    return <DeepResearchChat onComplete={() => setShowDeepResearch(false)} onCampaignLaunch={onCampaignLaunch} />;
   }
 
   return (
