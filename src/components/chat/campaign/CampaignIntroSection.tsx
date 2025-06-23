@@ -36,8 +36,8 @@ export function CampaignIntroSection({ isVisible }: CampaignIntroSectionProps) {
         </li>
       </ul>
 
-      <p className="text-gray-900 mb-6 flex items-center gap-2">
-        💡 At any point, you can click the <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer inline" /> icon to see how calculations were made, which data sources were used, or why specific recommendations were chosen.
+      <p className="text-gray-900 mb-6">
+        💡 At any point, you can click the (?) icon to see how calculations were made, which data sources were used, or why specific recommendations were chosen.
       </p>
 
       <div className="border-t border-gray-200 my-6"></div>
