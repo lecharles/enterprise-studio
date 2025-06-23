@@ -10,13 +10,18 @@ interface RecommendedActionsProps {
 export function RecommendedActions({ onPrepareCampaign }: RecommendedActionsProps) {
   const navigate = useNavigate();
 
+  const handlePlatformClick = () => {
+    console.log("Platform button clicked, navigating to /platform/campaign-agent");
+    navigate("/platform/campaign-agent");
+  };
+
   const actions = [
     {
       id: "platform",
       label: "Open in Platform",
       icon: Code,
       color: "text-green-600",
-      onClick: () => navigate("/platform/campaign-agent")
+      onClick: handlePlatformClick
     },
     {
       id: "campaign", 
