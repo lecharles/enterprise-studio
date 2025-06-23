@@ -13,8 +13,8 @@ export function RecommendedActions({ onPrepareCampaign }: RecommendedActionsProp
   const handlePlatformClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Platform button clicked, navigating to /platform/campaign-agent");
-    window.location.href = "/platform/campaign-agent";
+    console.log("Platform button clicked, navigating to /platform/builder");
+    window.location.href = "/platform/builder";
   };
 
   const actions = [

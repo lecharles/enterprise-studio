@@ -10,6 +10,8 @@ const Platform = () => {
     switch (agentType) {
       case "campaign-agent":
         return <CampaignAgentView />;
+      case "builder":
+        return <CampaignAgentView />;
       default:
         return <CampaignAgentView />;
     }
