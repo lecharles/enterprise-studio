@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { 
   MessageSquare,
   Search,
@@ -36,6 +37,18 @@ interface AppSidebarProps {
 export function AppSidebar({ currentView, onViewChange, builderToggle, campaignLaunched = false }: AppSidebarProps) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
+  const [showAnalyticsBadge, setShowAnalyticsBadge] = useState(false);
+
+  // Show analytics badge with delay when campaign is launched
+  useEffect(() => {
+    if (campaignLaunched) {
+      const timer = setTimeout(() => {
+        setShowAnalyticsBadge(true);
+      }, 3500); // 3.5 second delay
+      
+      return () => clearTimeout(timer);
+    }
+  }, [campaignLaunched]);
 
   const mainMenuItems = [
     { id: "chat", title: "New chat", icon: MessageSquare },
@@ -46,7 +59,7 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
 
   const toolItems = [
     ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
-    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: campaignLaunched ? 3 : undefined },
+    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? 3 : undefined },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
     { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched },
     { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
@@ -131,21 +144,21 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
                       <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
                       {!isCollapsed && <span className="flex-1">{item.title}</span>}
                       
-                      {/* Campaign indicator - larger animated dot */}
+                      {/* Campaign indicator - larger animated dot, aligned with analytics badge */}
                       {item.indicator && (
                         <div 
-                          className={`w-3 h-3 rounded-full animate-pulse ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}
+                          className={`w-3 h-3 rounded-full ${isCollapsed ? 'absolute top-1 right-1' : 'mr-0.5'}`}
                           style={{
-                            backgroundColor: '#fca5a5',
-                            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                            animationDirection: 'alternate'
+                            background: 'radial-gradient(circle, #f87171 0%, #dc2626 100%)',
+                            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate',
+                            boxShadow: '0 0 8px rgba(220, 38, 38, 0.4)'
                           }}
                         ></div>
                       )}
                       
                       {/* Analytics badge - subtle grey dot */}
                       {item.badge && (
-                        <div className={`bg-gray-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}>
+                        <div className={`bg-gray-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium ${isCollapsed ? 'absolute top-0.5 right-0.5' : ''}`}>
                           {item.badge}
                         </div>
                       )}
