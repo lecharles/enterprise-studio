@@ -1,4 +1,5 @@
 
+import { HelpCircle } from "lucide-react";
 
 interface CampaignIntroSectionProps {
   isVisible: boolean;
@@ -43,4 +44,3 @@ export function CampaignIntroSection({ isVisible }: CampaignIntroSectionProps) {
     </div>
   );
 }
-
