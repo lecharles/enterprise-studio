@@ -1,40 +1,18 @@
+
 import { Code, Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 
 interface RecommendedActionsProps {
   onPrepareCampaign?: () => void;
 }
 
 export function RecommendedActions({ onPrepareCampaign }: RecommendedActionsProps) {
-  const navigate = useNavigate();
-
-  const handlePlatformClick = (e: React.MouseEvent) => {
-    console.log("Platform button clicked - START");
-    e.preventDefault();
-    e.stopPropagation();
+  const handlePlatformClick = () => {
+    console.log("=== PLATFORM BUTTON CLICKED ===");
+    console.log("About to navigate to /platform/builder");
     
-    try {
-      console.log("Attempting navigation to /platform/builder");
-      console.log("Current location:", window.location.href);
-      
-      // Try multiple navigation methods
-      navigate("/platform/builder");
-      console.log("useNavigate called");
-      
-      // Fallback with a small delay
-      setTimeout(() => {
-        console.log("Fallback navigation attempt");
-        window.location.href = "/platform/builder";
-      }, 100);
-      
-    } catch (error) {
-      console.error("Navigation error:", error);
-      // Force navigation as last resort
-      window.location.href = "/platform/builder";
-    }
-    
-    console.log("Platform button clicked - END");
+    // Direct window navigation - most reliable method
+    window.location.href = "/platform/builder";
   };
 
   const actions = [
