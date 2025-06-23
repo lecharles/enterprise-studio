@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { 
   MessageSquare,
@@ -31,9 +30,10 @@ interface AppSidebarProps {
   currentView: string;
   onViewChange: (view: string) => void;
   builderToggle: boolean;
+  campaignLaunched?: boolean;
 }
 
-export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSidebarProps) {
+export function AppSidebar({ currentView, onViewChange, builderToggle, campaignLaunched = false }: AppSidebarProps) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
@@ -46,9 +46,9 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
 
   const toolItems = [
     ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
-    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600" },
+    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: campaignLaunched ? 3 : undefined },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
-    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600" },
+    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched },
     { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
   ];
 
@@ -120,15 +120,29 @@ export function AppSidebar({ currentView, onViewChange, builderToggle }: AppSide
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
                     onClick={() => onViewChange(item.id)}
-                    className={`w-full gap-3 rounded-lg text-sm transition-colors ${
+                    className={`w-full gap-3 rounded-lg text-sm transition-colors relative ${
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
                     } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'}`}
                     tooltip={isCollapsed ? item.title : undefined}
                   >
-                    <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
-                    {!isCollapsed && <span>{item.title}</span>}
+                    <div className="flex items-center gap-3 w-full">
+                      <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
+                      {!isCollapsed && <span className="flex-1">{item.title}</span>}
+                      
+                      {/* Campaign indicator */}
+                      {item.indicator && (
+                        <div className={`w-2 h-2 rounded-full bg-red-500 ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}></div>
+                      )}
+                      
+                      {/* Analytics badge */}
+                      {item.badge && (
+                        <div className={`bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}>
+                          {item.badge}
+                        </div>
+                      )}
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

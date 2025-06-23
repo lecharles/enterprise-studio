@@ -11,15 +11,16 @@ const Index = () => {
   const [businessToggle, setBusinessToggle] = useState(true);
   const [builderToggle, setBuilderToggle] = useState(true);
   const [selectedModel, setSelectedModel] = useState("o3");
+  const [campaignLaunched, setCampaignLaunched] = useState(false);
 
   const renderMainContent = () => {
     switch (currentView) {
       case "chat":
-        return <ChatInterface builderToggle={builderToggle} />;
+        return <ChatInterface builderToggle={builderToggle} onCampaignLaunch={setCampaignLaunched} />;
       case "dashboard":
         return <DashboardView />;
       default:
-        return <ChatInterface builderToggle={builderToggle} />;
+        return <ChatInterface builderToggle={builderToggle} onCampaignLaunch={setCampaignLaunched} />;
     }
   };
 
@@ -30,6 +31,7 @@ const Index = () => {
           currentView={currentView} 
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
+          campaignLaunched={campaignLaunched}
         />
         <SidebarInset className="flex-1">
           <TopNavbar 

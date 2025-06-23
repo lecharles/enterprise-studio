@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { DeepResearchChatProps } from "./types";
 import { CitationsPanel } from "./CitationsPanel";
@@ -18,6 +19,7 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
   const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
   const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
   const [showCampaignPreparation, setShowCampaignPreparation] = useState(false);
+  const [campaignLaunched, setCampaignLaunched] = useState(false);
   const [enabledSources, setEnabledSources] = useState({
     webSearch: true,
     box: false,
@@ -50,6 +52,10 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
 
   const handlePrepareCampaign = () => {
     setShowCampaignPreparation(true);
+  };
+
+  const handleLaunchAllCampaigns = () => {
+    setCampaignLaunched(true);
   };
 
   // Calculate widths based on citations visibility
@@ -90,7 +96,11 @@ export function DeepResearchChat({ onComplete }: DeepResearchChatProps) {
                     onPrepareCampaign={handlePrepareCampaign}
                   />
                 ) : (
-                  <CampaignPreparationDisplay isActive={showCampaignPreparation} />
+                  <CampaignPreparationDisplay 
+                    isActive={showCampaignPreparation} 
+                    onLaunchAllCampaigns={handleLaunchAllCampaigns}
+                    campaignLaunched={campaignLaunched}
+                  />
                 )}
               </div>
             </div>

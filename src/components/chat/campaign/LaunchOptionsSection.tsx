@@ -3,9 +3,11 @@ import { Users, Code, Film } from "lucide-react";
 
 interface LaunchOptionsSectionProps {
   isVisible: boolean;
+  onLaunchAllCampaigns?: () => void;
+  campaignLaunched?: boolean;
 }
 
-export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
+export function LaunchOptionsSection({ isVisible, onLaunchAllCampaigns, campaignLaunched = false }: LaunchOptionsSectionProps) {
   if (!isVisible) return null;
 
   return (
@@ -126,8 +128,16 @@ export function LaunchOptionsSection({ isVisible }: LaunchOptionsSectionProps) {
           <span>Preview Analytics</span>
         </button>
 
-        <button className="bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 hover:border-gray-300 hover:shadow-sm">
-          <Users className="w-4 h-4 text-purple-600" />
+        <button 
+          onClick={onLaunchAllCampaigns}
+          disabled={campaignLaunched}
+          className={`font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 ${
+            campaignLaunched 
+              ? 'bg-gray-200 border border-gray-300 text-gray-500 cursor-not-allowed' 
+              : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 hover:shadow-sm'
+          }`}
+        >
+          <Users className={`w-4 h-4 ${campaignLaunched ? 'text-gray-400' : 'text-purple-600'}`} />
           <span>Launch All Campaigns</span>
         </button>
       </div>
