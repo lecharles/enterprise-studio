@@ -1,19 +1,22 @@
 
 import { Code, Users, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface RecommendedActionsProps {
   onPrepareCampaign?: () => void;
 }
 
 export function RecommendedActions({ onPrepareCampaign }: RecommendedActionsProps) {
+  const navigate = useNavigate();
+
   const actions = [
     {
       id: "platform",
       label: "Open in Platform",
       icon: Code,
       color: "text-green-600",
-      onClick: () => console.log("Open in Platform clicked")
+      onClick: () => navigate("/platform/campaign-agent")
     },
     {
       id: "campaign", 
