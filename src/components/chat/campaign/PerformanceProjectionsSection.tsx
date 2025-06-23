@@ -1,6 +1,6 @@
-
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { HelpCircle } from "lucide-react";
 
 interface PerformanceProjectionsSectionProps {
   isVisible: boolean;
@@ -24,7 +24,10 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
       </h2>
       
       <div className="mb-8">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Engagement Forecast by Channel</h3>
+        <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          Engagement Forecast by Channel
+          <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
+        </h3>
         
         <div className="bg-gray-100 p-4 rounded-lg mb-6">
           <div className="font-mono text-sm">
@@ -66,18 +69,22 @@ export function PerformanceProjectionsSection({ isVisible }: PerformanceProjecti
       <div className="mb-8">
         <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
           🎯 Projected Pipeline Impact
+          <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
         </h3>
         <p className="font-medium text-gray-900 mb-4">Week 1-2 Results:</p>
 
         <ul className="space-y-3 ml-4 mb-6">
-          <li className="text-gray-900">
+          <li className="text-gray-900 flex items-center gap-2">
             🏢 <span className="font-bold">143 Meetings Booked</span> (auto-scheduled via Calendly integration)
+            <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
           </li>
-          <li className="text-gray-900">
+          <li className="text-gray-900 flex items-center gap-2">
             💰 <span className="font-bold">€31.2M Pipeline Generated</span>
+            <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
           </li>
-          <li className="text-gray-900">
+          <li className="text-gray-900 flex items-center gap-2">
             📊 <span className="font-bold">847% Campaign ROI</span> (€75K investment → €635K in closed-won within 90 days)
+            <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
           </li>
         </ul>
       </div>

@@ -1,5 +1,5 @@
-
 import { Separator } from "@/components/ui/separator";
+import { HelpCircle } from "lucide-react";
 
 interface PersonaContentSectionProps {
   isVisible: boolean;
@@ -20,8 +20,9 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
 
       {/* Segment 1: Building Management Specialists */}
       <div className="mb-8">
-        <h4 className="text-lg font-bold text-gray-900 mb-2">
+        <h4 className="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
           Segment 1: Building Management Specialists (1,123 contacts)
+          <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
         </h4>
         <p className="text-gray-600 italic mb-4">High-value segment with immediate budget authority</p>
 
@@ -38,8 +39,9 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
             <li className="text-gray-900"><strong>C:</strong> "Your Q1 energy audit revealed this opportunity..."</li>
           </ul>
 
-          <p className="text-gray-900 mb-4">
+          <p className="text-gray-900 mb-4 flex items-center gap-2">
             <strong>Winner Prediction:</strong> Option B (23% higher open rate based on personalization + social proof)
+            <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
           </p>
 
           <div className="bg-gray-100 p-4 rounded-lg mb-4">
@@ -63,7 +65,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
               Hi [First Name]! 👋 Quick question - did you see the new EU energy efficiency requirements for 2025? We helped 3 buildings in [City] get compliant + save 40% on costs. 15-min call this week?
             </p>
           </div>
-          <p className="text-gray-600 italic text-sm">Tone: Urgent but helpful, compliance-driven angle</p>
+          <p className="text-gray-600 italic text-sm flex items-center gap-2">
+            Tone: Urgent but helpful, compliance-driven angle
+            <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
+          </p>
         </div>
 
         <div className="mb-8">
@@ -77,7 +82,10 @@ export function PersonaContentSection({ isVisible }: PersonaContentSectionProps)
               Thought it might be relevant for [Company]'s 2025 goals. Open to connecting?
             </p>
           </div>
-          <p className="text-gray-600 italic text-sm">Approach: Peer validation + sustainability focus</p>
+          <p className="text-gray-600 italic text-sm flex items-center gap-2">
+            Approach: Peer validation + sustainability focus
+            <HelpCircle className="w-4 h-4 text-gray-500 hover:text-gray-700 cursor-pointer" />
+          </p>
         </div>
       </div>
 
