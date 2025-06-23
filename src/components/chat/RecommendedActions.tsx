@@ -7,21 +7,13 @@ interface RecommendedActionsProps {
 }
 
 export function RecommendedActions({ onPrepareCampaign }: RecommendedActionsProps) {
-  const handlePlatformClick = () => {
-    console.log("=== PLATFORM BUTTON CLICKED ===");
-    console.log("About to navigate to /platform/builder");
-    
-    // Direct window navigation - most reliable method
-    window.location.href = "/platform/builder";
-  };
-
   const actions = [
     {
       id: "platform",
       label: "Open in Platform",
       icon: Code,
       color: "text-green-600",
-      onClick: handlePlatformClick
+      onClick: () => console.log("Open in Platform clicked")
     },
     {
       id: "campaign", 
