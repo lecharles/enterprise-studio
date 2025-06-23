@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { DeepResearchChatProps } from "./types";
 import { CitationsPanel } from "./CitationsPanel";
@@ -9,11 +10,6 @@ import { CampaignPreparationDisplay } from "./CampaignPreparationDisplay";
 import { useResearchProgress } from "./hooks/useResearchProgress";
 import { researchSteps } from "./data/researchSteps";
 import { citations } from "./data/citations";
-
-interface DeepResearchChatProps {
-  onComplete: () => void;
-  onCampaignLaunch?: (launched: boolean) => void;
-}
 
 export function DeepResearchChat({ onComplete, onCampaignLaunch }: DeepResearchChatProps) {
   const [showCitations, setShowCitations] = useState(false);
