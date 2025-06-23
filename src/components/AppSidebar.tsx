@@ -131,14 +131,21 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
                       <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
                       {!isCollapsed && <span className="flex-1">{item.title}</span>}
                       
-                      {/* Campaign indicator */}
+                      {/* Campaign indicator - larger animated dot */}
                       {item.indicator && (
-                        <div className={`w-2 h-2 rounded-full bg-red-500 ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}></div>
+                        <div 
+                          className={`w-3 h-3 rounded-full animate-pulse ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}
+                          style={{
+                            backgroundColor: '#fca5a5',
+                            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                            animationDirection: 'alternate'
+                          }}
+                        ></div>
                       )}
                       
-                      {/* Analytics badge */}
+                      {/* Analytics badge - subtle grey dot */}
                       {item.badge && (
-                        <div className={`bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}>
+                        <div className={`bg-gray-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium ${isCollapsed ? 'absolute -top-1 -right-1' : ''}`}>
                           {item.badge}
                         </div>
                       )}
