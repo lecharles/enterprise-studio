@@ -10,9 +10,11 @@ interface RecommendedActionsProps {
 export function RecommendedActions({ onPrepareCampaign }: RecommendedActionsProps) {
   const navigate = useNavigate();
 
-  const handlePlatformClick = () => {
+  const handlePlatformClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     console.log("Platform button clicked, navigating to /platform/campaign-agent");
-    navigate("/platform/campaign-agent");
+    window.location.href = "/platform/campaign-agent";
   };
 
   const actions = [
