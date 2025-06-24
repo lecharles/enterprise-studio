@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { BookOpen, MoreHorizontal, Logs, ChevronDown, Check, Plus, Bot, ChevronUp, Sparkle, Expand, ChevronsUpDown } from "lucide-react";
+import { BookOpen, MoreHorizontal, Logs, ChevronDown, Check, Plus, Bot, ChevronUp, Sparkle, Expand, ChevronsUpDown, Settings, File, Trash2, Info } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import {
   DropdownMenu,
@@ -77,6 +78,11 @@ Provide messages or content as short, well-structured paragraphs or bullet point
   const [selectedModel, setSelectedModel] = useState("gpt-4.1");
   const [showFullInstructions, setShowFullInstructions] = useState(false);
   const [openModelCombobox, setOpenModelCombobox] = useState(false);
+  
+  // Tools section state
+  const [fileSearchEnabled, setFileSearchEnabled] = useState(false);
+  const [connectorsEnabled, setConnectorsEnabled] = useState(true);
+  const [functionsEnabled, setFunctionsEnabled] = useState(true);
 
   const agents = [
     "Outreach Automation Agent",
@@ -122,7 +128,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Left Panel */}
           <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
-            <div className="h-full bg-white p-4 space-y-6">
+            <div className="h-full bg-white p-4 space-y-6 overflow-y-auto">
               {/* Agent Picker */}
               <div>
                 <DropdownMenu>
@@ -275,6 +281,81 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                     </Command>
                   </PopoverContent>
                 </Popover>
+              </div>
+
+              {/* TOOLS Section */}
+              <div className="space-y-4">
+                <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide">TOOLS</h3>
+                
+                {/* File Search */}
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex items-center gap-3">
+                    <Switch 
+                      checked={fileSearchEnabled}
+                      onCheckedChange={setFileSearchEnabled}
+                      className="data-[state=checked]:bg-green-500"
+                    />
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-900">File Search</span>
+                      <Info className="w-4 h-4 text-gray-400" />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button variant="ghost" size="sm" className="h-7 px-2 text-xs text-gray-600 hover:bg-gray-100">
+                      <Settings className="w-3 h-3 mr-1" />
+                    </Button>
+                    <Button variant="outline" size="sm" className="h-7 px-3 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                      <Plus className="w-3 h-3 mr-1" />
+                      Files
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Connectors */}
+                <div className="flex items-center justify-between py-2">
+                  <div className="flex items-center gap-3">
+                    <Switch 
+                      checked={connectorsEnabled}
+                      onCheckedChange={setConnectorsEnabled}
+                      className="data-[state=checked]:bg-green-500"
+                    />
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-900">Connectors</span>
+                      <Info className="w-4 h-4 text-gray-400" />
+                    </div>
+                  </div>
+                  <Button variant="outline" size="sm" className="h-7 px-3 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                    <Plus className="w-3 h-3 mr-1" />
+                    Connectors
+                  </Button>
+                </div>
+
+                {/* Functions */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between py-2">
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-medium text-gray-900">Functions (api, mcp, etc)</span>
+                      <Info className="w-4 h-4 text-gray-400" />
+                    </div>
+                    <Button variant="outline" size="sm" className="h-7 px-3 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                      <Plus className="w-3 h-3 mr-1" />
+                      Functions
+                    </Button>
+                  </div>
+                  
+                  {/* Function Item */}
+                  <div className="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-md">
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center justify-center w-6 h-6 bg-gray-200 rounded text-xs font-mono text-gray-600">
+                        {'{'}
+                      </div>
+                      <span className="text-sm font-mono text-gray-900">twilio-sms-campaigns</span>
+                    </div>
+                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:bg-gray-200">
+                      <Trash2 className="w-4 h-4 text-gray-600" />
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </ResizablePanel>
