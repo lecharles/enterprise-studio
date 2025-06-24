@@ -18,17 +18,15 @@ export function PlatformBuilderDemoView() {
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
         />
-        <div className="flex-1 flex flex-col">
-          <div className="bg-red-500">
-            <TopNavbar 
-              businessToggle={businessToggle}
-              builderToggle={builderToggle}
-              onBusinessToggle={setBusinessToggle}
-              onBuilderToggle={setBuilderToggle}
-              selectedModel={selectedModel}
-              onModelChange={setSelectedModel}
-            />
-          </div>
+        <div className="flex-1 flex flex-col border-l border-gray-50">
+          <TopNavbar 
+            businessToggle={businessToggle}
+            builderToggle={builderToggle}
+            onBusinessToggle={setBusinessToggle}
+            onBuilderToggle={setBuilderToggle}
+            selectedModel={selectedModel}
+            onModelChange={setSelectedModel}
+          />
           <main className="flex-1 bg-white">
             {/* Empty main content area - will be populated later */}
           </main>
