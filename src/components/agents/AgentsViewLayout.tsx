@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BookOpen, MoreHorizontal, Logs } from "lucide-react";
+import { Database, Trash2 } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 
 interface AgentsViewLayoutProps {
@@ -42,11 +43,25 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
           <ResizableHandle withHandle />
 
           {!showLogs ? (
-            /* 2-panel state: Right panel with Logs button */
+            /* 2-panel state: Right panel with buttons */
             <ResizablePanel defaultSize={67}>
               <div className="h-full bg-white relative">
-                {/* Logs button in top right */}
-                <div className="absolute top-4 right-4 z-10">
+                {/* Buttons in top right */}
+                <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
+                  >
+                    <Database className="w-3 h-3" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
+                  >
+                    <Trash2 className="w-3 h-3" />
+                  </Button>
                   <Button
                     variant="outline"
                     size="sm"
@@ -57,7 +72,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                     <span>Logs</span>
                   </Button>
                 </div>
-                {/* Right panel content placeholder */}
+                {/* Right panel content */}
                 <div className="h-full p-4">
                   {rightPanelContent}
                 </div>
@@ -68,8 +83,27 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
             <>
               {/* Middle Panel */}
               <ResizablePanel defaultSize={37} minSize={25} maxSize={50}>
-                <div className="h-full bg-white border-r border-gray-200 p-4">
-                  {middlePanelContent}
+                <div className="h-full bg-white border-r border-gray-200 relative">
+                  {/* Buttons in top right of middle panel */}
+                  <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
+                    >
+                      <Database className="w-3 h-3" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                    </Button>
+                  </div>
+                  <div className="h-full p-4">
+                    {middlePanelContent}
+                  </div>
                 </div>
               </ResizablePanel>
 
@@ -90,7 +124,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                       <span>Hide logs</span>
                     </Button>
                   </div>
-                  {/* Logs panel content placeholder */}
+                  {/* Logs panel content */}
                   <div className="h-full p-4">
                     {rightPanelContent}
                   </div>
