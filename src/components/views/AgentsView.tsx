@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -90,7 +91,6 @@ Provide messages or content as short, well-structured paragraphs or bullet point
     hubspot: true,
     linkedin: false,
     whatsapp: true,
-    // twilio moved to functions
   });
 
   // Function states
@@ -145,17 +145,11 @@ Provide messages or content as short, well-structured paragraphs or bullet point
   const twilioMcpConfig = {
     "name": "twilio-sms-campaigns",
     "description": "Send personalized SMS campaigns with Twilio",
-    "functions": [
-      "send_sms_campaign",
-      "schedule_sms_sequence", 
-      "track_sms_engagement",
-      "manage_opt_outs",
-      "get_delivery_reports"
-    ],
-    "auth": "api_key",
-    "rate_limits": {
-      "messages_per_second": 100,
-      "daily_limit": 50000
+    "strict": false,
+    "parameters": {
+      "type": "object",
+      "properties": {},
+      "required": []
     }
   };
 
@@ -466,9 +460,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                           onCheckedChange={() => toggleFunction('twilioSms')}
                           className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
                         />
-                        <div className="flex items-center justify-center w-4 h-4 bg-gray-200 rounded text-xs">
-                          <CodeXml className="w-3 h-3 text-gray-600" />
-                        </div>
+                        <img src="/lovable-uploads/181b29ba-d8ff-4a97-8705-41d2fdf24153.png" alt="MCP" className="w-4 h-4" />
                         <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
                       </div>
                       <div className="flex items-center gap-1">
@@ -552,14 +544,54 @@ Provide messages or content as short, well-structured paragraphs or bullet point
 
         {/* MCP Configuration Modal */}
         <Dialog open={showMcpModal} onOpenChange={setShowMcpModal}>
-          <DialogContent className="max-w-2xl">
+          <DialogContent className="max-w-4xl">
             <DialogHeader>
-              <DialogTitle>MCP Connector Configuration</DialogTitle>
+              <DialogTitle className="text-xl font-semibold">Edit function</DialogTitle>
+              <p className="text-sm text-gray-600 mt-2">
+                The model will intelligently decide to call functions based on input it receives from the user.{" "}
+                <a href="#" className="text-blue-600 hover:underline">Learn more.</a>
+              </p>
             </DialogHeader>
-            <div className="mt-4">
-              <pre className="bg-gray-100 p-4 rounded-lg text-sm font-mono overflow-x-auto">
-                {selectedMcpConfig ? JSON.stringify(selectedMcpConfig, null, 2) : ''}
-              </pre>
+            <div className="mt-6">
+              <div className="mb-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-sm font-medium text-gray-900">Definition</h3>
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="sm" className="flex items-center gap-1 text-sm">
+                      <Sparkle className="w-4 h-4" />
+                      Generate
+                    </Button>
+                    <Button variant="outline" size="sm" className="flex items-center gap-1 text-sm">
+                      Examples
+                      <ChevronDown className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+                <div className="bg-gray-50 border rounded-lg p-4">
+                  <pre className="text-sm font-mono text-gray-800 whitespace-pre-wrap">
+                    {selectedMcpConfig ? JSON.stringify(selectedMcpConfig, null, 2) : ''}
+                  </pre>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg text-sm text-gray-700 mb-4">
+                <Info className="w-4 h-4 text-gray-500" />
+                <span>Add</span>
+                <code className="bg-white px-1 rounded">"strict": true</code>
+                <span>to ensure the model's response always follows this schema.</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 hover:bg-red-50">
+                  <Trash2 className="w-4 h-4 mr-1" />
+                </Button>
+                <div className="flex gap-2">
+                  <Button variant="outline" onClick={() => setShowMcpModal(false)}>
+                    Cancel
+                  </Button>
+                  <Button className="bg-green-600 hover:bg-green-700 text-white">
+                    Save
+                  </Button>
+                </div>
+              </div>
             </div>
           </DialogContent>
         </Dialog>
