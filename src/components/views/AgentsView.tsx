@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -341,7 +342,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                             <Info className="w-3 h-3 text-gray-400" />
                           </TooltipTrigger>
                           <TooltipContent>
-                            <p>API, MCP, A2A, Etc...</p>
+                            <p>api, mcp, a2a, etc</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
