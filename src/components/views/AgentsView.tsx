@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -172,9 +171,6 @@ Provide messages or content as short, well-structured paragraphs or bullet point
       <div className="p-4 border-b border-gray-200">
         <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">THREAD</div>
         <div className="text-xs text-gray-600 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</div>
-      </div>
-      <div className="flex-1 p-4">
-        <div className="text-sm text-gray-500">No conversation started yet</div>
       </div>
     </div>
   );
