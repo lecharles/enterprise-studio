@@ -9,7 +9,8 @@ import {
   ArrowLeft,
   ChefHat,
   Users,
-  HelpCircle
+  HelpCircle,
+  FlaskConical
 } from "lucide-react";
 import {
   Sidebar,
@@ -43,6 +44,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBu
     { id: "realtime", title: "Realtime", icon: AudioWaveform },
     { id: "agents", title: "Agents", icon: Bot },
     { id: "tts", title: "TTS", icon: Mic },
+    { id: "evaluations", title: "Evaluations", icon: FlaskConical },
   ];
 
   const enterpriseItems = [
