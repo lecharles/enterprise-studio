@@ -93,8 +93,8 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   {rightPanelContent}
                 </div>
                 
-                {/* Chatbox for 2-panel view - positioned lower to align with Functions section */}
-                <div className="absolute bottom-[25%] left-6 right-6 z-20">
+                {/* Chatbox for 2-panel view - positioned further down */}
+                <div className="absolute bottom-[15%] left-6 right-6 z-20">
                   <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                 </div>
               </div>
@@ -138,8 +138,8 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                     {middlePanelContent}
                   </div>
                   
-                  {/* Chatbox for 3-panel view - positioned lower to align with Functions section */}
-                  <div className="absolute bottom-[25%] left-6 right-6 z-20">
+                  {/* Chatbox for 3-panel view - positioned further down */}
+                  <div className="absolute bottom-[15%] left-6 right-6 z-20">
                     <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                   </div>
                 </div>
