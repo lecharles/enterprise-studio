@@ -162,15 +162,15 @@ Provide messages or content as short, well-structured paragraphs or bullet point
   const renderJsonWithSyntaxHighlighting = (obj: any) => {
     const jsonString = JSON.stringify(obj, null, 2);
     
-    // Simple regex-based syntax highlighting
+    // Simple regex-based syntax highlighting for light theme
     return jsonString
       .replace(/"([^"]+)":/g, '<span class="text-blue-600">"$1"</span>:')
       .replace(/: "([^"]+)"/g, ': <span class="text-green-600">"$1"</span>')
       .replace(/: (\d+)/g, ': <span class="text-purple-600">$1</span>')
-      .replace(/\[/g, '<span class="text-gray-500">[</span>')
-      .replace(/\]/g, '<span class="text-gray-500">]</span>')
-      .replace(/{/g, '<span class="text-gray-500">{</span>')
-      .replace(/}/g, '<span class="text-gray-500">}</span>');
+      .replace(/\[/g, '<span class="text-gray-600">[</span>')
+      .replace(/\]/g, '<span class="text-gray-600">]</span>')
+      .replace(/{/g, '<span class="text-gray-600">{</span>')
+      .replace(/}/g, '<span class="text-gray-600">}</span>');
   };
 
   return (
@@ -587,9 +587,9 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                     </Button>
                   </div>
                 </div>
-                <div className="bg-gray-900 border rounded-lg p-4 overflow-x-auto">
+                <div className="bg-gray-50 border rounded-lg p-4 overflow-x-auto">
                   <pre 
-                    className="text-sm font-mono text-gray-100 whitespace-pre-wrap"
+                    className="text-sm font-mono text-gray-900 whitespace-pre-wrap"
                     dangerouslySetInnerHTML={{
                       __html: selectedMcpConfig ? renderJsonWithSyntaxHighlighting(selectedMcpConfig) : ''
                     }}
