@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,8 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { BookOpen, MoreHorizontal, Logs, ChevronDown, Check, Plus, Bot, ChevronUp, Sparkle, Expand, ChevronsUpDown, Settings, File, Trash2, Info } from "lucide-react";
-import { Math } from "lucide-react";
+import { BookOpen, MoreHorizontal, Logs, ChevronDown, Check, Plus, Bot, ChevronUp, Sparkle, Expand, ChevronsUpDown, Settings, File, Trash2, Info, Code } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import {
   DropdownMenu,
@@ -348,7 +346,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                   <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
                     <div className="flex items-center gap-2">
                       <div className="flex items-center justify-center w-4 h-4 bg-gray-200 rounded text-xs">
-                        <Math className="w-3 h-3 text-gray-600" />
+                        <Code className="w-3 h-3 text-gray-600" />
                       </div>
                       <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
                     </div>
