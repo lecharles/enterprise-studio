@@ -94,7 +94,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                 </div>
                 
                 {/* Chatbox for 2-panel view - positioned further down */}
-                <div className="absolute bottom-[15%] left-6 right-6 z-20">
+                <div className="absolute bottom-[10%] left-6 right-6 z-20">
                   <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                   <p className="text-xs text-gray-500 text-center mt-2">
                     Platform messages can be viewed by anyone at your organization using the API.
@@ -142,7 +142,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   </div>
                   
                   {/* Chatbox for 3-panel view - positioned further down */}
-                  <div className="absolute bottom-[15%] left-6 right-6 z-20">
+                  <div className="absolute bottom-[10%] left-6 right-6 z-20">
                     <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                     <p className="text-xs text-gray-500 text-center mt-2">
                       Platform messages can be viewed by anyone at your organization using the API.
