@@ -1,7 +1,11 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { BookOpen, MoreHorizontal, Logs, ChevronDown, Check, Plus, Bot } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { BookOpen, MoreHorizontal, Logs, ChevronDown, Check, Plus, Bot, ChevronUp } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import {
   DropdownMenu,
@@ -14,12 +18,23 @@ import {
 export function AgentsView() {
   const [showLogs, setShowLogs] = useState(false);
   const [selectedAgent, setSelectedAgent] = useState("Outreach Automation Agent");
+  const [agentName, setAgentName] = useState("Outreach Automation Agent");
+  const [systemInstructions, setSystemInstructions] = useState("You are Campaign Orchestrator, an AI agent specialized in creating and managing multi-channel marketing campaigns for Schneider Electric's enterprise solutions, with a special focus on personalized conversations.");
+  const [selectedModel, setSelectedModel] = useState("gpt-4.1");
+  const [showFullInstructions, setShowFullInstructions] = useState(false);
 
   const agents = [
     "Outreach Automation Agent",
     "Lead Nurturing Agent", 
     "IB-Intel Upsell Agent",
     "Seller Assist in Teams Agent"
+  ];
+
+  const models = [
+    "gpt-4.1",
+    "claude-3-5-sonnet",
+    "gpt-4o",
+    "gpt-3.5-turbo"
   ];
 
   return (
@@ -45,9 +60,9 @@ export function AgentsView() {
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Left Panel */}
           <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
-            <div className="h-full bg-white p-4">
+            <div className="h-full bg-white p-4 space-y-6">
               {/* Agent Picker */}
-              <div className="mb-4">
+              <div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
@@ -81,6 +96,69 @@ export function AgentsView() {
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
+              </div>
+
+              {/* Name Field */}
+              <div className="space-y-2">
+                <Label htmlFor="agent-name" className="text-sm font-medium text-gray-700">
+                  Name
+                </Label>
+                <Input
+                  id="agent-name"
+                  value={agentName}
+                  onChange={(e) => setAgentName(e.target.value)}
+                  className="w-full"
+                />
+                <p className="text-xs text-gray-500">asst_jKdmIBZu1Pptpd4q7JqD5</p>
+              </div>
+
+              {/* System Instructions Field */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="system-instructions" className="text-sm font-medium text-gray-700">
+                    System instructions
+                  </Label>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setShowFullInstructions(!showFullInstructions)}
+                    className="h-6 w-6 p-0 hover:bg-gray-100"
+                  >
+                    {showFullInstructions ? (
+                      <ChevronUp className="w-4 h-4 text-gray-600" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 text-gray-600" />
+                    )}
+                  </Button>
+                </div>
+                <Textarea
+                  id="system-instructions"
+                  value={systemInstructions}
+                  onChange={(e) => setSystemInstructions(e.target.value)}
+                  className={`w-full resize-none transition-all duration-200 ${
+                    showFullInstructions ? 'min-h-[200px]' : 'min-h-[80px]'
+                  }`}
+                  placeholder="Enter system instructions..."
+                />
+              </div>
+
+              {/* Model Field */}
+              <div className="space-y-2">
+                <Label htmlFor="model-select" className="text-sm font-medium text-gray-700">
+                  Model
+                </Label>
+                <Select value={selectedModel} onValueChange={setSelectedModel}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a model" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {models.map((model) => (
+                      <SelectItem key={model} value={model}>
+                        {model}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </ResizablePanel>
