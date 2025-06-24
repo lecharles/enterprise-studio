@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -110,8 +111,8 @@ Provide messages or content as short, well-structured paragraphs or bullet point
 
   const leftPanelContent = (
     <div className="h-full bg-white flex flex-col">
-      {/* Fixed Left Panel Header */}
-      <div className="flex-shrink-0 p-4 pb-2">
+      {/* Fixed Agent Picker Header */}
+      <div className="flex-shrink-0 p-4 pb-2 border-b border-gray-100">
         <AgentPicker 
           selectedAgent={selectedAgent}
           onAgentChange={setSelectedAgent}
@@ -119,7 +120,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
       </div>
 
       {/* Scrollable Left Panel Content */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-4 pt-4">
         {/* Name Field */}
         <div className="space-y-2">
           <Label htmlFor="agent-name" className="text-sm font-medium text-gray-700">
