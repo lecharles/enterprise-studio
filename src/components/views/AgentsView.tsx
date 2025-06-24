@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -314,22 +315,71 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                   </div>
 
                   {/* Connectors */}
-                  <div className="flex items-center justify-between py-1">
-                    <div className="flex items-center gap-2">
-                      <Switch 
-                        checked={connectorsEnabled}
-                        onCheckedChange={setConnectorsEnabled}
-                        className="data-[state=checked]:bg-green-500 h-4 w-7"
-                      />
-                      <div className="flex items-center gap-1">
-                        <span className="text-xs text-gray-900">Connectors</span>
-                        <Info className="w-3 h-3 text-gray-400" />
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between py-1">
+                      <div className="flex items-center gap-2">
+                        <Switch 
+                          checked={connectorsEnabled}
+                          onCheckedChange={setConnectorsEnabled}
+                          className="data-[state=checked]:bg-green-500 h-4 w-7"
+                        />
+                        <div className="flex items-center gap-1">
+                          <span className="text-xs text-gray-900">Connectors</span>
+                          <Info className="w-3 h-3 text-gray-400" />
+                        </div>
+                      </div>
+                      <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                        <Plus className="w-3 h-3 mr-1" />
+                        Connectors
+                      </Button>
+                    </div>
+                    
+                    {/* Connector Items */}
+                    <div className="space-y-1.5 ml-6">
+                      {/* HubSpot Email */}
+                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                        <div className="flex items-center gap-2">
+                          <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="w-4 h-4" />
+                          <span className="text-gray-900">HubSpot Email</span>
+                        </div>
+                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                          <Trash2 className="w-3 h-3 text-gray-600" />
+                        </Button>
+                      </div>
+
+                      {/* LinkedIn Campaign */}
+                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                        <div className="flex items-center gap-2">
+                          <img src="/lovable-uploads/d714029c-55c2-4ca0-bc7a-e651c82e23cd.png" alt="LinkedIn" className="w-4 h-4" />
+                          <span className="text-gray-900">LinkedIn Campaign</span>
+                        </div>
+                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                          <Trash2 className="w-3 h-3 text-gray-600" />
+                        </Button>
+                      </div>
+
+                      {/* WhatsApp Business API */}
+                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                        <div className="flex items-center gap-2">
+                          <img src="/lovable-uploads/ff21a3b9-4cda-4164-a4e9-2b3f2f98a3f4.png" alt="WhatsApp" className="w-4 h-4" />
+                          <span className="text-gray-900">WhatsApp Business API</span>
+                        </div>
+                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                          <Trash2 className="w-3 h-3 text-gray-600" />
+                        </Button>
+                      </div>
+
+                      {/* Twilio SMS */}
+                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                        <div className="flex items-center gap-2">
+                          <img src="/lovable-uploads/2200876f-72f7-4232-ac55-c0a95cd341e9.png" alt="Twilio" className="w-4 h-4" />
+                          <span className="text-gray-900">Twilio SMS</span>
+                        </div>
+                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                          <Trash2 className="w-3 h-3 text-gray-600" />
+                        </Button>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-                      <Plus className="w-3 h-3 mr-1" />
-                      Connectors
-                    </Button>
                   </div>
 
                   {/* Functions */}
