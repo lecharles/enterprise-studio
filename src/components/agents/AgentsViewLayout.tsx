@@ -53,14 +53,14 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                     size="sm"
                     className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
                   >
-                    <Database className="w-3 h-3" />
+                    <Trash2 className="w-3 h-3" />
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
                     className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
                   >
-                    <Trash2 className="w-3 h-3" />
+                    <Database className="w-3 h-3" />
                   </Button>
                   <Button
                     variant="outline"
@@ -91,14 +91,14 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                       size="sm"
                       className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
                     >
-                      <Database className="w-3 h-3" />
+                      <Trash2 className="w-3 h-3" />
                     </Button>
                     <Button
                       variant="outline"
                       size="sm"
                       className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
                     >
-                      <Trash2 className="w-3 h-3" />
+                      <Database className="w-3 h-3" />
                     </Button>
                   </div>
                   <div className="h-full p-4">
