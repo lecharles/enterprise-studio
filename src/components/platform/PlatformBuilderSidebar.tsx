@@ -6,7 +6,10 @@ import {
   AudioWaveform,
   Bot,
   Mic,
-  ArrowLeft
+  ArrowLeft,
+  ChefHat,
+  Users,
+  HelpCircle
 } from "lucide-react";
 import {
   Sidebar,
@@ -42,10 +45,14 @@ export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBu
     { id: "tts", title: "TTS", icon: Mic },
   ];
 
+  const enterpriseItems = [
+    { id: "enterprise", title: "Enterprise", icon: ArrowLeft },
+  ];
+
   const bottomItems = [
-    { id: "cookbook", title: "Cookbook", icon: ArrowLeft },
-    { id: "forum", title: "Forum", icon: Bot },
-    { id: "help", title: "Help", icon: MessageSquare },
+    { id: "cookbook", title: "Cookbook", icon: ChefHat },
+    { id: "forum", title: "Forum", icon: Users },
+    { id: "help", title: "Help", icon: HelpCircle },
   ];
 
   return (
@@ -80,11 +87,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBu
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
                     onClick={() => onViewChange(item.id)}
-                    className={`w-full gap-3 rounded-lg text-sm transition-colors ${
-                      currentView === item.id 
-                        ? "bg-gray-200 text-gray-900" 
-                        : "text-gray-700 hover:bg-gray-100"
-                    } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'} ${
+                    className={`w-full gap-3 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100 ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'} ${
                       item.bold ? 'font-bold' : ''
                     }`}
                     tooltip={isCollapsed ? item.title : undefined}
@@ -122,6 +125,31 @@ export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBu
         </SidebarGroup>
 
         <SidebarGroup className="mt-4">
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {enterpriseItems.map((item) => (
+                <SidebarMenuItem key={item.id}>
+                  <SidebarMenuButton
+                    onClick={() => onViewChange(item.id)}
+                    className={`w-full gap-3 rounded-lg text-sm transition-colors ${
+                      currentView === item.id 
+                        ? "bg-gray-200 text-gray-900" 
+                        : "text-gray-700 hover:bg-gray-100"
+                    } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'}`}
+                    tooltip={isCollapsed ? item.title : undefined}
+                  >
+                    <item.icon className="w-4 h-4 shrink-0 text-gray-600" />
+                    {!isCollapsed && <span>{item.title}</span>}
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <div className="flex-1" />
+
+        <SidebarGroup className="mt-auto">
           <SidebarGroupContent>
             <SidebarMenu>
               {bottomItems.map((item) => (

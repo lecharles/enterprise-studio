@@ -9,7 +9,7 @@ export function PlatformBuilderDemoView() {
   const [businessToggle, setBusinessToggle] = useState(false);
   const [builderToggle, setBuilderToggle] = useState(true);
   const [selectedModel, setSelectedModel] = useState("o3");
-  const [currentView, setCurrentView] = useState("platform");
+  const [currentView, setCurrentView] = useState("agents");
 
   return (
     <SidebarProvider>
