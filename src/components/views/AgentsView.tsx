@@ -47,8 +47,7 @@ export function AgentsView() {
                     variant="outline"
                     size="sm"
                     onClick={() => setShowLogs(true)}
-                    className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 h-8 px-3 text-xs border-0"
-                    style={{ backgroundColor: 'rgba(236,236,241,255)' }}
+                    className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-3 text-xs border-0 bg-transparent"
                   >
                     <Logs className="w-3 h-3" />
                     <span>Logs</span>
@@ -80,8 +79,7 @@ export function AgentsView() {
                       variant="outline"
                       size="sm"
                       onClick={() => setShowLogs(false)}
-                      className="flex items-center gap-2 text-gray-600 hover:bg-gray-200 h-8 px-3 text-xs border-0"
-                      style={{ backgroundColor: 'rgba(200,200,205,255)' }}
+                      className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-3 text-xs border-0 bg-transparent"
                     >
                       <Logs className="w-3 h-3" />
                       <span>Hide logs</span>
