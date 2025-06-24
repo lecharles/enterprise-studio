@@ -52,7 +52,7 @@ export function AgentsView() {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="outline"
-                      className="w-full justify-between h-10 px-3 text-left font-normal border border-gray-300 bg-white hover:bg-gray-50"
+                      className="w-full justify-between h-10 px-3 text-left font-normal border-0 bg-white hover:bg-gray-50"
                     >
                       <div className="flex items-center gap-2">
                         <Bot className="w-4 h-4 text-gray-600" />
@@ -77,7 +77,7 @@ export function AgentsView() {
                     <DropdownMenuSeparator className="my-1" />
                     <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gray-50 text-gray-600">
                       <Plus className="w-4 h-4" />
-                      <span>Create assistant</span>
+                      <span>Create agent</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
