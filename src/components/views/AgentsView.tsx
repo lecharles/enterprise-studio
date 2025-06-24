@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -169,21 +168,13 @@ Provide messages or content as short, well-structured paragraphs or bullet point
 
   const middlePanelContent = (
     <div className="h-full flex flex-col">
-      <div className="p-4 border-b border-gray-200">
-        <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">THREAD</div>
-        <div className="text-xs text-gray-600 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</div>
-      </div>
+      {/* Middle panel content without thread info - handled by layout */}
     </div>
   );
 
   const rightPanelContent = (
     <div className="h-full flex flex-col">
-      <div className="p-4">
-        <div className="flex items-center gap-2 text-xs">
-          <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
-          <span className="text-gray-400 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</span>
-        </div>
-      </div>
+      {/* Right panel content without thread info - handled by layout */}
     </div>
   );
 

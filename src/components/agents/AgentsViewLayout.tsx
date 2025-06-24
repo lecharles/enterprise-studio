@@ -88,28 +88,36 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
               {/* Middle Panel */}
               <ResizablePanel defaultSize={37} minSize={25} maxSize={50}>
                 <div className="h-full bg-white border-r border-gray-200 relative">
-                  {/* Buttons in top right of middle panel */}
-                  <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-                    <div className="flex items-center gap-1 text-xs">
-                      <span className="text-black font-bold">1975</span>
-                      <span className="text-gray-500">tokens</span>
+                  {/* Thread info and buttons in middle panel when logs are shown */}
+                  <div className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-xs">
+                        <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
+                        <span className="text-gray-400 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1 text-xs">
+                          <span className="text-black font-bold">1975</span>
+                          <span className="text-gray-500">tokens</span>
+                        </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
+                        >
+                          <Database className="w-3 h-3" />
+                        </Button>
+                      </div>
                     </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
-                    >
-                      <Trash2 className="w-3 h-3" />
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-2 text-xs border-0 bg-transparent"
-                    >
-                      <Database className="w-3 h-3" />
-                    </Button>
                   </div>
-                  <div className="h-full p-4">
+                  <div className="h-full p-4 pt-0">
                     {middlePanelContent}
                   </div>
                 </div>
@@ -132,9 +140,16 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                       <span>Hide logs</span>
                     </Button>
                   </div>
-                  {/* Logs panel content */}
+                  {/* Logs panel content - no thread info here when 3-panel is active */}
                   <div className="h-full p-4">
-                    {rightPanelContent}
+                    <div className="h-full flex flex-col">
+                      <div className="p-4">
+                        <div className="flex items-center gap-2 text-xs">
+                          <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
+                          <span className="text-gray-400 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </ResizablePanel>
