@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Paperclip, Plus, Wrench, TestTube } from "lucide-react";
+import { Paperclip, Plus, Wrench, TestTubes } from "lucide-react";
 
 interface PlatformBuilderChatboxProps {
   onSendMessage?: (message: string) => void;
@@ -71,7 +71,7 @@ export function PlatformBuilderChatbox({ onSendMessage }: PlatformBuilderChatbox
               size="sm" 
               className="text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded border border-gray-300 p-2 h-9 w-9"
             >
-              <TestTube className="w-4 h-4" />
+              <TestTubes className="w-4 h-4" />
             </Button>
           </div>
           
