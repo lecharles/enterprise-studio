@@ -19,7 +19,7 @@ export function PlatformBuilderDemoView() {
           builderToggle={builderToggle}
         />
         <div className="flex-1 flex flex-col">
-          <div className="bg-gray-50">
+          <div className="bg-red-500">
             <TopNavbar 
               businessToggle={businessToggle}
               builderToggle={builderToggle}
