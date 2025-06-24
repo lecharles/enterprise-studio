@@ -48,6 +48,10 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
               <div className="h-full bg-white relative">
                 {/* Buttons in top right */}
                 <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                  <div className="flex items-center gap-1 text-xs">
+                    <span className="text-black font-bold">1975</span>
+                    <span className="text-gray-500">tokens</span>
+                  </div>
                   <Button
                     variant="outline"
                     size="sm"
@@ -86,6 +90,10 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                 <div className="h-full bg-white border-r border-gray-200 relative">
                   {/* Buttons in top right of middle panel */}
                   <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                    <div className="flex items-center gap-1 text-xs">
+                      <span className="text-black font-bold">1975</span>
+                      <span className="text-gray-500">tokens</span>
+                    </div>
                     <Button
                       variant="outline"
                       size="sm"

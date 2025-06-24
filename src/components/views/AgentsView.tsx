@@ -176,21 +176,11 @@ Provide messages or content as short, well-structured paragraphs or bullet point
     </div>
   );
 
-  const rightPanelContent = (
-    <div className="p-4">
-      <div className="flex items-center gap-1">
-        <span className="text-black font-bold">1975</span>
-        <span className="text-gray-500">tokens</span>
-      </div>
-    </div>
-  );
-
   return (
     <TooltipProvider>
       <AgentsViewLayout
         leftPanelContent={leftPanelContent}
         middlePanelContent={middlePanelContent}
-        rightPanelContent={rightPanelContent}
       />
       
       <McpConfigurationModal
