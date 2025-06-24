@@ -203,352 +203,358 @@ Provide messages or content as short, well-structured paragraphs or bullet point
           <ResizablePanelGroup direction="horizontal" className="h-full">
             {/* Left Panel */}
             <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
-              <div className="h-full bg-white p-4 space-y-4 overflow-y-auto">
-                {/* Agent Picker */}
-                <div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className="w-full justify-between h-10 px-3 text-left font-normal border-0 bg-white hover:bg-gray-50"
-                      >
-                        <div className="flex items-center gap-2">
-                          <Bot className="w-4 h-4 text-gray-600" />
-                          <span className="text-gray-900">{selectedAgent}</span>
-                        </div>
-                        <ChevronDown className="w-4 h-4 text-gray-600" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-80 bg-white border border-gray-200 shadow-lg">
-                      {agents.map((agent) => (
-                        <DropdownMenuItem
-                          key={agent}
-                          onClick={() => setSelectedAgent(agent)}
-                          className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-gray-50"
+              <div className="h-full bg-white flex flex-col">
+                {/* Fixed Left Panel Header */}
+                <div className="flex-shrink-0 p-4 pb-2">
+                  {/* Agent Picker */}
+                  <div>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className="w-full justify-between h-10 px-3 text-left font-normal border-0 bg-white hover:bg-gray-50"
                         >
-                          <span className="text-gray-900">{agent}</span>
-                          {selectedAgent === agent && (
-                            <Check className="w-4 h-4 text-blue-600" />
-                          )}
+                          <div className="flex items-center gap-2">
+                            <Bot className="w-4 h-4 text-gray-600" />
+                            <span className="text-gray-900">{selectedAgent}</span>
+                          </div>
+                          <ChevronDown className="w-4 h-4 text-gray-600" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="w-80 bg-white border border-gray-200 shadow-lg">
+                        {agents.map((agent) => (
+                          <DropdownMenuItem
+                            key={agent}
+                            onClick={() => setSelectedAgent(agent)}
+                            className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-gray-50"
+                          >
+                            <span className="text-gray-900">{agent}</span>
+                            {selectedAgent === agent && (
+                              <Check className="w-4 h-4 text-blue-600" />
+                            )}
+                          </DropdownMenuItem>
+                        ))}
+                        <DropdownMenuSeparator className="my-1" />
+                        <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gray-50 text-gray-600">
+                          <Plus className="w-4 h-4" />
+                          <span>Create agent</span>
                         </DropdownMenuItem>
-                      ))}
-                      <DropdownMenuSeparator className="my-1" />
-                      <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gray-50 text-gray-600">
-                        <Plus className="w-4 h-4" />
-                        <span>Create agent</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
                 </div>
 
-                {/* Name Field */}
-                <div className="space-y-2">
-                  <Label htmlFor="agent-name" className="text-sm font-medium text-gray-700">
-                    Name
-                  </Label>
-                  <Input
-                    id="agent-name"
-                    value={agentName}
-                    onChange={(e) => setAgentName(e.target.value)}
-                    className="w-full"
-                  />
-                  <p className="text-xs text-gray-500">asst_jKdmIBZu1Pptpd4q7JqD5</p>
-                </div>
-
-                {/* System Instructions Field */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="system-instructions" className="text-sm font-medium text-gray-700">
-                      System instructions
+                {/* Scrollable Left Panel Content */}
+                <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-4">
+                  {/* Name Field */}
+                  <div className="space-y-2">
+                    <Label htmlFor="agent-name" className="text-sm font-medium text-gray-700">
+                      Name
                     </Label>
-                    <div className="flex items-center gap-1">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-6 w-6 p-0 hover:bg-gray-100"
-                      >
-                        <Sparkle className="w-4 h-4 text-gray-900" />
-                      </Button>
+                    <Input
+                      id="agent-name"
+                      value={agentName}
+                      onChange={(e) => setAgentName(e.target.value)}
+                      className="w-full"
+                    />
+                    <p className="text-xs text-gray-500">asst_jKdmIBZu1Pptpd4q7JqD5</p>
+                  </div>
+
+                  {/* System Instructions Field */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="system-instructions" className="text-sm font-medium text-gray-700">
+                        System instructions
+                      </Label>
+                      <div className="flex items-center gap-1">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-6 w-6 p-0 hover:bg-gray-100"
+                        >
+                          <Sparkle className="w-4 h-4 text-gray-900" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => setShowFullInstructions(!showFullInstructions)}
+                          className="h-6 w-6 p-0 hover:bg-gray-100"
+                        >
+                          {showFullInstructions ? (
+                            <ChevronUp className="w-4 h-4 text-gray-600" />
+                          ) : (
+                            <ChevronDown className="w-4 h-4 text-gray-600" />
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="relative">
+                      <Textarea
+                        id="system-instructions"
+                        value={systemInstructions}
+                        onChange={(e) => setSystemInstructions(e.target.value)}
+                        className={`w-full resize-none transition-all duration-200 pr-8 ${
+                          showFullInstructions ? 'min-h-[200px]' : 'min-h-[80px]'
+                        }`}
+                        placeholder="Enter system instructions..."
+                      />
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => setShowFullInstructions(!showFullInstructions)}
-                        className="h-6 w-6 p-0 hover:bg-gray-100"
+                        className="absolute bottom-2 right-2 h-6 w-6 p-0 hover:bg-gray-100"
                       >
                         {showFullInstructions ? (
                           <ChevronUp className="w-4 h-4 text-gray-600" />
                         ) : (
-                          <ChevronDown className="w-4 h-4 text-gray-600" />
+                          <Expand className="w-4 h-4 text-gray-600" />
                         )}
                       </Button>
                     </div>
                   </div>
-                  <div className="relative">
-                    <Textarea
-                      id="system-instructions"
-                      value={systemInstructions}
-                      onChange={(e) => setSystemInstructions(e.target.value)}
-                      className={`w-full resize-none transition-all duration-200 pr-8 ${
-                        showFullInstructions ? 'min-h-[200px]' : 'min-h-[80px]'
-                      }`}
-                      placeholder="Enter system instructions..."
-                    />
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setShowFullInstructions(!showFullInstructions)}
-                      className="absolute bottom-2 right-2 h-6 w-6 p-0 hover:bg-gray-100"
-                    >
-                      {showFullInstructions ? (
-                        <ChevronUp className="w-4 h-4 text-gray-600" />
-                      ) : (
-                        <Expand className="w-4 h-4 text-gray-600" />
-                      )}
-                    </Button>
-                  </div>
-                </div>
 
-                {/* Model Field */}
-                <div className="space-y-2">
-                  <Label htmlFor="model-select" className="text-sm font-medium text-gray-700">
-                    Model
-                  </Label>
-                  <Popover open={openModelCombobox} onOpenChange={setOpenModelCombobox}>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        aria-expanded={openModelCombobox}
-                        className="w-full justify-between"
-                      >
-                        {selectedModel
-                          ? models.find((model) => model.value === selectedModel)?.label
-                          : "Select a model..."}
-                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-full p-0" align="start">
-                      <Command>
-                        <CommandInput placeholder="Select a model..." />
-                        <CommandList>
-                          <CommandEmpty>No model found.</CommandEmpty>
-                          <CommandGroup>
-                            {models.map((model) => (
-                              <CommandItem
-                                key={model.value}
-                                value={model.value}
-                                onSelect={(currentValue) => {
-                                  setSelectedModel(currentValue === selectedModel ? "" : currentValue);
-                                  setOpenModelCombobox(false);
-                                }}
-                              >
-                                <Check
-                                  className={cn(
-                                    "mr-2 h-4 w-4",
-                                    selectedModel === model.value ? "opacity-100" : "opacity-0"
-                                  )}
-                                />
-                                {model.label}
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                        </CommandList>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                </div>
-
-                {/* TOOLS Section - More Compact */}
-                <div className="space-y-3">
-                  <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">TOOLS</h3>
-                  
-                  {/* File Search */}
-                  <div className="flex items-center justify-between py-1">
-                    <div className="flex items-center gap-2">
-                      <Switch 
-                        checked={fileSearchEnabled}
-                        onCheckedChange={setFileSearchEnabled}
-                        className="data-[state=checked]:bg-green-500 h-4 w-7"
-                      />
-                      <div className="flex items-center gap-1">
-                        <span className="text-xs text-gray-900">File Search</span>
-                        <Info className="w-3 h-3 text-gray-400" />
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Button variant="ghost" size="sm" className="h-6 px-1 text-xs text-gray-600 hover:bg-gray-100">
-                        <Settings className="w-3 h-3" />
-                      </Button>
-                      <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-                        <Plus className="w-3 h-3 mr-1" />
-                        Files
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* Connectors */}
+                  {/* Model Field */}
                   <div className="space-y-2">
+                    <Label htmlFor="model-select" className="text-sm font-medium text-gray-700">
+                      Model
+                    </Label>
+                    <Popover open={openModelCombobox} onOpenChange={setOpenModelCombobox}>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          aria-expanded={openModelCombobox}
+                          className="w-full justify-between"
+                        >
+                          {selectedModel
+                            ? models.find((model) => model.value === selectedModel)?.label
+                            : "Select a model..."}
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-full p-0" align="start">
+                        <Command>
+                          <CommandInput placeholder="Select a model..." />
+                          <CommandList>
+                            <CommandEmpty>No model found.</CommandEmpty>
+                            <CommandGroup>
+                              {models.map((model) => (
+                                <CommandItem
+                                  key={model.value}
+                                  value={model.value}
+                                  onSelect={(currentValue) => {
+                                    setSelectedModel(currentValue === selectedModel ? "" : currentValue);
+                                    setOpenModelCombobox(false);
+                                  }}
+                                >
+                                  <Check
+                                    className={cn(
+                                      "mr-2 h-4 w-4",
+                                      selectedModel === model.value ? "opacity-100" : "opacity-0"
+                                    )}
+                                  />
+                                  {model.label}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+
+                  {/* TOOLS Section - More Compact */}
+                  <div className="space-y-3">
+                    <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">TOOLS</h3>
+                    
+                    {/* File Search */}
                     <div className="flex items-center justify-between py-1">
                       <div className="flex items-center gap-2">
                         <Switch 
-                          checked={connectorsEnabled}
-                          onCheckedChange={setConnectorsEnabled}
+                          checked={fileSearchEnabled}
+                          onCheckedChange={setFileSearchEnabled}
                           className="data-[state=checked]:bg-green-500 h-4 w-7"
                         />
                         <div className="flex items-center gap-1">
-                          <span className="text-xs text-gray-900">Connectors</span>
+                          <span className="text-xs text-gray-900">File Search</span>
                           <Info className="w-3 h-3 text-gray-400" />
                         </div>
                       </div>
-                      <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-                        <Plus className="w-3 h-3 mr-1" />
-                        Connectors
-                      </Button>
-                    </div>
-                    
-                    {/* Connector Items with individual toggles */}
-                    <div className="space-y-1.5 ml-6">
-                      {/* HubSpot Email */}
-                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
-                        <div className="flex items-center gap-2">
-                          <Switch 
-                            checked={connectorStates.hubspot}
-                            onCheckedChange={() => toggleConnector('hubspot')}
-                            className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
-                          />
-                          <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="w-4 h-4" />
-                          <span className="text-gray-900">HubSpot Email</span>
-                        </div>
-                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
-                          <Trash2 className="w-3 h-3 text-gray-600" />
-                        </Button>
-                      </div>
-
-                      {/* LinkedIn Campaign */}
-                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
-                        <div className="flex items-center gap-2">
-                          <Switch 
-                            checked={connectorStates.linkedin}
-                            onCheckedChange={() => toggleConnector('linkedin')}
-                            className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
-                          />
-                          <img src="/lovable-uploads/d714029c-55c2-4ca0-bc7a-e651c82e23cd.png" alt="LinkedIn" className="w-4 h-4" />
-                          <span className="text-gray-900">LinkedIn Campaign</span>
-                        </div>
-                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
-                          <Trash2 className="w-3 h-3 text-gray-600" />
-                        </Button>
-                      </div>
-
-                      {/* WhatsApp Business API */}
-                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
-                        <div className="flex items-center gap-2">
-                          <Switch 
-                            checked={connectorStates.whatsapp}
-                            onCheckedChange={() => toggleConnector('whatsapp')}
-                            className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
-                          />
-                          <img src="/lovable-uploads/ff21a3b9-4cda-4164-a4e9-2b3f2f98a3f4.png" alt="WhatsApp" className="w-4 h-4" />
-                          <span className="text-gray-900">WhatsApp Business API</span>
-                        </div>
-                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
-                          <Trash2 className="w-3 h-3 text-gray-600" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Functions */}
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between py-1">
                       <div className="flex items-center gap-1">
-                        <span className="text-xs font-medium text-gray-900">Functions</span>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
+                        <Button variant="ghost" size="sm" className="h-6 px-1 text-xs text-gray-600 hover:bg-gray-100">
+                          <Settings className="w-3 h-3" />
+                        </Button>
+                        <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                          <Plus className="w-3 h-3 mr-1" />
+                          Files
+                        </Button>
+                      </div>
+                    </div>
+
+                    {/* Connectors */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between py-1">
+                        <div className="flex items-center gap-2">
+                          <Switch 
+                            checked={connectorsEnabled}
+                            onCheckedChange={setConnectorsEnabled}
+                            className="data-[state=checked]:bg-green-500 h-4 w-7"
+                          />
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs text-gray-900">Connectors</span>
                             <Info className="w-3 h-3 text-gray-400" />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>api, mcp, a2a, etc</p>
-                          </TooltipContent>
-                        </Tooltip>
+                          </div>
+                        </div>
+                        <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                          <Plus className="w-3 h-3 mr-1" />
+                          Connectors
+                        </Button>
                       </div>
-                      <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-                        <Plus className="w-3 h-3 mr-1" />
-                        Functions
-                      </Button>
+                      
+                      {/* Connector Items with individual toggles */}
+                      <div className="space-y-1.5 ml-6">
+                        {/* HubSpot Email */}
+                        <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                          <div className="flex items-center gap-2">
+                            <Switch 
+                              checked={connectorStates.hubspot}
+                              onCheckedChange={() => toggleConnector('hubspot')}
+                              className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
+                            />
+                            <img src="/lovable-uploads/6bee7530-ab07-4ee8-8ae5-8653bb0b5301.png" alt="HubSpot" className="w-4 h-4" />
+                            <span className="text-gray-900">HubSpot Email</span>
+                          </div>
+                          <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                            <Trash2 className="w-3 h-3 text-gray-600" />
+                          </Button>
+                        </div>
+
+                        {/* LinkedIn Campaign */}
+                        <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                          <div className="flex items-center gap-2">
+                            <Switch 
+                              checked={connectorStates.linkedin}
+                              onCheckedChange={() => toggleConnector('linkedin')}
+                              className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
+                            />
+                            <img src="/lovable-uploads/d714029c-55c2-4ca0-bc7a-e651c82e23cd.png" alt="LinkedIn" className="w-4 h-4" />
+                            <span className="text-gray-900">LinkedIn Campaign</span>
+                          </div>
+                          <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                            <Trash2 className="w-3 h-3 text-gray-600" />
+                          </Button>
+                        </div>
+
+                        {/* WhatsApp Business API */}
+                        <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                          <div className="flex items-center gap-2">
+                            <Switch 
+                              checked={connectorStates.whatsapp}
+                              onCheckedChange={() => toggleConnector('whatsapp')}
+                              className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
+                            />
+                            <img src="/lovable-uploads/ff21a3b9-4cda-4164-a4e9-2b3f2f98a3f4.png" alt="WhatsApp" className="w-4 h-4" />
+                            <span className="text-gray-900">WhatsApp Business API</span>
+                          </div>
+                          <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                            <Trash2 className="w-3 h-3 text-gray-600" />
+                          </Button>
+                        </div>
+                      </div>
                     </div>
+
+                    {/* Functions */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between py-1">
+                        <div className="flex items-center gap-1">
+                          <span className="text-xs font-medium text-gray-900">Functions</span>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Info className="w-3 h-3 text-gray-400" />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>api, mcp, a2a, etc</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                          <Plus className="w-3 h-3 mr-1" />
+                          Functions
+                        </Button>
+                      </div>
+                      
+                      {/* Twilio SMS Function Item */}
+                      <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                        <div className="flex items-center gap-2">
+                          <Switch 
+                            checked={functionStates.twilioSms}
+                            onCheckedChange={() => toggleFunction('twilioSms')}
+                            className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
+                          />
+                          <img src="/lovable-uploads/181b29ba-d8ff-4a97-8705-41d2fdf24153.png" alt="MCP" className="w-4 h-4" />
+                          <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="h-4 w-4 p-0 hover:bg-gray-200"
+                            onClick={() => showMcpConfiguration(twilioMcpConfig)}
+                          >
+                            <CodeXml className="w-3 h-3 text-gray-600" />
+                          </Button>
+                          <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                            <Trash2 className="w-3 h-3 text-gray-600" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* MODEL CONFIGURATION Section */}
+                  <div className="space-y-3 border-t border-gray-200 pt-4">
+                    <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">MODEL CONFIGURATION</h3>
                     
-                    {/* Twilio SMS Function Item */}
-                    <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                    {/* Response format */}
+                    <div className="space-y-2">
+                      <Label htmlFor="response-format" className="text-sm font-medium text-gray-700">
+                        Response format
+                      </Label>
+                      <Select value={responseFormat} onValueChange={setResponseFormat}>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Select response format" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {responseFormats.map((format) => (
+                            <SelectItem key={format.value} value={format.value}>
+                              {format.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Bottom section with buttons and timestamp */}
+                    <div className="flex items-center justify-between pt-4">
                       <div className="flex items-center gap-2">
-                        <Switch 
-                          checked={functionStates.twilioSms}
-                          onCheckedChange={() => toggleFunction('twilioSms')}
-                          className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
-                        />
-                        <img src="/lovable-uploads/181b29ba-d8ff-4a97-8705-41d2fdf24153.png" alt="MCP" className="w-4 h-4" />
-                        <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Button 
-                          variant="ghost" 
-                          size="sm" 
-                          className="h-4 w-4 p-0 hover:bg-gray-200"
-                          onClick={() => showMcpConfiguration(twilioMcpConfig)}
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 w-8 p-0 hover:bg-gray-100 text-gray-600"
                         >
-                          <CodeXml className="w-3 h-3 text-gray-600" />
+                          <Trash2 className="w-4 h-4" />
                         </Button>
-                        <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
-                          <Trash2 className="w-3 h-3 text-gray-600" />
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-8 px-2 hover:bg-gray-100 text-gray-600 text-xs"
+                        >
+                          Clone
                         </Button>
                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* MODEL CONFIGURATION Section */}
-                <div className="space-y-3 border-t border-gray-200 pt-4">
-                  <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">MODEL CONFIGURATION</h3>
-                  
-                  {/* Response format */}
-                  <div className="space-y-2">
-                    <Label htmlFor="response-format" className="text-sm font-medium text-gray-700">
-                      Response format
-                    </Label>
-                    <Select value={responseFormat} onValueChange={setResponseFormat}>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select response format" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {responseFormats.map((format) => (
-                          <SelectItem key={format.value} value={format.value}>
-                            {format.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Bottom section with buttons and timestamp */}
-                  <div className="flex items-center justify-between pt-4">
-                    <div className="flex items-center gap-2">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-8 w-8 p-0 hover:bg-gray-100 text-gray-600"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-8 px-2 hover:bg-gray-100 text-gray-600 text-xs"
-                      >
-                        Clone
-                      </Button>
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      Updated 6/22,<br />7:22 PM
+                      <div className="text-xs text-gray-500">
+                        Updated 6/22,<br />7:22 PM
+                      </div>
                     </div>
                   </div>
                 </div>
