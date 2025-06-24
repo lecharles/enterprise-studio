@@ -7,6 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { BookOpen, MoreHorizontal, Logs, ChevronDown, Check, Plus, Bot, ChevronUp, Sparkle, Expand, ChevronsUpDown, Settings, File, Trash2, Info, CodeXml } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import {
@@ -105,319 +106,328 @@ Provide messages or content as short, well-structured paragraphs or bullet point
   ];
 
   return (
-    <div className="h-full bg-white flex flex-col">
-      {/* Sub-header */}
-      <div className="px-6 py-2 border-b border-gray-200 flex-shrink-0">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold text-gray-900">Agents</h1>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm" className="flex items-center gap-2 text-gray-600 hover:bg-gray-50 h-8 px-2 text-xs border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-              <BookOpen className="w-3 h-3" />
-              <span>Learn more</span>
-            </Button>
-            <Button variant="outline" size="sm" className="px-1.5 hover:bg-gray-50 h-8 w-8 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-              <MoreHorizontal className="w-3 h-3 text-gray-600" />
-            </Button>
+    <TooltipProvider>
+      <div className="h-full bg-white flex flex-col">
+        {/* Sub-header */}
+        <div className="px-6 py-2 border-b border-gray-200 flex-shrink-0">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-semibold text-gray-900">Agents</h1>
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm" className="flex items-center gap-2 text-gray-600 hover:bg-gray-50 h-8 px-2 text-xs border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                <BookOpen className="w-3 h-3" />
+                <span>Learn more</span>
+              </Button>
+              <Button variant="outline" size="sm" className="px-1.5 hover:bg-gray-50 h-8 w-8 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                <MoreHorizontal className="w-3 h-3 text-gray-600" />
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main content area with resizable panels */}
-      <div className="flex-1 relative">
-        <ResizablePanelGroup direction="horizontal" className="h-full">
-          {/* Left Panel */}
-          <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
-            <div className="h-full bg-white p-4 space-y-4 overflow-y-auto">
-              {/* Agent Picker */}
-              <div>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className="w-full justify-between h-10 px-3 text-left font-normal border-0 bg-white hover:bg-gray-50"
-                    >
-                      <div className="flex items-center gap-2">
-                        <Bot className="w-4 h-4 text-gray-600" />
-                        <span className="text-gray-900">{selectedAgent}</span>
-                      </div>
-                      <ChevronDown className="w-4 h-4 text-gray-600" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-80 bg-white border border-gray-200 shadow-lg">
-                    {agents.map((agent) => (
-                      <DropdownMenuItem
-                        key={agent}
-                        onClick={() => setSelectedAgent(agent)}
-                        className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-gray-50"
+        {/* Main content area with resizable panels */}
+        <div className="flex-1 relative">
+          <ResizablePanelGroup direction="horizontal" className="h-full">
+            {/* Left Panel */}
+            <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
+              <div className="h-full bg-white p-4 space-y-4 overflow-y-auto">
+                {/* Agent Picker */}
+                <div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className="w-full justify-between h-10 px-3 text-left font-normal border-0 bg-white hover:bg-gray-50"
                       >
-                        <span className="text-gray-900">{agent}</span>
-                        {selectedAgent === agent && (
-                          <Check className="w-4 h-4 text-blue-600" />
-                        )}
+                        <div className="flex items-center gap-2">
+                          <Bot className="w-4 h-4 text-gray-600" />
+                          <span className="text-gray-900">{selectedAgent}</span>
+                        </div>
+                        <ChevronDown className="w-4 h-4 text-gray-600" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-80 bg-white border border-gray-200 shadow-lg">
+                      {agents.map((agent) => (
+                        <DropdownMenuItem
+                          key={agent}
+                          onClick={() => setSelectedAgent(agent)}
+                          className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-gray-50"
+                        >
+                          <span className="text-gray-900">{agent}</span>
+                          {selectedAgent === agent && (
+                            <Check className="w-4 h-4 text-blue-600" />
+                          )}
+                        </DropdownMenuItem>
+                      ))}
+                      <DropdownMenuSeparator className="my-1" />
+                      <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gray-50 text-gray-600">
+                        <Plus className="w-4 h-4" />
+                        <span>Create agent</span>
                       </DropdownMenuItem>
-                    ))}
-                    <DropdownMenuSeparator className="my-1" />
-                    <DropdownMenuItem className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-gray-50 text-gray-600">
-                      <Plus className="w-4 h-4" />
-                      <span>Create agent</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
 
-              {/* Name Field */}
-              <div className="space-y-2">
-                <Label htmlFor="agent-name" className="text-sm font-medium text-gray-700">
-                  Name
-                </Label>
-                <Input
-                  id="agent-name"
-                  value={agentName}
-                  onChange={(e) => setAgentName(e.target.value)}
-                  className="w-full"
-                />
-                <p className="text-xs text-gray-500">asst_jKdmIBZu1Pptpd4q7JqD5</p>
-              </div>
-
-              {/* System Instructions Field */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="system-instructions" className="text-sm font-medium text-gray-700">
-                    System instructions
+                {/* Name Field */}
+                <div className="space-y-2">
+                  <Label htmlFor="agent-name" className="text-sm font-medium text-gray-700">
+                    Name
                   </Label>
-                  <div className="flex items-center gap-1">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-6 w-6 p-0 hover:bg-gray-100"
-                    >
-                      <Sparkle className="w-4 h-4 text-gray-900" />
-                    </Button>
+                  <Input
+                    id="agent-name"
+                    value={agentName}
+                    onChange={(e) => setAgentName(e.target.value)}
+                    className="w-full"
+                  />
+                  <p className="text-xs text-gray-500">asst_jKdmIBZu1Pptpd4q7JqD5</p>
+                </div>
+
+                {/* System Instructions Field */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="system-instructions" className="text-sm font-medium text-gray-700">
+                      System instructions
+                    </Label>
+                    <div className="flex items-center gap-1">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-6 w-6 p-0 hover:bg-gray-100"
+                      >
+                        <Sparkle className="w-4 h-4 text-gray-900" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setShowFullInstructions(!showFullInstructions)}
+                        className="h-6 w-6 p-0 hover:bg-gray-100"
+                      >
+                        {showFullInstructions ? (
+                          <ChevronUp className="w-4 h-4 text-gray-600" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-gray-600" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <Textarea
+                      id="system-instructions"
+                      value={systemInstructions}
+                      onChange={(e) => setSystemInstructions(e.target.value)}
+                      className={`w-full resize-none transition-all duration-200 pr-8 ${
+                        showFullInstructions ? 'min-h-[200px]' : 'min-h-[80px]'
+                      }`}
+                      placeholder="Enter system instructions..."
+                    />
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setShowFullInstructions(!showFullInstructions)}
-                      className="h-6 w-6 p-0 hover:bg-gray-100"
+                      className="absolute bottom-2 right-2 h-6 w-6 p-0 hover:bg-gray-100"
                     >
                       {showFullInstructions ? (
                         <ChevronUp className="w-4 h-4 text-gray-600" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 text-gray-600" />
+                        <Expand className="w-4 h-4 text-gray-600" />
                       )}
                     </Button>
                   </div>
                 </div>
-                <div className="relative">
-                  <Textarea
-                    id="system-instructions"
-                    value={systemInstructions}
-                    onChange={(e) => setSystemInstructions(e.target.value)}
-                    className={`w-full resize-none transition-all duration-200 pr-8 ${
-                      showFullInstructions ? 'min-h-[200px]' : 'min-h-[80px]'
-                    }`}
-                    placeholder="Enter system instructions..."
-                  />
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowFullInstructions(!showFullInstructions)}
-                    className="absolute bottom-2 right-2 h-6 w-6 p-0 hover:bg-gray-100"
-                  >
-                    {showFullInstructions ? (
-                      <ChevronUp className="w-4 h-4 text-gray-600" />
-                    ) : (
-                      <Expand className="w-4 h-4 text-gray-600" />
-                    )}
-                  </Button>
-                </div>
-              </div>
 
-              {/* Model Field */}
-              <div className="space-y-2">
-                <Label htmlFor="model-select" className="text-sm font-medium text-gray-700">
-                  Model
-                </Label>
-                <Popover open={openModelCombobox} onOpenChange={setOpenModelCombobox}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      aria-expanded={openModelCombobox}
-                      className="w-full justify-between"
-                    >
-                      {selectedModel
-                        ? models.find((model) => model.value === selectedModel)?.label
-                        : "Select a model..."}
-                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-full p-0" align="start">
-                    <Command>
-                      <CommandInput placeholder="Select a model..." />
-                      <CommandList>
-                        <CommandEmpty>No model found.</CommandEmpty>
-                        <CommandGroup>
-                          {models.map((model) => (
-                            <CommandItem
-                              key={model.value}
-                              value={model.value}
-                              onSelect={(currentValue) => {
-                                setSelectedModel(currentValue === selectedModel ? "" : currentValue);
-                                setOpenModelCombobox(false);
-                              }}
-                            >
-                              <Check
-                                className={cn(
-                                  "mr-2 h-4 w-4",
-                                  selectedModel === model.value ? "opacity-100" : "opacity-0"
-                                )}
-                              />
-                              {model.label}
-                            </CommandItem>
-                          ))}
-                        </CommandGroup>
-                      </CommandList>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
-              </div>
-
-              {/* TOOLS Section - More Compact */}
-              <div className="space-y-3">
-                <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">TOOLS</h3>
-                
-                {/* File Search */}
-                <div className="flex items-center justify-between py-1">
-                  <div className="flex items-center gap-2">
-                    <Switch 
-                      checked={fileSearchEnabled}
-                      onCheckedChange={setFileSearchEnabled}
-                      className="data-[state=checked]:bg-green-500 h-4 w-7"
-                    />
-                    <div className="flex items-center gap-1">
-                      <span className="text-xs text-gray-900">File Search</span>
-                      <Info className="w-3 h-3 text-gray-400" />
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Button variant="ghost" size="sm" className="h-6 px-1 text-xs text-gray-600 hover:bg-gray-100">
-                      <Settings className="w-3 h-3" />
-                    </Button>
-                    <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-                      <Plus className="w-3 h-3 mr-1" />
-                      Files
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Connectors */}
-                <div className="flex items-center justify-between py-1">
-                  <div className="flex items-center gap-2">
-                    <Switch 
-                      checked={connectorsEnabled}
-                      onCheckedChange={setConnectorsEnabled}
-                      className="data-[state=checked]:bg-green-500 h-4 w-7"
-                    />
-                    <div className="flex items-center gap-1">
-                      <span className="text-xs text-gray-900">Connectors</span>
-                      <Info className="w-3 h-3 text-gray-400" />
-                    </div>
-                  </div>
-                  <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
-                    <Plus className="w-3 h-3 mr-1" />
-                    Connectors
-                  </Button>
-                </div>
-
-                {/* Functions */}
+                {/* Model Field */}
                 <div className="space-y-2">
+                  <Label htmlFor="model-select" className="text-sm font-medium text-gray-700">
+                    Model
+                  </Label>
+                  <Popover open={openModelCombobox} onOpenChange={setOpenModelCombobox}>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        role="combobox"
+                        aria-expanded={openModelCombobox}
+                        className="w-full justify-between"
+                      >
+                        {selectedModel
+                          ? models.find((model) => model.value === selectedModel)?.label
+                          : "Select a model..."}
+                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-full p-0" align="start">
+                      <Command>
+                        <CommandInput placeholder="Select a model..." />
+                        <CommandList>
+                          <CommandEmpty>No model found.</CommandEmpty>
+                          <CommandGroup>
+                            {models.map((model) => (
+                              <CommandItem
+                                key={model.value}
+                                value={model.value}
+                                onSelect={(currentValue) => {
+                                  setSelectedModel(currentValue === selectedModel ? "" : currentValue);
+                                  setOpenModelCombobox(false);
+                                }}
+                              >
+                                <Check
+                                  className={cn(
+                                    "mr-2 h-4 w-4",
+                                    selectedModel === model.value ? "opacity-100" : "opacity-0"
+                                  )}
+                                />
+                                {model.label}
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+
+                {/* TOOLS Section - More Compact */}
+                <div className="space-y-3">
+                  <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">TOOLS</h3>
+                  
+                  {/* File Search */}
                   <div className="flex items-center justify-between py-1">
+                    <div className="flex items-center gap-2">
+                      <Switch 
+                        checked={fileSearchEnabled}
+                        onCheckedChange={setFileSearchEnabled}
+                        className="data-[state=checked]:bg-green-500 h-4 w-7"
+                      />
+                      <div className="flex items-center gap-1">
+                        <span className="text-xs text-gray-900">File Search</span>
+                        <Info className="w-3 h-3 text-gray-400" />
+                      </div>
+                    </div>
                     <div className="flex items-center gap-1">
-                      <span className="text-xs font-medium text-gray-900">Functions (api, mcp, etc)</span>
-                      <Info className="w-3 h-3 text-gray-400" />
+                      <Button variant="ghost" size="sm" className="h-6 px-1 text-xs text-gray-600 hover:bg-gray-100">
+                        <Settings className="w-3 h-3" />
+                      </Button>
+                      <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                        <Plus className="w-3 h-3 mr-1" />
+                        Files
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Connectors */}
+                  <div className="flex items-center justify-between py-1">
+                    <div className="flex items-center gap-2">
+                      <Switch 
+                        checked={connectorsEnabled}
+                        onCheckedChange={setConnectorsEnabled}
+                        className="data-[state=checked]:bg-green-500 h-4 w-7"
+                      />
+                      <div className="flex items-center gap-1">
+                        <span className="text-xs text-gray-900">Connectors</span>
+                        <Info className="w-3 h-3 text-gray-400" />
+                      </div>
                     </div>
                     <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
                       <Plus className="w-3 h-3 mr-1" />
-                      Functions
+                      Connectors
                     </Button>
                   </div>
-                  
-                  {/* Function Item */}
-                  <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center justify-center w-4 h-4 bg-gray-200 rounded text-xs">
-                        <CodeXml className="w-3 h-3 text-gray-600" />
+
+                  {/* Functions */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between py-1">
+                      <div className="flex items-center gap-1">
+                        <span className="text-xs font-medium text-gray-900">Functions</span>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Info className="w-3 h-3 text-gray-400" />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>API, MCP, A2A, Etc...</p>
+                          </TooltipContent>
+                        </Tooltip>
                       </div>
-                      <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
+                      <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-0" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
+                        <Plus className="w-3 h-3 mr-1" />
+                        Functions
+                      </Button>
                     </div>
-                    <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
-                      <Trash2 className="w-3 h-3 text-gray-600" />
-                    </Button>
+                    
+                    {/* Function Item */}
+                    <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center justify-center w-4 h-4 bg-gray-200 rounded text-xs">
+                          <CodeXml className="w-3 h-3 text-gray-600" />
+                        </div>
+                        <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
+                      </div>
+                      <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                        <Trash2 className="w-3 h-3 text-gray-600" />
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </ResizablePanel>
-
-          <ResizableHandle withHandle />
-
-          {!showLogs ? (
-            /* 2-panel state: Right panel with Logs button */
-            <ResizablePanel defaultSize={67}>
-              <div className="h-full bg-white relative">
-                {/* Logs button in top right */}
-                <div className="absolute top-4 right-4 z-10">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setShowLogs(true)}
-                    className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-3 text-xs border-0 bg-transparent"
-                  >
-                    <Logs className="w-3 h-3" />
-                    <span>Logs</span>
-                  </Button>
-                </div>
-                {/* Right panel content placeholder */}
-                <div className="h-full p-4">
                 </div>
               </div>
             </ResizablePanel>
-          ) : (
-            /* 3-panel state: Middle and Right panels */
-            <>
-              {/* Middle Panel */}
-              <ResizablePanel defaultSize={37} minSize={25} maxSize={50}>
-                <div className="h-full bg-white border-r border-gray-200 p-4">
-                  {/* Middle panel content placeholder */}
-                </div>
-              </ResizablePanel>
 
-              <ResizableHandle withHandle />
+            <ResizableHandle withHandle />
 
-              {/* Right Panel (Logs) */}
-              <ResizablePanel defaultSize={30} minSize={20} maxSize={40}>
+            {!showLogs ? (
+              /* 2-panel state: Right panel with Logs button */
+              <ResizablePanel defaultSize={67}>
                 <div className="h-full bg-white relative">
-                  {/* Hide logs button in top right */}
+                  {/* Logs button in top right */}
                   <div className="absolute top-4 right-4 z-10">
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => setShowLogs(false)}
+                      onClick={() => setShowLogs(true)}
                       className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-3 text-xs border-0 bg-transparent"
                     >
                       <Logs className="w-3 h-3" />
-                      <span>Hide logs</span>
+                      <span>Logs</span>
                     </Button>
                   </div>
-                  {/* Logs panel content placeholder */}
+                  {/* Right panel content placeholder */}
                   <div className="h-full p-4">
                   </div>
                 </div>
               </ResizablePanel>
-            </>
-          )}
-        </ResizablePanelGroup>
+            ) : (
+              /* 3-panel state: Middle and Right panels */
+              <>
+                {/* Middle Panel */}
+                <ResizablePanel defaultSize={37} minSize={25} maxSize={50}>
+                  <div className="h-full bg-white border-r border-gray-200 p-4">
+                    {/* Middle panel content placeholder */}
+                  </div>
+                </ResizablePanel>
+
+                <ResizableHandle withHandle />
+
+                {/* Right Panel (Logs) */}
+                <ResizablePanel defaultSize={30} minSize={20} maxSize={40}>
+                  <div className="h-full bg-white relative">
+                    {/* Hide logs button in top right */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setShowLogs(false)}
+                        className="flex items-center gap-2 text-gray-600 hover:bg-gray-100 active:bg-gray-200 h-8 px-3 text-xs border-0 bg-transparent"
+                      >
+                        <Logs className="w-3 h-3" />
+                        <span>Hide logs</span>
+                      </Button>
+                    </div>
+                    {/* Logs panel content placeholder */}
+                    <div className="h-full p-4">
+                    </div>
+                  </div>
+                </ResizablePanel>
+              </>
+            )}
+          </ResizablePanelGroup>
+        </div>
       </div>
-    </div>
+    </TooltipProvider>
   );
 }
