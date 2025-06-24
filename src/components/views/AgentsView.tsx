@@ -180,36 +180,38 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                   <Label htmlFor="system-instructions" className="text-sm font-medium text-gray-700">
                     System instructions
                   </Label>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-6 w-6 p-0 hover:bg-gray-100"
-                  >
-                    <Sparkle className="w-4 h-4 text-gray-900" />
-                  </Button>
+                  <div className="flex items-center gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-6 w-6 p-0 hover:bg-gray-100"
+                    >
+                      <Sparkle className="w-4 h-4 text-gray-900" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowFullInstructions(!showFullInstructions)}
+                      className="h-6 w-6 p-0 hover:bg-gray-100"
+                    >
+                      {showFullInstructions ? (
+                        <ChevronUp className="w-4 h-4 text-gray-600" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4 text-gray-600" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
                 <div className="relative">
                   <Textarea
                     id="system-instructions"
                     value={systemInstructions}
                     onChange={(e) => setSystemInstructions(e.target.value)}
-                    className={`w-full resize-none transition-all duration-200 pr-8 ${
+                    className={`w-full resize-none transition-all duration-200 ${
                       showFullInstructions ? 'min-h-[200px]' : 'min-h-[80px]'
                     }`}
                     placeholder="Enter system instructions..."
                   />
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setShowFullInstructions(!showFullInstructions)}
-                    className="absolute bottom-2 right-2 h-6 w-6 p-0 hover:bg-gray-100"
-                  >
-                    {showFullInstructions ? (
-                      <ChevronUp className="w-4 h-4 text-gray-600" />
-                    ) : (
-                      <Expand className="w-4 h-4 text-gray-600" />
-                    )}
-                  </Button>
                 </div>
               </div>
 
