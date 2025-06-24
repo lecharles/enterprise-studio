@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +10,7 @@ import { ToolsSection } from "@/components/agents/ToolsSection";
 import { ModelConfiguration } from "@/components/agents/ModelConfiguration";
 import { McpConfigurationModal } from "@/components/agents/McpConfigurationModal";
 import { AgentsViewLayout } from "@/components/agents/AgentsViewLayout";
+import { AgentConversationDemo } from "@/components/agents/AgentConversationDemo";
 
 export function AgentsView() {
   const [selectedAgent, setSelectedAgent] = useState("Outreach Automation Agent");
@@ -111,7 +113,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
   const leftPanelContent = (
     <div className="h-full bg-white flex flex-col">
       {/* Fixed Left Panel Header */}
-      <div className="flex-shrink-0 p-4 pb-2">
+      <div className="flex-shrink-0 p-4 pb-2 bg-white border-b border-gray-100 sticky top-0 z-10">
         <AgentPicker 
           selectedAgent={selectedAgent}
           onAgentChange={setSelectedAgent}
@@ -121,7 +123,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
       {/* Scrollable Left Panel Content */}
       <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-4">
         {/* Name Field */}
-        <div className="space-y-2">
+        <div className="space-y-2 pt-4">
           <Label htmlFor="agent-name" className="text-sm font-medium text-gray-700">
             Name
           </Label>
@@ -171,7 +173,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
       <AgentsViewLayout
         leftPanelContent={leftPanelContent}
         middlePanelContent={<div>Middle panel content placeholder</div>}
-        rightPanelContent={<div>Right panel content placeholder</div>}
+        rightPanelContent={<AgentConversationDemo />}
       />
       
       <McpConfigurationModal
