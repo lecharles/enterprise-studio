@@ -1,9 +1,9 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BookOpen, MoreHorizontal, Logs } from "lucide-react";
 import { Database, Trash2 } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
-import { ChatInputArea } from "@/components/chat/ChatInputArea";
 
 interface AgentsViewLayoutProps {
   leftPanelContent: React.ReactNode;
@@ -13,33 +13,11 @@ interface AgentsViewLayoutProps {
 
 export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPanelContent }: AgentsViewLayoutProps) {
   const [showLogs, setShowLogs] = useState(false);
-  
-  // Chat input states
-  const [showResearchTool, setShowResearchTool] = useState(false);
-  const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
-  const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
-  const [enabledSources, setEnabledSources] = useState({
-    web: true,
-    academic: false,
-    news: true
-  });
-
-  const onToggleSource = (sourceId: string) => {
-    setEnabledSources(prev => ({
-      ...prev,
-      [sourceId]: !prev[sourceId as keyof typeof prev]
-    }));
-  };
-
-  const handleSendMessage = (message: string) => {
-    console.log("Message sent:", message);
-    // Handle message sending logic here
-  };
 
   return (
-    <div className="h-full bg-white flex flex-col relative">
+    <div className="h-full bg-white flex flex-col">
       {/* Sub-header */}
-      <div className="px-6 py-2 border-b border-gray-200 flex-shrink-0 relative z-20">
+      <div className="px-6 py-2 border-b border-gray-200 flex-shrink-0">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-gray-900">Agents</h1>
           <div className="flex items-center gap-2">
@@ -106,7 +84,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   </Button>
                 </div>
                 {/* Right panel content */}
-                <div className="h-full p-4 pb-24">
+                <div className="h-full p-4">
                   {rightPanelContent}
                 </div>
               </div>
@@ -146,7 +124,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                       </div>
                     </div>
                   </div>
-                  <div className="h-full p-4 pt-0 pb-24">
+                  <div className="h-full p-4 pt-0">
                     {middlePanelContent}
                   </div>
                 </div>
@@ -169,10 +147,10 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                       <span>Hide logs</span>
                     </Button>
                   </div>
-                  {/* Logs panel content */}
+                  {/* Logs panel content - no thread info here when 3-panel is active */}
                   <div className="h-full p-4">
                     <div className="h-full flex flex-col">
-                      {/* Logs content will go here */}
+                      {/* No thread info in the right panel when 3-panel view is active */}
                     </div>
                   </div>
                 </div>
@@ -180,27 +158,6 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
             </>
           )}
         </ResizablePanelGroup>
-      </div>
-
-      {/* Fixed Chat Input at Bottom */}
-      <div className="fixed bottom-0 z-30 bg-white border-t border-gray-200" 
-           style={{ 
-             left: '280px', // Account for left sidebar width
-             right: '0',
-             width: showLogs ? 'calc(100% - 280px)' : 'calc(100% - 280px)'
-           }}>
-        <div className="p-4">
-          <ChatInputArea
-            showResearchTool={showResearchTool}
-            setShowResearchTool={setShowResearchTool}
-            showSourcesDropdown={showSourcesDropdown}
-            setShowSourcesDropdown={setShowSourcesDropdown}
-            setShowConnectMoreModal={setShowConnectMoreModal}
-            enabledSources={enabledSources}
-            onToggleSource={onToggleSource}
-            onSendMessage={handleSendMessage}
-          />
-        </div>
       </div>
     </div>
   );
