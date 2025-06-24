@@ -304,7 +304,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                     <Button variant="ghost" size="sm" className="h-6 px-1 text-xs text-gray-600 hover:bg-gray-100">
                       <Settings className="w-3 h-3" />
                     </Button>
-                    <Button variant="outline" size="sm" className="h-6 px-2 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                    <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-gray-300" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
                       <Plus className="w-3 h-3 mr-1" />
                       Files
                     </Button>
@@ -324,7 +324,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                       <Info className="w-3 h-3 text-gray-400" />
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="h-6 px-2 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                  <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-gray-300" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
                     <Plus className="w-3 h-3 mr-1" />
                     Connectors
                   </Button>
@@ -337,7 +337,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                       <span className="text-xs font-medium text-gray-900">Functions (api, mcp, etc)</span>
                       <Info className="w-3 h-3 text-gray-400" />
                     </div>
-                    <Button variant="outline" size="sm" className="h-6 px-2 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                    <Button variant="outline" size="sm" className="h-6 px-1.5 text-xs text-gray-600 hover:bg-gray-50 border-gray-300" style={{ backgroundColor: 'rgba(236,236,241,255)' }}>
                       <Plus className="w-3 h-3 mr-1" />
                       Functions
                     </Button>
