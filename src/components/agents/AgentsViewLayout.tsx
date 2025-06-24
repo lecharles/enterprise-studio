@@ -5,7 +5,6 @@ import { BookOpen, MoreHorizontal, Logs } from "lucide-react";
 import { Database, Trash2 } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { PlatformBuilderChatbox } from "@/components/agents/PlatformBuilderChatbox";
-import { ConversationSimulation } from "@/components/agents/ConversationSimulation";
 
 interface AgentsViewLayoutProps {
   leftPanelContent: React.ReactNode;
@@ -15,31 +14,15 @@ interface AgentsViewLayoutProps {
 
 export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPanelContent }: AgentsViewLayoutProps) {
   const [showLogs, setShowLogs] = useState(false);
-  const [showConversationSimulation, setShowConversationSimulation] = useState(false);
 
   const onSendMessage = (message: string) => {
     console.log("Sending message:", message);
-    
-    // Check for the conversation simulation trigger
-    const triggerText = `Customer: Thomas Mueller
-Company EnBW 
-Persona: Building Manager 
-Solutions: Energy Monitoring & Building Automation 
-Preferred Channels: SMS & WhatsApp 
-Segment: Enterprise`;
-    
-    const normalizeString = (str: string) => str.toLowerCase().replace(/\s+/g, ' ').trim();
-    
-    if (normalizeString(message) === normalizeString(triggerText)) {
-      console.log("Conversation simulation triggered");
-      setShowConversationSimulation(true);
-    }
   };
 
   return (
     <div className="h-full bg-white flex flex-col">
       {/* Sub-header */}
-      <div className="px-6 py-2 border-b border-gray-200 flex-shrink-0 relative z-40">
+      <div className="px-6 py-2 border-b border-gray-200 flex-shrink-0">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-gray-900">Agents</h1>
           <div className="flex items-center gap-2">
@@ -59,9 +42,7 @@ Segment: Enterprise`;
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Left Panel */}
           <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
-            <div className="relative z-10">
-              {leftPanelContent}
-            </div>
+            {leftPanelContent}
           </ResizablePanel>
 
           <ResizableHandle withHandle />
@@ -71,14 +52,14 @@ Segment: Enterprise`;
             <ResizablePanel defaultSize={67}>
               <div className="h-full bg-white relative">
                 {/* Thread info in top left for 2-panel view - aligned with buttons */}
-                <div className="absolute top-4 left-4 z-20 flex items-center h-8">
+                <div className="absolute top-4 left-4 z-10 flex items-center h-8">
                   <div className="flex items-center gap-2 text-xs">
                     <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
                     <span className="text-gray-400 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</span>
                   </div>
                 </div>
                 {/* Buttons in top right */}
-                <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+                <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
                   <div className="flex items-center gap-1 text-xs">
                     <span className="text-black font-bold">1975</span>
                     <span className="text-gray-500">tokens</span>
@@ -107,17 +88,9 @@ Segment: Enterprise`;
                     <span>Logs</span>
                   </Button>
                 </div>
-                
                 {/* Right panel content */}
-                <div className="h-full p-4 relative">
+                <div className="h-full p-4">
                   {rightPanelContent}
-                  
-                  {/* Conversation Simulation Overlay */}
-                  {showConversationSimulation && (
-                    <ConversationSimulation 
-                      onClose={() => setShowConversationSimulation(false)} 
-                    />
-                  )}
                 </div>
                 
                 {/* Chatbox for 2-panel view - positioned further down */}
@@ -136,7 +109,7 @@ Segment: Enterprise`;
               <ResizablePanel defaultSize={37} minSize={25} maxSize={50}>
                 <div className="h-full bg-white relative">
                   {/* Thread info and buttons in middle panel when logs are shown */}
-                  <div className="p-4 relative z-20">
+                  <div className="p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 text-xs">
                         <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
@@ -164,15 +137,8 @@ Segment: Enterprise`;
                       </div>
                     </div>
                   </div>
-                  <div className="h-full p-4 pt-0 relative">
+                  <div className="h-full p-4 pt-0">
                     {middlePanelContent}
-                    
-                    {/* Conversation Simulation Overlay for 3-panel view */}
-                    {showConversationSimulation && (
-                      <ConversationSimulation 
-                        onClose={() => setShowConversationSimulation(false)} 
-                      />
-                    )}
                   </div>
                   
                   {/* Chatbox for 3-panel view - positioned further down */}
@@ -191,7 +157,7 @@ Segment: Enterprise`;
               <ResizablePanel defaultSize={30} minSize={20} maxSize={40}>
                 <div className="h-full bg-white relative">
                   {/* Hide logs button in top right - NO thread info here in 3-panel view */}
-                  <div className="absolute top-4 right-4 z-20">
+                  <div className="absolute top-4 right-4 z-10">
                     <Button
                       variant="outline"
                       size="sm"
