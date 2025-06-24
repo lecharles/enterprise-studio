@@ -43,11 +43,15 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
           <ResizableHandle withHandle />
 
           {!showLogs ? (
-            /* 2-panel state: Right panel with buttons */
+            /* 2-panel state: Right panel with buttons and thread info */
             <ResizablePanel defaultSize={67}>
               <div className="h-full bg-white relative">
-                {/* Buttons in top right */}
+                {/* Thread info and buttons in top right for 2-panel view */}
                 <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+                  <div className="flex items-center gap-2 text-xs mr-4">
+                    <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
+                    <span className="text-gray-400 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</span>
+                  </div>
                   <div className="flex items-center gap-1 text-xs">
                     <span className="text-black font-bold">1975</span>
                     <span className="text-gray-500">tokens</span>
@@ -128,7 +132,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
               {/* Right Panel (Logs) */}
               <ResizablePanel defaultSize={30} minSize={20} maxSize={40}>
                 <div className="h-full bg-white relative">
-                  {/* Hide logs button in top right */}
+                  {/* Hide logs button in top right - NO thread info here in 3-panel view */}
                   <div className="absolute top-4 right-4 z-10">
                     <Button
                       variant="outline"
@@ -143,12 +147,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   {/* Logs panel content - no thread info here when 3-panel is active */}
                   <div className="h-full p-4">
                     <div className="h-full flex flex-col">
-                      <div className="p-4">
-                        <div className="flex items-center gap-2 text-xs">
-                          <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
-                          <span className="text-gray-400 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</span>
-                        </div>
-                      </div>
+                      {/* No thread info in the right panel when 3-panel view is active */}
                     </div>
                   </div>
                 </div>
