@@ -8,11 +8,16 @@ export function PlatformBuilderDemoView() {
   const [businessToggle, setBusinessToggle] = useState(false);
   const [builderToggle, setBuilderToggle] = useState(true);
   const [selectedModel, setSelectedModel] = useState("o3");
+  const [currentView, setCurrentView] = useState("platform");
 
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
-        <AppSidebar />
+        <AppSidebar 
+          currentView={currentView}
+          onViewChange={setCurrentView}
+          builderToggle={builderToggle}
+        />
         <div className="flex-1 flex flex-col">
           <div className="bg-gray-50">
             <TopNavbar 
