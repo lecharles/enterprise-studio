@@ -79,7 +79,7 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
   ];
 
   return (
-    <Sidebar className="bg-gray-50" collapsible="icon">
+    <Sidebar className="bg-gray-50 border-r-gray-200" collapsible="icon">
       {!isCollapsed && (
         <SidebarHeader className="px-4 pt-6 pb-4">
           <div className="flex items-center justify-between mt-1">
