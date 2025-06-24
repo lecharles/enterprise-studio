@@ -159,6 +159,20 @@ Provide messages or content as short, well-structured paragraphs or bullet point
     }
   };
 
+  const renderJsonWithSyntaxHighlighting = (obj: any) => {
+    const jsonString = JSON.stringify(obj, null, 2);
+    
+    // Simple regex-based syntax highlighting
+    return jsonString
+      .replace(/"([^"]+)":/g, '<span class="text-blue-600">"$1"</span>:')
+      .replace(/: "([^"]+)"/g, ': <span class="text-green-600">"$1"</span>')
+      .replace(/: (\d+)/g, ': <span class="text-purple-600">$1</span>')
+      .replace(/\[/g, '<span class="text-gray-500">[</span>')
+      .replace(/\]/g, '<span class="text-gray-500">]</span>')
+      .replace(/{/g, '<span class="text-gray-500">{</span>')
+      .replace(/}/g, '<span class="text-gray-500">}</span>');
+  };
+
   return (
     <TooltipProvider>
       <div className="h-full bg-white flex flex-col">
@@ -573,10 +587,13 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                     </Button>
                   </div>
                 </div>
-                <div className="bg-gray-50 border rounded-lg p-4">
-                  <pre className="text-sm font-mono text-gray-800 whitespace-pre-wrap">
-                    {selectedMcpConfig ? JSON.stringify(selectedMcpConfig, null, 2) : ''}
-                  </pre>
+                <div className="bg-gray-900 border rounded-lg p-4 overflow-x-auto">
+                  <pre 
+                    className="text-sm font-mono text-gray-100 whitespace-pre-wrap"
+                    dangerouslySetInnerHTML={{
+                      __html: selectedMcpConfig ? renderJsonWithSyntaxHighlighting(selectedMcpConfig) : ''
+                    }}
+                  />
                 </div>
               </div>
               <div className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg text-sm text-gray-700 mb-4">
