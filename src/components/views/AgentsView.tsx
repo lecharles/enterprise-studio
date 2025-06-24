@@ -128,7 +128,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Left Panel */}
           <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
-            <div className="h-full bg-white p-4 space-y-6 overflow-y-auto">
+            <div className="h-full bg-white p-4 space-y-4 overflow-y-auto">
               {/* Agent Picker */}
               <div>
                 <DropdownMenu>
@@ -283,28 +283,28 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                 </Popover>
               </div>
 
-              {/* TOOLS Section */}
-              <div className="space-y-4">
-                <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide">TOOLS</h3>
+              {/* TOOLS Section - More Compact */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">TOOLS</h3>
                 
                 {/* File Search */}
-                <div className="flex items-center justify-between py-2">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-center justify-between py-1">
+                  <div className="flex items-center gap-2">
                     <Switch 
                       checked={fileSearchEnabled}
                       onCheckedChange={setFileSearchEnabled}
-                      className="data-[state=checked]:bg-green-500"
+                      className="data-[state=checked]:bg-green-500 h-4 w-7"
                     />
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-900">File Search</span>
-                      <Info className="w-4 h-4 text-gray-400" />
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs text-gray-900">File Search</span>
+                      <Info className="w-3 h-3 text-gray-400" />
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="sm" className="h-7 px-2 text-xs text-gray-600 hover:bg-gray-100">
-                      <Settings className="w-3 h-3 mr-1" />
+                  <div className="flex items-center gap-1">
+                    <Button variant="ghost" size="sm" className="h-6 px-1 text-xs text-gray-600 hover:bg-gray-100">
+                      <Settings className="w-3 h-3" />
                     </Button>
-                    <Button variant="outline" size="sm" className="h-7 px-3 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                    <Button variant="outline" size="sm" className="h-6 px-2 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
                       <Plus className="w-3 h-3 mr-1" />
                       Files
                     </Button>
@@ -312,47 +312,47 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                 </div>
 
                 {/* Connectors */}
-                <div className="flex items-center justify-between py-2">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-center justify-between py-1">
+                  <div className="flex items-center gap-2">
                     <Switch 
                       checked={connectorsEnabled}
                       onCheckedChange={setConnectorsEnabled}
-                      className="data-[state=checked]:bg-green-500"
+                      className="data-[state=checked]:bg-green-500 h-4 w-7"
                     />
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-900">Connectors</span>
-                      <Info className="w-4 h-4 text-gray-400" />
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs text-gray-900">Connectors</span>
+                      <Info className="w-3 h-3 text-gray-400" />
                     </div>
                   </div>
-                  <Button variant="outline" size="sm" className="h-7 px-3 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                  <Button variant="outline" size="sm" className="h-6 px-2 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
                     <Plus className="w-3 h-3 mr-1" />
                     Connectors
                   </Button>
                 </div>
 
                 {/* Functions */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between py-2">
-                    <div className="flex items-center gap-3">
-                      <span className="text-sm font-medium text-gray-900">Functions (api, mcp, etc)</span>
-                      <Info className="w-4 h-4 text-gray-400" />
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between py-1">
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs font-medium text-gray-900">Functions (api, mcp, etc)</span>
+                      <Info className="w-3 h-3 text-gray-400" />
                     </div>
-                    <Button variant="outline" size="sm" className="h-7 px-3 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
+                    <Button variant="outline" size="sm" className="h-6 px-2 text-xs text-gray-600 hover:bg-gray-50 border-gray-300">
                       <Plus className="w-3 h-3 mr-1" />
                       Functions
                     </Button>
                   </div>
                   
                   {/* Function Item */}
-                  <div className="flex items-center justify-between py-2 px-3 bg-gray-50 rounded-md">
+                  <div className="flex items-center justify-between py-1.5 px-2 bg-gray-50 rounded text-xs">
                     <div className="flex items-center gap-2">
-                      <div className="flex items-center justify-center w-6 h-6 bg-gray-200 rounded text-xs font-mono text-gray-600">
+                      <div className="flex items-center justify-center w-4 h-4 bg-gray-200 rounded text-xs font-mono text-gray-600">
                         {'{'}
                       </div>
-                      <span className="text-sm font-mono text-gray-900">twilio-sms-campaigns</span>
+                      <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
                     </div>
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:bg-gray-200">
-                      <Trash2 className="w-4 h-4 text-gray-600" />
+                    <Button variant="ghost" size="sm" className="h-4 w-4 p-0 hover:bg-gray-200">
+                      <Trash2 className="w-3 h-3 text-gray-600" />
                     </Button>
                   </div>
                 </div>
