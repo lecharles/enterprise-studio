@@ -30,7 +30,7 @@ export function AgentsView() {
         <ResizablePanelGroup direction="horizontal" className="h-full">
           {/* Left Panel */}
           <ResizablePanel defaultSize={33} minSize={20} maxSize={50}>
-            <div className="h-full bg-gray-50 p-4">
+            <div className="h-full bg-white p-4">
               {/* Left panel content placeholder */}
             </div>
           </ResizablePanel>
@@ -73,7 +73,7 @@ export function AgentsView() {
 
               {/* Right Panel (Logs) */}
               <ResizablePanel defaultSize={30} minSize={20} maxSize={40}>
-                <div className="h-full bg-gray-50 relative">
+                <div className="h-full bg-white relative">
                   {/* Hide logs button in top right */}
                   <div className="absolute top-4 right-4 z-10">
                     <Button
