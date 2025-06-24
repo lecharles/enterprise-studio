@@ -46,12 +46,15 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
             /* 2-panel state: Right panel with buttons and thread info */
             <ResizablePanel defaultSize={67}>
               <div className="h-full bg-white relative">
-                {/* Thread info and buttons in top right for 2-panel view */}
-                <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-                  <div className="flex items-center gap-2 text-xs mr-4">
+                {/* Thread info in top left for 2-panel view */}
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-2">
+                  <div className="flex items-center gap-2 text-xs">
                     <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
                     <span className="text-gray-400 font-mono">thread_c3ElCM6pvIl7cpoDCAjKIEeU</span>
                   </div>
+                </div>
+                {/* Buttons in top right */}
+                <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
                   <div className="flex items-center gap-1 text-xs">
                     <span className="text-black font-bold">1975</span>
                     <span className="text-gray-500">tokens</span>
@@ -91,7 +94,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
             <>
               {/* Middle Panel */}
               <ResizablePanel defaultSize={37} minSize={25} maxSize={50}>
-                <div className="h-full bg-white border-r border-gray-200 relative">
+                <div className="h-full bg-white relative">
                   {/* Thread info and buttons in middle panel when logs are shown */}
                   <div className="p-4">
                     <div className="flex items-center justify-between">
