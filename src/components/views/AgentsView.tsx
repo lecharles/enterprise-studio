@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -80,6 +79,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
   const [selectedModel, setSelectedModel] = useState("gpt-4.1");
   const [showFullInstructions, setShowFullInstructions] = useState(false);
   const [openModelCombobox, setOpenModelCombobox] = useState(false);
+  const [responseFormat, setResponseFormat] = useState("text");
   
   // Tools section state
   const [fileSearchEnabled, setFileSearchEnabled] = useState(false);
@@ -121,6 +121,12 @@ Provide messages or content as short, well-structured paragraphs or bullet point
     { value: "o1", label: "o1" },
     { value: "gpt-4o-mini-2024-07-18", label: "gpt-4o-mini-2024-07-18" },
     { value: "gpt-4o-2024-11-20", label: "gpt-4o-2024-11-20" }
+  ];
+
+  const responseFormats = [
+    { value: "text", label: "text" },
+    { value: "json_object", label: "json_object" },
+    { value: "json_schema", label: "json_schema" }
   ];
 
   const toggleConnector = (connectorId: string) => {
@@ -496,6 +502,53 @@ Provide messages or content as short, well-structured paragraphs or bullet point
                           <Trash2 className="w-3 h-3 text-gray-600" />
                         </Button>
                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* MODEL CONFIGURATION Section */}
+                <div className="space-y-3 border-t border-gray-200 pt-4">
+                  <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wide">MODEL CONFIGURATION</h3>
+                  
+                  {/* Response format */}
+                  <div className="space-y-2">
+                    <Label htmlFor="response-format" className="text-sm font-medium text-gray-700">
+                      Response format
+                    </Label>
+                    <Select value={responseFormat} onValueChange={setResponseFormat}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select response format" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {responseFormats.map((format) => (
+                          <SelectItem key={format.value} value={format.value}>
+                            {format.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Bottom section with buttons and timestamp */}
+                  <div className="flex items-center justify-between pt-4">
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 w-8 p-0 hover:bg-gray-100 text-gray-600"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-8 px-2 hover:bg-gray-100 text-gray-600 text-xs"
+                      >
+                        Clone
+                      </Button>
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      Updated 6/22,<br />7:22 PM
                     </div>
                   </div>
                 </div>
