@@ -1,4 +1,3 @@
-
 import { ChevronDown, PanelLeft } from "lucide-react";
 import {
   DropdownMenu,
@@ -49,7 +48,7 @@ export function TopNavbar({
   };
 
   return (
-    <header className="bg-red-500 pl-4 pr-6 py-4">
+    <header className="bg-gray-100 pl-4 pr-6 py-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Model Picker */}
