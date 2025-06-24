@@ -16,6 +16,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 interface TopNavbarProps {
   businessToggle: boolean;
@@ -36,6 +37,8 @@ export function TopNavbar({
 }: TopNavbarProps) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
+  const location = useLocation();
+  const isPlatformBuilder = location.pathname === "/platform/builder";
 
   const getModelDisplayName = (model: string) => {
     switch (model) {
@@ -48,7 +51,7 @@ export function TopNavbar({
   };
 
   return (
-    <header className="bg-gray-50 pl-4 pr-6 py-4">
+    <header className={`pl-4 pr-6 py-4 ${isPlatformBuilder ? 'bg-gray-50' : 'bg-white'}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Model Picker */}
