@@ -145,11 +145,17 @@ Provide messages or content as short, well-structured paragraphs or bullet point
   const twilioMcpConfig = {
     "name": "twilio-sms-campaigns",
     "description": "Send personalized SMS campaigns with Twilio",
-    "strict": false,
-    "parameters": {
-      "type": "object",
-      "properties": {},
-      "required": []
+    "functions": [
+      "send_sms_campaign",
+      "schedule_sms_sequence", 
+      "track_sms_engagement",
+      "manage_opt_outs",
+      "get_delivery_reports"
+    ],
+    "auth": "api_key",
+    "rate_limits": {
+      "messages_per_second": 100,
+      "daily_limit": 50000
     }
   };
 
