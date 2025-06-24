@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { PlatformBuilderSidebar } from "@/components/platform/PlatformBuilderSidebar";
 import { TopNavbar } from "@/components/TopNavbar";
 
 export function PlatformBuilderDemoView() {
@@ -13,10 +14,9 @@ export function PlatformBuilderDemoView() {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
-        <AppSidebar 
+        <PlatformBuilderSidebar 
           currentView={currentView}
           onViewChange={setCurrentView}
-          builderToggle={builderToggle}
         />
         <div className="flex-1 flex flex-col">
           <TopNavbar 
