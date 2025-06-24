@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { BookOpen, MoreHorizontal, Logs } from "lucide-react";
 import { Database, Trash2 } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
-import { ChatInputArea } from "@/components/chat/ChatInputArea";
+import { PlatformBuilderChatbox } from "@/components/agents/PlatformBuilderChatbox";
 
 interface AgentsViewLayoutProps {
   leftPanelContent: React.ReactNode;
@@ -14,23 +14,6 @@ interface AgentsViewLayoutProps {
 
 export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPanelContent }: AgentsViewLayoutProps) {
   const [showLogs, setShowLogs] = useState(false);
-  
-  // Chat input state
-  const [showResearchTool, setShowResearchTool] = useState(false);
-  const [showSourcesDropdown, setShowSourcesDropdown] = useState(false);
-  const [showConnectMoreModal, setShowConnectMoreModal] = useState(false);
-  const [enabledSources, setEnabledSources] = useState({
-    web: true,
-    documents: false,
-    news: true
-  });
-
-  const onToggleSource = (sourceId: string) => {
-    setEnabledSources(prev => ({
-      ...prev,
-      [sourceId]: !prev[sourceId as keyof typeof prev]
-    }));
-  };
 
   const onSendMessage = (message: string) => {
     console.log("Sending message:", message);
@@ -106,22 +89,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   </Button>
                 </div>
                 {/* Right panel content */}
-                <div className="h-full p-4 pb-24">
+                <div className="h-full p-4 pb-20">
                   {rightPanelContent}
                 </div>
                 
                 {/* Chatbox for 2-panel view - positioned at bottom of right panel */}
-                <div className="absolute bottom-4 left-4 right-4 z-20">
-                  <ChatInputArea
-                    showResearchTool={showResearchTool}
-                    setShowResearchTool={setShowResearchTool}
-                    showSourcesDropdown={showSourcesDropdown}
-                    setShowSourcesDropdown={setShowSourcesDropdown}
-                    setShowConnectMoreModal={setShowConnectMoreModal}
-                    enabledSources={enabledSources}
-                    onToggleSource={onToggleSource}
-                    onSendMessage={onSendMessage}
-                  />
+                <div className="absolute bottom-6 left-6 right-6 z-20">
+                  <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                 </div>
               </div>
             </ResizablePanel>
@@ -160,22 +134,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                       </div>
                     </div>
                   </div>
-                  <div className="h-full p-4 pt-0 pb-24">
+                  <div className="h-full p-4 pt-0 pb-20">
                     {middlePanelContent}
                   </div>
                   
                   {/* Chatbox for 3-panel view - positioned at bottom of middle panel */}
-                  <div className="absolute bottom-4 left-4 right-4 z-20">
-                    <ChatInputArea
-                      showResearchTool={showResearchTool}
-                      setShowResearchTool={setShowResearchTool}
-                      showSourcesDropdown={showSourcesDropdown}
-                      setShowSourcesDropdown={setShowSourcesDropdown}
-                      setShowConnectMoreModal={setShowConnectMoreModal}
-                      enabledSources={enabledSources}
-                      onToggleSource={onToggleSource}
-                      onSendMessage={onSendMessage}
-                    />
+                  <div className="absolute bottom-6 left-6 right-6 z-20">
+                    <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                   </div>
                 </div>
               </ResizablePanel>
