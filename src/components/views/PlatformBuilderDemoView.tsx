@@ -18,7 +18,7 @@ export function PlatformBuilderDemoView() {
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
         />
-        <div className="flex-1 flex flex-col border-l border-gray-50">
+        <div className="flex-1 flex flex-col">
           <TopNavbar 
             businessToggle={businessToggle}
             builderToggle={builderToggle}
