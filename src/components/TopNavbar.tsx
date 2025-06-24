@@ -1,4 +1,5 @@
-import { ChevronDown, PanelLeft, Check, Plus, Settings } from "lucide-react";
+
+import { ChevronDown, PanelLeft, Check, Plus, Settings, Share } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -120,7 +122,12 @@ export function TopNavbar({
           )}
         </div>
         
-        <div className="flex items-center">
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="sm" className="flex items-center gap-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100">
+            <Share className="w-4 h-4" />
+            <span>Share</span>
+          </Button>
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors">
