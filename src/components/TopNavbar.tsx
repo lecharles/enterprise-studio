@@ -1,4 +1,4 @@
-import { ChevronDown, PanelLeft } from "lucide-react";
+import { ChevronDown, PanelLeft, Check, Plus, Settings } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,41 +54,70 @@ export function TopNavbar({
     <header className={`pl-4 pr-6 py-4 ${isPlatformBuilder ? 'bg-gray-50' : 'bg-white'}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          {/* Model Picker */}
-          <Select value={selectedModel} onValueChange={onModelChange}>
-            <SelectTrigger className="w-[200px] h-8 text-base border-none bg-transparent hover:bg-gray-100 rounded-lg">
-              <div className="flex items-center gap-2">
-                <span className="text-gray-900 text-lg">ChatGPT</span>
-                <span className="text-gray-500 text-sm">{getModelDisplayName(selectedModel)}</span>
-              </div>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="gpt-4o">
-                <div className="flex flex-col">
-                  <span className="font-medium">GPT-4o</span>
-                  <span className="text-xs text-gray-500">Great for most tasks</span>
+          {/* Conditional Picker - Project for Platform Builder, Model for others */}
+          {isPlatformBuilder ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 rounded-lg px-3 py-2 transition-colors">
+                  <span className="text-gray-900 text-base font-medium">Marketing & Sales project</span>
+                  <ChevronDown className="w-4 h-4 text-gray-400" />
                 </div>
-              </SelectItem>
-              <SelectItem value="o3">
-                <div className="flex flex-col">
-                  <span className="font-medium">o3</span>
-                  <span className="text-xs text-gray-500">Uses advanced reasoning</span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64 bg-white border border-gray-200 shadow-lg">
+                <div className="px-3 py-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  PROJECTS
                 </div>
-              </SelectItem>
-              <SelectItem value="o4-mini">
-                <div className="flex flex-col">
-                  <span className="font-medium">o4-mini</span>
-                  <span className="text-xs text-gray-500">Fastest at advanced reasoning</span>
+                <DropdownMenuItem className="flex items-center gap-3 px-3 py-2 cursor-pointer">
+                  <Check className="w-4 h-4 text-gray-600" />
+                  <span>Marketing & Sales project</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="flex items-center gap-3 px-3 py-2 cursor-pointer">
+                  <Plus className="w-4 h-4 text-gray-600" />
+                  <span>Create project</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="flex items-center gap-3 px-3 py-2 cursor-pointer">
+                  <Settings className="w-4 h-4 text-gray-600" />
+                  <span>Manage projects</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Select value={selectedModel} onValueChange={onModelChange}>
+              <SelectTrigger className="w-[200px] h-8 text-base border-none bg-transparent hover:bg-gray-100 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-900 text-lg">ChatGPT</span>
+                  <span className="text-gray-500 text-sm">{getModelDisplayName(selectedModel)}</span>
                 </div>
-              </SelectItem>
-              <SelectItem value="o4-mini-high">
-                <div className="flex flex-col">
-                  <span className="font-medium">o4-mini-high</span>
-                  <span className="text-xs text-gray-500">Great at coding and visual reasoning</span>
-                </div>
-              </SelectItem>
-            </SelectContent>
-          </Select>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="gpt-4o">
+                  <div className="flex flex-col">
+                    <span className="font-medium">GPT-4o</span>
+                    <span className="text-xs text-gray-500">Great for most tasks</span>
+                  </div>
+                </SelectItem>
+                <SelectItem value="o3">
+                  <div className="flex flex-col">
+                    <span className="font-medium">o3</span>
+                    <span className="text-xs text-gray-500">Uses advanced reasoning</span>
+                  </div>
+                </SelectItem>
+                <SelectItem value="o4-mini">
+                  <div className="flex flex-col">
+                    <span className="font-medium">o4-mini</span>
+                    <span className="text-xs text-gray-500">Fastest at advanced reasoning</span>
+                  </div>
+                </SelectItem>
+                <SelectItem value="o4-mini-high">
+                  <div className="flex flex-col">
+                    <span className="font-medium">o4-mini-high</span>
+                    <span className="text-xs text-gray-500">Great at coding and visual reasoning</span>
+                  </div>
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          )}
         </div>
         
         <div className="flex items-center">
