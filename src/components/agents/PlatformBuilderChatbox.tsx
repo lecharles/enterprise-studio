@@ -26,7 +26,7 @@ export function PlatformBuilderChatbox({ onSendMessage }: PlatformBuilderChatbox
   };
 
   return (
-    <div className="bg-white border border-gray-300 rounded-lg shadow-sm" style={{ marginTop: '15px' }}>
+    <div className="bg-white border border-gray-300 rounded-lg shadow-sm" style={{ marginTop: '31px' }}>
       <div className="flex flex-col px-4 py-4">
         {/* Input field on top */}
         <Input
