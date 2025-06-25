@@ -90,13 +90,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   </Button>
                 </div>
                 
-                {/* Content area that fills most of the space */}
-                <div className="flex-1 overflow-hidden pt-16">
+                {/* Content area that fills space above chatbox */}
+                <div className="flex-1 overflow-hidden pt-16 pb-36">
                   <ConversationSimulation isVisible={true} />
                 </div>
                 
-                {/* Chatbox positioned much higher - around 40% from top */}
-                <div className="absolute top-[40%] left-6 right-6 z-20 bg-white">
+                {/* Chatbox positioned at the bottom */}
+                <div className="absolute bottom-6 left-6 right-6 z-20 bg-white">
                   <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                   <p className="text-xs text-gray-500 text-center mt-2">
                     Platform messages can be viewed by anyone at your organization using the API.
@@ -140,13 +140,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                     </div>
                   </div>
                   
-                  {/* Content area that fills most of the space */}
-                  <div className="flex-1 overflow-hidden">
+                  {/* Content area that fills space above chatbox */}
+                  <div className="flex-1 overflow-hidden pb-36">
                     <ConversationSimulation isVisible={true} />
                   </div>
                   
-                  {/* Chatbox positioned much higher - around 40% from top */}
-                  <div className="absolute top-[40%] left-6 right-6 z-20 bg-white">
+                  {/* Chatbox positioned at the bottom */}
+                  <div className="absolute bottom-6 left-6 right-6 z-20 bg-white">
                     <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                     <p className="text-xs text-gray-500 text-center mt-2">
                       Platform messages can be viewed by anyone at your organization using the API.
