@@ -3,13 +3,13 @@ import { ChevronRight } from "lucide-react";
 
 export function LogsPanel() {
   return (
-    <div className="p-4 pt-16 h-full overflow-y-auto">
-      {/* LOGS title */}
-      <div className="mb-4">
+    <div className="h-full overflow-y-auto relative">
+      {/* LOGS title positioned at same height as Hide logs button */}
+      <div className="absolute top-4 left-4 z-10">
         <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide">LOGS</h3>
       </div>
       
-      <div className="space-y-4">
+      <div className="p-4 pt-16 space-y-4">
         {/* Create a thread */}
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-xs text-gray-800">
