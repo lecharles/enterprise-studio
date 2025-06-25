@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { PlatformBuilderSidebar } from "@/components/platform/PlatformBuilderSidebar";
@@ -11,42 +11,11 @@ export function PlatformBuilderDemoView() {
   const [builderToggle, setBuilderToggle] = useState(true);
   const [selectedModel, setSelectedModel] = useState("o3");
   const [currentView, setCurrentView] = useState("agents");
-  const [evaluationsCounter, setEvaluationsCounter] = useState(0);
-  const [isCounterRunning, setIsCounterRunning] = useState(false);
-
-  const handleStartBatchTest = () => {
-    console.log("Starting batch test counter...");
-    setIsCounterRunning(true);
-    setEvaluationsCounter(0);
-    
-    // Start counter after 2-3 seconds delay
-    setTimeout(() => {
-      const counterValues = [3, 10, 21, 47, 78, 99, 100];
-      let currentIndex = 0;
-      
-      const updateCounter = () => {
-        if (currentIndex < counterValues.length) {
-          setEvaluationsCounter(counterValues[currentIndex]);
-          currentIndex++;
-          
-          if (currentIndex < counterValues.length) {
-            // Random interval between updates (500ms to 1500ms)
-            const delay = Math.random() * 1000 + 500;
-            setTimeout(updateCounter, delay);
-          } else {
-            setIsCounterRunning(false);
-          }
-        }
-      };
-      
-      updateCounter();
-    }, 2500); // 2.5 second initial delay
-  };
 
   const renderMainContent = () => {
     switch (currentView) {
       case "agents":
-        return <AgentsView onStartBatchTest={handleStartBatchTest} />;
+        return <AgentsView />;
       default:
         return (
           <div className="p-6">
@@ -63,7 +32,6 @@ export function PlatformBuilderDemoView() {
         <PlatformBuilderSidebar 
           currentView={currentView}
           onViewChange={setCurrentView}
-          evaluationsCounter={evaluationsCounter}
         />
         <div className="flex-1 flex flex-col">
           <TopNavbar 

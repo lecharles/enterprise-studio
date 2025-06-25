@@ -1,3 +1,4 @@
+
 import { 
   Layers,
   MessageSquare,
@@ -27,10 +28,9 @@ import {
 interface PlatformBuilderSidebarProps {
   currentView: string;
   onViewChange: (view: string) => void;
-  evaluationsCounter?: number;
 }
 
-export function PlatformBuilderSidebar({ currentView, onViewChange, evaluationsCounter }: PlatformBuilderSidebarProps) {
+export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBuilderSidebarProps) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
@@ -44,7 +44,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, evaluationsC
     { id: "realtime", title: "Realtime", icon: AudioWaveform },
     { id: "agents", title: "Agents", icon: Bot },
     { id: "tts", title: "TTS", icon: Mic },
-    { id: "evaluations", title: "Evaluations", icon: FlaskConical, counter: evaluationsCounter },
+    { id: "evaluations", title: "Evaluations", icon: FlaskConical },
   ];
 
   const enterpriseItems = [
@@ -110,24 +110,15 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, evaluationsC
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
                     onClick={() => onViewChange(item.id)}
-                    className={`w-full gap-3 rounded-lg text-sm transition-colors relative ${
+                    className={`w-full gap-3 rounded-lg text-sm transition-colors ${
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
                     } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'}`}
                     tooltip={isCollapsed ? item.title : undefined}
                   >
-                    <div className="flex items-center gap-3 w-full">
-                      <item.icon className="w-4 h-4 shrink-0 text-gray-600" />
-                      {!isCollapsed && <span className="flex-1">{item.title}</span>}
-                      
-                      {/* Counter badge for evaluations */}
-                      {item.counter && item.counter > 0 && (
-                        <div className={`bg-gray-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium ${isCollapsed ? 'absolute top-0.5 right-0.5' : ''}`}>
-                          {item.counter}
-                        </div>
-                      )}
-                    </div>
+                    <item.icon className="w-4 h-4 shrink-0 text-gray-600" />
+                    {!isCollapsed && <span>{item.title}</span>}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
