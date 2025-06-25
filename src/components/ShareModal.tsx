@@ -127,11 +127,11 @@ export function SharePopover({ children }: SharePopoverProps) {
               <div className="flex items-center gap-2 mb-3">
                 <h4 className="text-sm font-medium text-gray-900">Collaborators</h4>
                 <span className="text-xs text-gray-500">{collaborators.length}</span>
-                <div className="ml-auto flex items-center -ml-2">
+                <div className="ml-auto flex items-center">
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="w-6 h-6 p-0 border border-gray-300 hover:bg-gray-100 relative"
+                    className="w-6 h-6 p-0 hover:bg-gray-100 relative"
                   >
                     <Bell className="w-3 h-3 text-gray-600" />
                     <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></div>
