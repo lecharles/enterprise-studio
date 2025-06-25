@@ -56,8 +56,8 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
 
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
-      {/* Content that scrolls behind header and chatbox */}
-      <div className="pt-16 pb-32 px-6">
+      {/* Content with proper padding */}
+      <div className="pt-16 pb-6 px-6">
         <div className="max-w-xl mx-auto space-y-4">
           {/* Conversation header */}
           <div className="mb-6">

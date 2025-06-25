@@ -51,7 +51,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
           {!showLogs ? (
             /* 2-panel state: Right panel with buttons and thread info */
             <ResizablePanel defaultSize={67}>
-              <div className="h-full bg-white relative">
+              <div className="h-full bg-white relative flex flex-col">
                 {/* Thread info in top left for 2-panel view - aligned with buttons */}
                 <div className="absolute top-4 left-4 z-10 flex items-center h-8">
                   <div className="flex items-center gap-2 text-xs">
@@ -90,11 +90,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   </Button>
                 </div>
                 
-                {/* Content that scrolls behind header and chatbox */}
-                <ConversationSimulation isVisible={true} />
+                {/* Scrollable content area */}
+                <div className="flex-1 overflow-hidden">
+                  <ConversationSimulation isVisible={true} />
+                </div>
                 
-                {/* Chatbox for 2-panel view - moved back to bottom */}
-                <div className="absolute bottom-4 left-6 right-6 z-20">
+                {/* Fixed chatbox at bottom */}
+                <div className="flex-shrink-0 p-6 bg-white border-t border-gray-100">
                   <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                   <p className="text-xs text-gray-500 text-center mt-2">
                     Platform messages can be viewed by anyone at your organization using the API.
@@ -107,9 +109,9 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
             <>
               {/* Middle Panel */}
               <ResizablePanel defaultSize={37} minSize={25} maxSize={50}>
-                <div className="h-full bg-white relative">
+                <div className="h-full bg-white relative flex flex-col">
                   {/* Thread info and buttons in middle panel when logs are shown */}
-                  <div className="p-4">
+                  <div className="flex-shrink-0 p-4 border-b border-gray-100">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 text-xs">
                         <span className="text-black font-bold uppercase tracking-wide">THREAD</span>
@@ -138,11 +140,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                     </div>
                   </div>
                   
-                  {/* Content that scrolls behind header and chatbox */}
-                  <ConversationSimulation isVisible={true} />
+                  {/* Scrollable content area */}
+                  <div className="flex-1 overflow-hidden">
+                    <ConversationSimulation isVisible={true} />
+                  </div>
                   
-                  {/* Chatbox for 3-panel view - moved back to bottom */}
-                  <div className="absolute bottom-4 left-6 right-6 z-20">
+                  {/* Fixed chatbox at bottom */}
+                  <div className="flex-shrink-0 p-6 bg-white border-t border-gray-100">
                     <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                     <p className="text-xs text-gray-500 text-center mt-2">
                       Platform messages can be viewed by anyone at your organization using the API.
