@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 
 interface Message {
@@ -65,8 +66,8 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
       <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-69px)' }}>
         <div className="max-w-xl mx-auto space-y-6">
           {/* Conversation header */}
-          <div className="mb-2">
-            <h3 className="text-sm font-medium text-gray-900 mb-2">
+          <div>
+            <h3 className="text-sm font-medium text-gray-900 mb-0">
               Outreach Automation Agent
             </h3>
           </div>
