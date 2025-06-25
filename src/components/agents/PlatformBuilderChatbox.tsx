@@ -6,9 +6,10 @@ import { Paperclip, Plus, Wrench, FlaskConical } from "lucide-react";
 
 interface PlatformBuilderChatboxProps {
   onSendMessage?: (message: string) => void;
+  onShowBatchTest?: () => void;
 }
 
-export function PlatformBuilderChatbox({ onSendMessage }: PlatformBuilderChatboxProps) {
+export function PlatformBuilderChatbox({ onSendMessage, onShowBatchTest }: PlatformBuilderChatboxProps) {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
@@ -70,6 +71,7 @@ export function PlatformBuilderChatbox({ onSendMessage }: PlatformBuilderChatbox
               variant="ghost" 
               size="sm" 
               className="text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded border border-gray-300 p-2 h-9 w-9"
+              onClick={onShowBatchTest}
             >
               <FlaskConical className="w-4 h-4" />
             </Button>

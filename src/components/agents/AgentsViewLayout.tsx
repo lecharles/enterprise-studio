@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BookOpen, MoreHorizontal, Logs } from "lucide-react";
@@ -6,6 +7,7 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/componen
 import { PlatformBuilderChatbox } from "@/components/agents/PlatformBuilderChatbox";
 import { ConversationSimulation } from "@/components/agents/ConversationSimulation";
 import { LogsPanel } from "@/components/agents/LogsPanel";
+import { BatchTestModal } from "@/components/agents/BatchTestModal";
 
 interface AgentsViewLayoutProps {
   leftPanelContent: React.ReactNode;
@@ -15,9 +17,14 @@ interface AgentsViewLayoutProps {
 
 export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPanelContent }: AgentsViewLayoutProps) {
   const [showLogs, setShowLogs] = useState(false);
+  const [showBatchTestModal, setShowBatchTestModal] = useState(false);
 
   const onSendMessage = (message: string) => {
     console.log("Sending message:", message);
+  };
+
+  const onShowBatchTest = () => {
+    setShowBatchTestModal(true);
   };
 
   return (
@@ -97,7 +104,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                 
                 {/* Chatbox positioned 81px lower than Functions level (21px + 60px) */}
                 <div className="absolute left-6 right-6 z-20 bg-white" style={{ top: 'calc(65% + 81px)' }}>
-                  <PlatformBuilderChatbox onSendMessage={onSendMessage} />
+                  <PlatformBuilderChatbox onSendMessage={onSendMessage} onShowBatchTest={onShowBatchTest} />
                   <p className="text-xs text-gray-500 text-center mt-2">
                     Platform messages can be viewed by anyone at your organization using the API.
                   </p>
@@ -147,7 +154,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   
                   {/* Chatbox positioned 81px lower than Functions level (21px + 60px) */}
                   <div className="absolute left-6 right-6 z-20 bg-white" style={{ top: 'calc(65% + 81px)' }}>
-                    <PlatformBuilderChatbox onSendMessage={onSendMessage} />
+                    <PlatformBuilderChatbox onSendMessage={onSendMessage} onShowBatchTest={onShowBatchTest} />
                     <p className="text-xs text-gray-500 text-center mt-2">
                       Platform messages can be viewed by anyone at your organization using the API.
                     </p>
@@ -180,6 +187,11 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
           )}
         </ResizablePanelGroup>
       </div>
+
+      <BatchTestModal
+        isOpen={showBatchTestModal}
+        onClose={() => setShowBatchTestModal(false)}
+      />
     </div>
   );
 }
