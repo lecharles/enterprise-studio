@@ -1,4 +1,3 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -97,9 +96,7 @@ CONVERSATION_{ID}: {Company} | {Segment} | {Outcome} | Score: {Initial}→{Final
                   className="flex items-center gap-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 h-8 px-3 text-xs"
                 >
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                    <path d="M2 17l10 5 10-5"/>
-                    <path d="M2 12l10 5 10-5"/>
+                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
                   </svg>
                   Generate
                 </Button>
@@ -108,7 +105,7 @@ CONVERSATION_{ID}: {Company} | {Segment} | {Outcome} | Score: {Initial}→{Final
                   size="sm"
                   className="flex items-center gap-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 h-8 px-3 text-xs"
                 >
-                  Examples
+                  Variables
                   <ChevronDown className="w-3 h-3" />
                 </Button>
               </div>
