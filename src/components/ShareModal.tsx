@@ -124,10 +124,10 @@ export function SharePopover({ children }: SharePopoverProps) {
 
             {/* Collaborators Section */}
             <div>
-              <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2 mb-3">
                 <h4 className="text-sm font-medium text-gray-900">Collaborators</h4>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500">{collaborators.length}</span>
+                <span className="text-xs text-gray-500">{collaborators.length}</span>
+                <div className="ml-auto flex items-center">
                   <Button
                     variant="ghost"
                     size="sm"
