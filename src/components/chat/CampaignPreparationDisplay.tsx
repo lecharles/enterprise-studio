@@ -28,25 +28,25 @@ export function CampaignPreparationDisplay({ isActive, onLaunchAllCampaigns, cam
       id: "intro",
       title: "Campaign Introduction",
       component: CampaignIntroSection,
-      delay: 1000, // Changed from 0 to 1000ms
+      delay: 1000, // Start after 1 second
     },
     {
       id: "persona-content",
       title: "Persona-Based Content Strategy",
       component: PersonaContentSection,
-      delay: 3000, // Changed from 2000 to 3000ms
+      delay: 6500, // Wait for intro section to complete (1000 + 5*800 + 800 + 700 buffer)
     },
     {
       id: "performance-projections",
       title: "Performance Projections",
       component: PerformanceProjectionsSection,
-      delay: 5000, // Changed from 4000 to 5000ms
+      delay: 8500, // 2 seconds after persona content starts
     },
     {
       id: "launch-options",
       title: "Launch Options",
       component: LaunchOptionsSection,
-      delay: 7000, // Changed from 6000 to 7000ms
+      delay: 10500, // 2 seconds after performance projections starts
     }
   ];
 
