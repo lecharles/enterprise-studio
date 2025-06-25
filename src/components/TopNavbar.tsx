@@ -1,3 +1,4 @@
+
 import { ChevronDown, PanelLeft, Check, Plus, Settings, Share } from "lucide-react";
 import {
   DropdownMenu,
@@ -123,16 +124,19 @@ export function TopNavbar({
         </div>
         
         <div className="flex items-center gap-3">
-          <SharePopover>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-            >
-              <Share className="w-4 h-4" />
-              <span>Share</span>
-            </Button>
-          </SharePopover>
+          {/* Only show Share button on platform builder page */}
+          {isPlatformBuilder && (
+            <SharePopover>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              >
+                <Share className="w-4 h-4" />
+                <span>Share</span>
+              </Button>
+            </SharePopover>
+          )}
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
