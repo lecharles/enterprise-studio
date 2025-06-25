@@ -62,8 +62,8 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
 
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
-      {/* Content with proper padding */}
-      <div className="pt-16 pb-6 px-6">
+      {/* Content with proper padding - moved up 100px by reducing top padding */}
+      <div className="pt-4 pb-6 px-6" style={{ transform: 'translateY(-100px)' }}>
         <div className="max-w-xl mx-auto space-y-4">
           {/* Conversation header */}
           <div className="mb-6">
@@ -78,7 +78,14 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
               {message.sender === 'agent' ? (
                 <div>
                   <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-                    {message.content}
+                    {message.id === 1 ? (
+                      message.content
+                    ) : (
+                      <>
+                        <span className="font-medium">Schneider Electric</span>
+                        <div className="mt-1">{message.content}</div>
+                      </>
+                    )}
                   </div>
                 </div>
               ) : (
