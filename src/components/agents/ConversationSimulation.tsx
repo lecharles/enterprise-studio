@@ -62,8 +62,8 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
 
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
-      {/* Content with proper padding - moved up 100px by reducing top padding */}
-      <div className="pt-4 pb-6 px-6" style={{ transform: 'translateY(-100px)' }}>
+      {/* Content with proper padding - moved down so text is visible */}
+      <div className="pt-16 pb-6 px-6">
         <div className="max-w-xl mx-auto space-y-4">
           {/* Conversation header */}
           <div className="mb-6">
