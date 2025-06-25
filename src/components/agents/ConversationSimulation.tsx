@@ -12,7 +12,7 @@ const conversationMessages: Message[] = [
   {
     id: 1,
     sender: "agent",
-    content: "💬 Schneider Electric (+49-171-5553333)\nHello Mr. Thomas Mueller! Quick question—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Schneider Agent",
+    content: "💬 Schneider Electric (+49-171-5553333)\nHi Thomas! Quick one—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Sarah",
     timestamp: "2:14 PM"
   },
   {
@@ -42,38 +42,8 @@ const conversationMessages: Message[] = [
   {
     id: 6,
     sender: "customer",
-    content: "Got the email—very compelling! 4pm tomorrow is good. What should I prepare? Who joins from your side?",
+    content: "Thomas Mueller 📱...",
     timestamp: "2:22 PM"
-  },
-  {
-    id: 7,
-    sender: "agent",
-    content: "Perfect! You'll meet Maria Weber, our Energy Solutions Expert. Just bring: your latest energy bills (if easy), and main pain points with your current tools. Having Q1 budget info helps. Sending a cal invite now! 👍",
-    timestamp: "2:23 PM"
-  },
-  {
-    id: 8,
-    sender: "customer",
-    content: "Sounds good, see you tomorrow. Do you have references from other energy sector clients?",
-    timestamp: "2:25 PM"
-  },
-  {
-    id: 9,
-    sender: "agent",
-    content: "Absolutely! We work with E.ON, Vattenfall, & 20+ energy leaders. Maria will share 3 relevant case studies on the call. Anything else you'd like to cover?",
-    timestamp: "2:26 PM"
-  },
-  {
-    id: 10,
-    sender: "customer",
-    content: "No, that's it. Thanks Schneider Agent, very helpful.",
-    timestamp: "2:27 PM"
-  },
-  {
-    id: 11,
-    sender: "agent",
-    content: "Fantastic! Talk at 4pm tomorrow. I'll send a quick reminder in the morning. Have a great evening, Mr. Mueller!",
-    timestamp: "2:28 PM"
   }
 ];
 
@@ -88,47 +58,40 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
     <div className="h-full w-full overflow-y-auto bg-white">
       {/* Content that scrolls behind header and chatbox */}
       <div className="pt-16 pb-32 px-6">
-        <div className="max-w-2xl mx-auto space-y-6">
+        <div className="max-w-xl mx-auto space-y-4">
           {/* Conversation header */}
-          <div className="mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
+          <div className="mb-6">
+            <h3 className="text-sm font-medium text-gray-900 mb-2">
               Outreach Automation Agent
-              <span className="text-gray-400">💬</span>
             </h3>
           </div>
 
-          {/* Messages - styled exactly like the reference */}
+          {/* Messages - styled to match reference exactly */}
           {conversationMessages.map((message) => (
-            <div key={message.id} className="mb-6">
+            <div key={message.id} className="mb-4">
               {message.sender === 'agent' ? (
                 <div>
-                  <div className="font-medium text-gray-900 mb-2">Schneider Electric</div>
-                  <div className="text-gray-700 leading-relaxed">
+                  <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
                     {message.content}
                   </div>
                 </div>
               ) : (
                 <div>
-                  <div className="font-medium text-gray-900 mb-2 flex items-center gap-1">
-                    Thomas Mueller 📱
-                  </div>
-                  <div className="text-gray-700 leading-relaxed">
-                    {message.content}
+                  <div className="text-sm text-gray-700 leading-relaxed flex items-start gap-1">
+                    {message.id === 6 ? (
+                      // Special case for the last message which shows typing indicator
+                      <span className="text-gray-700">{message.content}</span>
+                    ) : (
+                      <>
+                        <span className="font-medium">Thomas Mueller 📱</span>
+                        <div className="flex-1 ml-2">{message.content}</div>
+                      </>
+                    )}
                   </div>
                 </div>
               )}
             </div>
           ))}
-
-          {/* Success message */}
-          <div className="text-center mt-8 p-4 bg-green-50 rounded-lg">
-            <p className="text-sm text-green-700 font-medium">
-              ✅ Meeting scheduled for tomorrow at 4pm
-            </p>
-            <p className="text-xs text-green-600 mt-1">
-              Lead qualification: High interest, enterprise segment
-            </p>
-          </div>
         </div>
       </div>
     </div>
