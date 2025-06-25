@@ -74,8 +74,7 @@ export function SharePopover({ children }: SharePopoverProps) {
                 placeholder="Invite others by name or email"
                 value={inviteEmail}
                 onChange={(e) => setInviteEmail(e.target.value)}
-                className="flex-1 text-xs border-gray-300"
-                style={{ fontSize: '10px' }}
+                className="flex-1 text-sm border-gray-300"
               />
               <Button
                 onClick={handleInvite}
