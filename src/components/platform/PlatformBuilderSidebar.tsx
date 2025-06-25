@@ -1,3 +1,4 @@
+
 import { 
   Layers,
   MessageSquare,
@@ -11,6 +12,7 @@ import {
   HelpCircle,
   FlaskConical
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -33,7 +35,12 @@ interface PlatformBuilderSidebarProps {
 
 export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluationsBadge }: PlatformBuilderSidebarProps) {
   const { state } = useSidebar();
+  const navigate = useNavigate();
   const isCollapsed = state === "collapsed";
+
+  const handleEnterpriseClick = () => {
+    navigate("/");
+  };
 
   const mainMenuItems = [
     { id: "platform", title: "Platform", icon: Layers, bold: true },
@@ -146,12 +153,8 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluati
               {enterpriseItems.map((item) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
-                    onClick={() => onViewChange(item.id)}
-                    className={`w-full gap-3 rounded-lg text-sm transition-colors ${
-                      currentView === item.id 
-                        ? "bg-gray-200 text-gray-900" 
-                        : "text-gray-700 hover:bg-gray-100"
-                    } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'}`}
+                    onClick={handleEnterpriseClick}
+                    className={`w-full gap-3 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100 ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'}`}
                     tooltip={isCollapsed ? item.title : undefined}
                   >
                     <item.icon className="w-4 h-4 shrink-0 text-gray-600" />
