@@ -74,7 +74,7 @@ export function SharePopover({ children }: SharePopoverProps) {
                 placeholder="Invite others by name or email"
                 value={inviteEmail}
                 onChange={(e) => setInviteEmail(e.target.value)}
-                className="flex-1 text-sm"
+                className="flex-1 text-xs border-gray-300"
               />
               <Button
                 onClick={handleInvite}
@@ -85,16 +85,18 @@ export function SharePopover({ children }: SharePopoverProps) {
               </Button>
             </div>
 
-            {/* Access Card - Changed to gray background */}
-            <Card className="border border-gray-200 bg-gray-50">
+            {/* Access Card */}
+            <Card className="border border-gray-300 bg-gray-50">
               <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
-                    <Link className="w-4 h-4 text-gray-600" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">Anyone with the link</p>
-                    <p className="text-xs text-gray-500">salesforce.com/create/automation...</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
+                      <Link className="w-4 h-4 text-gray-600" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-gray-900">Anyone with the link</p>
+                      <p className="text-xs text-gray-500">salesforce.com/create/automation...</p>
+                    </div>
                   </div>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
