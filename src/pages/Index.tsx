@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { TopNavbar } from "@/components/TopNavbar";
 import { AppSidebar } from "@/components/AppSidebar";
@@ -15,7 +14,7 @@ const Index = () => {
   const [showAnalyticsBadge, setShowAnalyticsBadge] = useState(false);
 
   const handleCampaignLaunch = (launched: boolean) => {
-    console.log("Campaign launch triggered, setting up analytics badge timer");
+    console.log("Campaign launch triggered, setting launched state and analytics badge timer");
     setCampaignLaunched(launched);
     
     if (launched) {

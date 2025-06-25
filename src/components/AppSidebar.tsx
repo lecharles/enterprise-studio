@@ -50,7 +50,7 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
     ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
     { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? analyticsBadgeNumber : undefined },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
-    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: true, indicatorType: campaignLaunched ? "green" : "red" },
+    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched, indicatorType: campaignLaunched ? "green" : "red" },
     { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
   ];
 
