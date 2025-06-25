@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Copy, Link, Bell, ChevronDown } from "lucide-react";
 import {
@@ -38,10 +38,26 @@ export function SharePopover({ children }: SharePopoverProps) {
   };
 
   const collaborators = [
-    { initials: "AB", name: "Alice Brown" },
-    { initials: "CD", name: "Chris Davis" },
-    { initials: "EF", name: "Emma Ford" },
-    { initials: "GH", name: "Grace Hall" }
+    { 
+      initials: "AB", 
+      name: "Alice Brown",
+      image: "/lovable-uploads/0c8812a2-3ff4-49aa-9cbb-8ef6ba612dc6.png"
+    },
+    { 
+      initials: "CD", 
+      name: "Chris Davis",
+      image: "/lovable-uploads/0d0fa1f4-acb8-43da-8e5f-7c372cad06b4.png"
+    },
+    { 
+      initials: "EF", 
+      name: "Emma Ford",
+      image: "/lovable-uploads/2e9775f1-6b91-4290-989a-5da009149a44.png"
+    },
+    { 
+      initials: "GH", 
+      name: "Grace Hall",
+      image: "/lovable-uploads/94230642-bf45-42c6-9017-14f4836e61f8.png"
+    }
   ];
 
   return (
@@ -141,6 +157,11 @@ export function SharePopover({ children }: SharePopoverProps) {
               <div className="flex items-center gap-2">
                 {collaborators.map((collaborator, index) => (
                   <Avatar key={index} className="w-8 h-8">
+                    <AvatarImage 
+                      src={collaborator.image} 
+                      alt={collaborator.name}
+                      className="object-cover"
+                    />
                     <AvatarFallback className="bg-gray-200 text-gray-600 text-xs font-medium">
                       {collaborator.initials}
                     </AvatarFallback>
