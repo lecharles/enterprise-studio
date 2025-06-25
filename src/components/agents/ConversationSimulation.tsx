@@ -12,7 +12,7 @@ const conversationMessages: Message[] = [
   {
     id: 1,
     sender: "agent",
-    content: "💬 Schneider Electric (+49-171-5553333)\nHi Thomas! Quick one—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Sarah",
+    content: "💬 Schneider Electric (+49-171-5553333)\nHello Mr. Thomas Mueller! Quick question—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Schneider Agent",
     timestamp: "2:14 PM"
   },
   {
@@ -42,8 +42,14 @@ const conversationMessages: Message[] = [
   {
     id: 6,
     sender: "customer",
-    content: "Thomas Mueller 📱...",
+    content: "Got the email—very compelling! 4pm tomorrow is good. What should I prepare? Who joins from your side?",
     timestamp: "2:22 PM"
+  },
+  {
+    id: 7,
+    sender: "agent",
+    content: "Perfect! You'll meet Maria Weber, our Energy Solutions Expert. Just bring: your latest energy bills (if easy), and main pain points with your current tools. Having Q1 budget info helps. Sending a cal invite now! 👍",
+    timestamp: "2:24 PM"
   }
 ];
 
@@ -78,15 +84,8 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
               ) : (
                 <div>
                   <div className="text-sm text-gray-700 leading-relaxed flex items-start gap-1">
-                    {message.id === 6 ? (
-                      // Special case for the last message which shows typing indicator
-                      <span className="text-gray-700">{message.content}</span>
-                    ) : (
-                      <>
-                        <span className="font-medium">Thomas Mueller 📱</span>
-                        <div className="flex-1 ml-2">{message.content}</div>
-                      </>
-                    )}
+                    <span className="font-medium">Thomas Mueller 📱</span>
+                    <div className="flex-1 ml-2">{message.content}</div>
                   </div>
                 </div>
               )}
