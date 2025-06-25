@@ -49,6 +49,7 @@ export function HomePageFinale() {
           builderToggle={builderToggle}
           campaignLaunched={campaignLaunched}
           showAnalyticsBadge={showAnalyticsBadge}
+          analyticsBadgeNumber={9}
         />
         <SidebarInset className="flex-1">
           <TopNavbar 

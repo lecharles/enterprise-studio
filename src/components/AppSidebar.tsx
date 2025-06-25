@@ -32,9 +32,10 @@ interface AppSidebarProps {
   builderToggle: boolean;
   campaignLaunched?: boolean;
   showAnalyticsBadge?: boolean;
+  analyticsBadgeNumber?: number;
 }
 
-export function AppSidebar({ currentView, onViewChange, builderToggle, campaignLaunched = false, showAnalyticsBadge = false }: AppSidebarProps) {
+export function AppSidebar({ currentView, onViewChange, builderToggle, campaignLaunched = false, showAnalyticsBadge = false, analyticsBadgeNumber = 3 }: AppSidebarProps) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
@@ -45,16 +46,11 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
     ...(builderToggle ? [{ id: "platform", title: "Platform", icon: Layers }] : []),
   ];
 
-  // Determine badge number and indicator type based on current page
-  const isHomePageFinale = window.location.pathname === '/home-page-finale';
-  const badgeNumber = isHomePageFinale ? 9 : 3;
-  const indicatorType = (campaignLaunched || isHomePageFinale) ? "green" : "red";
-
   const toolItems = [
     ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
-    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? badgeNumber : undefined },
+    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? analyticsBadgeNumber : undefined },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
-    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched || isHomePageFinale, indicatorType },
+    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: true, indicatorType: campaignLaunched ? "green" : "red" },
     { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
   ];
 
