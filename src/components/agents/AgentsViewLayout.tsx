@@ -90,13 +90,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   </Button>
                 </div>
                 
-                {/* Scrollable content area */}
-                <div className="flex-1 overflow-hidden">
+                {/* Content area that fills most of the space */}
+                <div className="flex-1 overflow-hidden pt-16">
                   <ConversationSimulation isVisible={true} />
                 </div>
                 
-                {/* Fixed chatbox at bottom */}
-                <div className="flex-shrink-0 p-6 bg-white border-t border-gray-100">
+                {/* Chatbox positioned much higher - around 40% from top */}
+                <div className="absolute top-[40%] left-6 right-6 z-20 bg-white">
                   <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                   <p className="text-xs text-gray-500 text-center mt-2">
                     Platform messages can be viewed by anyone at your organization using the API.
@@ -140,13 +140,13 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                     </div>
                   </div>
                   
-                  {/* Scrollable content area */}
+                  {/* Content area that fills most of the space */}
                   <div className="flex-1 overflow-hidden">
                     <ConversationSimulation isVisible={true} />
                   </div>
                   
-                  {/* Fixed chatbox at bottom */}
-                  <div className="flex-shrink-0 p-6 bg-white border-t border-gray-100">
+                  {/* Chatbox positioned much higher - around 40% from top */}
+                  <div className="absolute top-[40%] left-6 right-6 z-20 bg-white">
                     <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                     <p className="text-xs text-gray-500 text-center mt-2">
                       Platform messages can be viewed by anyone at your organization using the API.
