@@ -45,11 +45,16 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
     ...(builderToggle ? [{ id: "platform", title: "Platform", icon: Layers }] : []),
   ];
 
+  // Determine badge number and indicator type based on current page
+  const isHomePageFinale = window.location.pathname === '/home-page-finale';
+  const badgeNumber = isHomePageFinale ? 9 : 3;
+  const indicatorType = (campaignLaunched || isHomePageFinale) ? "green" : "red";
+
   const toolItems = [
     ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
-    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? 9 : undefined },
+    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? badgeNumber : undefined },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
-    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched, indicatorType: "green" },
+    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched || isHomePageFinale, indicatorType },
     { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
   ];
 
@@ -143,8 +148,8 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
                         ></div>
                       )}
                       
-                      {/* Campaign indicator - animated red dot (for other cases) */}
-                      {item.indicator && item.indicatorType !== "green" && (
+                      {/* Campaign indicator - animated red dot */}
+                      {item.indicator && item.indicatorType === "red" && (
                         <div 
                           className={`w-3 h-3 rounded-full ${isCollapsed ? 'absolute top-1 right-1' : 'mr-0.5'}`}
                           style={{
