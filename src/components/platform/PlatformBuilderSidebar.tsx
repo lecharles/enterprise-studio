@@ -39,7 +39,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluati
   const isCollapsed = state === "collapsed";
 
   const handleEnterpriseClick = () => {
-    navigate("/");
+    navigate("/home-page-finale");
   };
 
   const mainMenuItems = [
