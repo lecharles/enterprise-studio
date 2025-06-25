@@ -1,4 +1,3 @@
-
 import { Users, Code, Film } from "lucide-react";
 
 interface LaunchOptionsSectionProps {
@@ -9,6 +8,13 @@ interface LaunchOptionsSectionProps {
 
 export function LaunchOptionsSection({ isVisible, onLaunchAllCampaigns, campaignLaunched = false }: LaunchOptionsSectionProps) {
   if (!isVisible) return null;
+
+  const handleLaunchAllCampaigns = () => {
+    console.log("Launch All Campaigns button clicked!");
+    if (onLaunchAllCampaigns) {
+      onLaunchAllCampaigns();
+    }
+  };
 
   return (
     <div className={`mb-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
@@ -135,7 +141,7 @@ export function LaunchOptionsSection({ isVisible, onLaunchAllCampaigns, campaign
         </button>
 
         <button 
-          onClick={onLaunchAllCampaigns}
+          onClick={handleLaunchAllCampaigns}
           disabled={campaignLaunched}
           className={`font-medium py-2 px-4 rounded-lg text-sm flex items-center gap-2 transition-all duration-200 ${
             campaignLaunched 
