@@ -49,7 +49,7 @@ export function SharePopover({ children }: SharePopoverProps) {
       <PopoverTrigger asChild>
         {children}
       </PopoverTrigger>
-      <PopoverContent className="w-80 bg-white border border-gray-200 shadow-lg p-0" align="end">
+      <PopoverContent className="w-96 bg-white border border-gray-200 shadow-lg p-0" align="end">
         <div className="p-4">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
             Share this Agent & Evals
