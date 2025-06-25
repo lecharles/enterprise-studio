@@ -45,7 +45,7 @@ export function ChatInputArea({
 
   return (
     <div className="relative">
-      <div className="bg-white border border-gray-300 rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+      <div className="bg-white border border-white rounded-3xl shadow-sm hover:shadow-md transition-shadow">
         <div className="flex items-center px-4 py-3">
           <Button 
             variant="ghost" 
