@@ -11,7 +11,8 @@ export function HomePageFinale() {
   const [businessToggle, setBusinessToggle] = useState(true);
   const [builderToggle, setBuilderToggle] = useState(true);
   const [selectedModel, setSelectedModel] = useState("o3");
-  const [campaignLaunched, setCampaignLaunched] = useState(false);
+  const [campaignLaunched, setCampaignLaunched] = useState(true); // Set to true to show green dot
+  const [showAnalyticsBadge, setShowAnalyticsBadge] = useState(true); // Set to true to show badge
 
   const renderMainContent = () => {
     switch (currentView) {
@@ -32,6 +33,7 @@ export function HomePageFinale() {
           onViewChange={setCurrentView}
           builderToggle={builderToggle}
           campaignLaunched={campaignLaunched}
+          showAnalyticsBadge={showAnalyticsBadge}
         />
         <SidebarInset className="flex-1">
           <TopNavbar 
