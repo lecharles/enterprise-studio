@@ -57,6 +57,21 @@ export function SharePopover({ children }: SharePopoverProps) {
       initials: "GH", 
       name: "Grace Hall",
       image: "/lovable-uploads/94230642-bf45-42c6-9017-14f4836e61f8.png"
+    },
+    { 
+      initials: "IJ", 
+      name: "Isabella Johnson",
+      image: "/lovable-uploads/82bc7af6-4c10-44c5-83d8-eeefaad28f42.png"
+    },
+    { 
+      initials: "KL", 
+      name: "Kevin Lee",
+      image: "/lovable-uploads/5bbbb70d-6c87-419c-b83b-fa7675f09445.png"
+    },
+    { 
+      initials: "MN", 
+      name: "Maya Nelson",
+      image: "/lovable-uploads/2ec50989-517e-4844-a83b-57030f6cecac.png"
     }
   ];
 
