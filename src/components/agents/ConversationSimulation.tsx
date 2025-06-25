@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 
 interface Message {
@@ -61,11 +62,11 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
 
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
-      {/* Content with proper padding - moved up 60px total */}
-      <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-60px)' }}>
+      {/* Content with proper padding - moved up 80px total */}
+      <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-80px)' }}>
         <div className="max-w-xl mx-auto space-y-4">
           {/* Conversation header */}
-          <div className="mb-6">
+          <div className="mb-3">
             <h3 className="text-sm font-medium text-gray-900 mb-2">
               Outreach Automation Agent
             </h3>
