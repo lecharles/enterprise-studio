@@ -28,25 +28,25 @@ export function CampaignPreparationDisplay({ isActive, onLaunchAllCampaigns, cam
       id: "intro",
       title: "Campaign Introduction",
       component: CampaignIntroSection,
-      delay: 0,
+      delay: 1000, // Changed from 0 to 1000ms
     },
     {
       id: "persona-content",
       title: "Persona-Based Content Strategy",
       component: PersonaContentSection,
-      delay: 2000,
+      delay: 3000, // Changed from 2000 to 3000ms
     },
     {
       id: "performance-projections",
       title: "Performance Projections",
       component: PerformanceProjectionsSection,
-      delay: 4000,
+      delay: 5000, // Changed from 4000 to 5000ms
     },
     {
       id: "launch-options",
       title: "Launch Options",
       component: LaunchOptionsSection,
-      delay: 6000,
+      delay: 7000, // Changed from 6000 to 7000ms
     }
   ];
 
