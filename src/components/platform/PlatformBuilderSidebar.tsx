@@ -1,4 +1,3 @@
-
 import { 
   Layers,
   MessageSquare,
@@ -12,7 +11,6 @@ import {
   HelpCircle,
   FlaskConical
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -35,7 +33,6 @@ interface PlatformBuilderSidebarProps {
 
 export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluationsBadge }: PlatformBuilderSidebarProps) {
   const { state } = useSidebar();
-  const navigate = useNavigate();
   const isCollapsed = state === "collapsed";
 
   const mainMenuItems = [
@@ -60,14 +57,6 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluati
     { id: "forum", title: "Forum", icon: Users },
     { id: "help", title: "Help", icon: HelpCircle },
   ];
-
-  const handleItemClick = (itemId: string) => {
-    if (itemId === "enterprise") {
-      navigate("/enterprise");
-    } else {
-      onViewChange(itemId);
-    }
-  };
 
   return (
     <Sidebar className="bg-gray-50 border-r-gray-200" collapsible="icon">
@@ -100,7 +89,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluati
               {mainMenuItems.map((item) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
-                    onClick={() => handleItemClick(item.id)}
+                    onClick={() => onViewChange(item.id)}
                     className={`w-full gap-3 rounded-lg text-sm transition-colors text-gray-700 hover:bg-gray-100 ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'} ${
                       item.bold ? 'font-bold' : ''
                     }`}
@@ -121,7 +110,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluati
               {toolItems.map((item) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
-                    onClick={() => handleItemClick(item.id)}
+                    onClick={() => onViewChange(item.id)}
                     className={`w-full gap-3 rounded-lg text-sm transition-colors ${
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
@@ -157,7 +146,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluati
               {enterpriseItems.map((item) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
-                    onClick={() => handleItemClick(item.id)}
+                    onClick={() => onViewChange(item.id)}
                     className={`w-full gap-3 rounded-lg text-sm transition-colors ${
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
@@ -182,7 +171,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluati
               {bottomItems.map((item) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
-                    onClick={() => handleItemClick(item.id)}
+                    onClick={() => onViewChange(item.id)}
                     className={`w-full gap-3 rounded-lg text-sm transition-colors ${
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
