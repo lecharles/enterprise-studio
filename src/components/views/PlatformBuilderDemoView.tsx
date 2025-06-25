@@ -11,11 +11,16 @@ export function PlatformBuilderDemoView() {
   const [builderToggle, setBuilderToggle] = useState(true);
   const [selectedModel, setSelectedModel] = useState("o3");
   const [currentView, setCurrentView] = useState("agents");
+  const [showEvaluationsBadge, setShowEvaluationsBadge] = useState(false);
+
+  const handleTriggerEvaluations = () => {
+    setShowEvaluationsBadge(true);
+  };
 
   const renderMainContent = () => {
     switch (currentView) {
       case "agents":
-        return <AgentsView />;
+        return <AgentsView onTriggerEvaluations={handleTriggerEvaluations} />;
       default:
         return (
           <div className="p-6">
@@ -32,6 +37,7 @@ export function PlatformBuilderDemoView() {
         <PlatformBuilderSidebar 
           currentView={currentView}
           onViewChange={setCurrentView}
+          showEvaluationsBadge={showEvaluationsBadge}
         />
         <div className="flex-1 flex flex-col">
           <TopNavbar 

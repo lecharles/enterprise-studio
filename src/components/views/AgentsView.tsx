@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,7 +10,11 @@ import { ModelConfiguration } from "@/components/agents/ModelConfiguration";
 import { McpConfigurationModal } from "@/components/agents/McpConfigurationModal";
 import { AgentsViewLayout } from "@/components/agents/AgentsViewLayout";
 
-export function AgentsView() {
+interface AgentsViewProps {
+  onTriggerEvaluations?: () => void;
+}
+
+export function AgentsView({ onTriggerEvaluations }: AgentsViewProps) {
   const [selectedAgent, setSelectedAgent] = useState("Outreach Automation Agent");
   const [agentName, setAgentName] = useState("Outreach Automation Agent");
   const [systemInstructions, setSystemInstructions] = useState(`You are Campaign Orchestrator, an AI agent specialized in creating and managing multi-channel marketing campaigns for Schneider Electric's enterprise solutions, with a special focus on personalized conversations.
@@ -185,6 +188,7 @@ Provide messages or content as short, well-structured paragraphs or bullet point
         leftPanelContent={leftPanelContent}
         middlePanelContent={middlePanelContent}
         rightPanelContent={rightPanelContent}
+        onTriggerEvaluations={onTriggerEvaluations}
       />
       
       <McpConfigurationModal

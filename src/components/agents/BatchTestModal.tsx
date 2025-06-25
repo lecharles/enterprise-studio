@@ -1,3 +1,4 @@
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,9 +8,10 @@ import { Trash2, ChevronDown } from "lucide-react";
 interface BatchTestModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onTriggerEvaluations?: () => void;
 }
 
-export function BatchTestModal({ isOpen, onClose }: BatchTestModalProps) {
+export function BatchTestModal({ isOpen, onClose, onTriggerEvaluations }: BatchTestModalProps) {
   const [definition, setDefinition] = useState(`Generate {BATCH_SIZE} unique {CHANNEL} conversations for Schneider Electric campaigns.
 
 For each conversation, randomly select from these parameters:
@@ -37,7 +39,14 @@ CONVERSATION_{ID}: {Company} | {Segment} | {Outcome} | Score: {Initial}→{Final
 
   const handleRun = () => {
     console.log("Running batch tests with definition:", definition);
-    // TODO: Implement batch test generation logic
+    
+    // Trigger evaluations badge after 5 seconds
+    if (onTriggerEvaluations) {
+      setTimeout(() => {
+        onTriggerEvaluations();
+      }, 5000);
+    }
+    
     onClose();
   };
 

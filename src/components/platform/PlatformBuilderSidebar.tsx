@@ -1,4 +1,3 @@
-
 import { 
   Layers,
   MessageSquare,
@@ -24,13 +23,15 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { Badge } from "@/components/ui/badge";
 
 interface PlatformBuilderSidebarProps {
   currentView: string;
   onViewChange: (view: string) => void;
+  showEvaluationsBadge?: boolean;
 }
 
-export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBuilderSidebarProps) {
+export function PlatformBuilderSidebar({ currentView, onViewChange, showEvaluationsBadge }: PlatformBuilderSidebarProps) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
 
@@ -44,7 +45,7 @@ export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBu
     { id: "realtime", title: "Realtime", icon: AudioWaveform },
     { id: "agents", title: "Agents", icon: Bot },
     { id: "tts", title: "TTS", icon: Mic },
-    { id: "evaluations", title: "Evaluations", icon: FlaskConical },
+    { id: "evaluations", title: "Evaluations", icon: FlaskConical, showBadge: showEvaluationsBadge },
   ];
 
   const enterpriseItems = [
@@ -114,11 +115,24 @@ export function PlatformBuilderSidebar({ currentView, onViewChange }: PlatformBu
                       currentView === item.id 
                         ? "bg-gray-200 text-gray-900" 
                         : "text-gray-700 hover:bg-gray-100"
-                    } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'}`}
+                    } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'} relative`}
                     tooltip={isCollapsed ? item.title : undefined}
                   >
                     <item.icon className="w-4 h-4 shrink-0 text-gray-600" />
                     {!isCollapsed && <span>{item.title}</span>}
+                    {item.showBadge && !isCollapsed && (
+                      <Badge 
+                        variant="secondary" 
+                        className="ml-auto bg-gray-400 text-white text-xs px-2 py-0.5 rounded-full"
+                      >
+                        82
+                      </Badge>
+                    )}
+                    {item.showBadge && isCollapsed && (
+                      <div className="absolute -top-1 -right-1 bg-gray-400 text-white text-xs px-1.5 py-0.5 rounded-full min-w-[20px] h-5 flex items-center justify-center">
+                        82
+                      </div>
+                    )}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

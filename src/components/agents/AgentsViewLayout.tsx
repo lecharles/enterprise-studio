@@ -13,9 +13,10 @@ interface AgentsViewLayoutProps {
   leftPanelContent: React.ReactNode;
   middlePanelContent?: React.ReactNode;
   rightPanelContent?: React.ReactNode;
+  onTriggerEvaluations?: () => void;
 }
 
-export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPanelContent }: AgentsViewLayoutProps) {
+export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPanelContent, onTriggerEvaluations }: AgentsViewLayoutProps) {
   const [showLogs, setShowLogs] = useState(false);
   const [showBatchTestModal, setShowBatchTestModal] = useState(false);
 
@@ -191,6 +192,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
       <BatchTestModal
         isOpen={showBatchTestModal}
         onClose={() => setShowBatchTestModal(false)}
+        onTriggerEvaluations={onTriggerEvaluations}
       />
     </div>
   );
