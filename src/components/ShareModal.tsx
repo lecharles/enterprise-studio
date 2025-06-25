@@ -27,7 +27,7 @@ export function SharePopover({ children }: SharePopoverProps) {
   const [linkCopied, setLinkCopied] = useState(false);
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText("salesforce.com/create/automation...");
+    navigator.clipboard.writeText("openai.com/enterprise-studio/schneider");
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   };
@@ -75,6 +75,7 @@ export function SharePopover({ children }: SharePopoverProps) {
                 value={inviteEmail}
                 onChange={(e) => setInviteEmail(e.target.value)}
                 className="flex-1 text-xs border-gray-300"
+                style={{ fontSize: '11px' }}
               />
               <Button
                 onClick={handleInvite}
@@ -87,20 +88,20 @@ export function SharePopover({ children }: SharePopoverProps) {
 
             {/* Access Card */}
             <Card className="border border-gray-300 bg-gray-50">
-              <CardContent className="p-4">
+              <CardContent className="p-3">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gray-200 rounded-lg flex items-center justify-center">
-                      <Link className="w-4 h-4 text-gray-600" />
+                  <div className="flex items-center gap-3 flex-1">
+                    <div className="w-6 h-6 bg-gray-200 rounded-lg flex items-center justify-center">
+                      <Link className="w-3 h-3 text-gray-600" />
                     </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">Anyone with the link</p>
-                      <p className="text-xs text-gray-500">salesforce.com/create/automation...</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-medium text-gray-900">Anyone with the link</p>
+                      <p className="text-xs text-gray-500 truncate">openai.com/enterprise-studio/schneider</p>
                     </div>
                   </div>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="flex items-center gap-1 text-sm text-gray-600 hover:bg-gray-200">
+                      <Button variant="ghost" className="flex items-center gap-1 text-xs text-gray-600 hover:bg-gray-200 px-2 py-1 h-auto">
                         {accessLevel}
                         <ChevronDown className="w-3 h-3" />
                       </Button>
