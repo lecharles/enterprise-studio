@@ -35,7 +35,8 @@ export function PlatformBuilderChatbox({ onSendMessage, onShowBatchTest }: Platf
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyPress}
-          className="w-full border-0 bg-transparent focus:ring-0 focus:outline-none text-gray-900 placeholder-gray-500 text-sm h-9 mb-3"
+          className="w-full border-0 bg-transparent focus:ring-0 focus:outline-none focus:border-white text-gray-900 placeholder-gray-500 text-sm h-9 mb-3"
+          style={{ boxShadow: 'none' }}
         />
         
         {/* Buttons row below */}
