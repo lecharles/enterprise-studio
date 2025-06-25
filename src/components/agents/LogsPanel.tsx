@@ -4,6 +4,11 @@ import { ChevronRight } from "lucide-react";
 export function LogsPanel() {
   return (
     <div className="p-4 pt-16 h-full overflow-y-auto">
+      {/* LOGS title */}
+      <div className="mb-4">
+        <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide">LOGS</h3>
+      </div>
+      
       <div className="space-y-4">
         {/* Create a thread */}
         <div className="space-y-2">
