@@ -47,7 +47,7 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
 
   const toolItems = [
     ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
-    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? 9 : undefined },
+    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? 3 : undefined },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
     { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched },
     { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
@@ -132,13 +132,14 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
                       <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
                       {!isCollapsed && <span className="flex-1">{item.title}</span>}
                       
-                      {/* Campaign indicator - green transparent dot */}
+                      {/* Campaign indicator - animated red dot */}
                       {item.indicator && (
                         <div 
                           className={`w-3 h-3 rounded-full ${isCollapsed ? 'absolute top-1 right-1' : 'mr-0.5'}`}
                           style={{
-                            background: 'rgba(34, 197, 94, 0.8)',
-                            boxShadow: '0 0 6px rgba(34, 197, 94, 0.4)'
+                            background: 'radial-gradient(circle, #fca5a5 0%, #dc2626 100%)',
+                            animation: 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                            boxShadow: '0 0 8px rgba(220, 38, 38, 0.6)'
                           }}
                         ></div>
                       )}

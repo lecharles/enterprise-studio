@@ -11,17 +11,26 @@ export function HomePageFinale() {
   const [businessToggle, setBusinessToggle] = useState(true);
   const [builderToggle, setBuilderToggle] = useState(true);
   const [selectedModel, setSelectedModel] = useState("o3");
-  const [campaignLaunched, setCampaignLaunched] = useState(true); // Set to true to show green dot
-  const [showAnalyticsBadge, setShowAnalyticsBadge] = useState(true); // Set to true to show badge
+  const [campaignLaunched, setCampaignLaunched] = useState(false);
+  const [showAnalyticsBadge, setShowAnalyticsBadge] = useState(false);
+
+  const handleCampaignLaunch = () => {
+    setCampaignLaunched(true);
+    
+    // Show analytics badge after 3 seconds
+    setTimeout(() => {
+      setShowAnalyticsBadge(true);
+    }, 3000);
+  };
 
   const renderMainContent = () => {
     switch (currentView) {
       case "chat":
-        return <ChatInterface builderToggle={builderToggle} onCampaignLaunch={setCampaignLaunched} />;
+        return <ChatInterface builderToggle={builderToggle} onCampaignLaunch={handleCampaignLaunch} />;
       case "dashboard":
         return <DashboardView />;
       default:
-        return <ChatInterface builderToggle={builderToggle} onCampaignLaunch={setCampaignLaunched} />;
+        return <ChatInterface builderToggle={builderToggle} onCampaignLaunch={handleCampaignLaunch} />;
     }
   };
 
