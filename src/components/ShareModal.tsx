@@ -27,7 +27,7 @@ export function SharePopover({ children }: SharePopoverProps) {
   const [linkCopied, setLinkCopied] = useState(false);
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(".../enterprise-studio/schneider");
+    navigator.clipboard.writeText(".../schneider-studio/");
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   };
@@ -75,7 +75,7 @@ export function SharePopover({ children }: SharePopoverProps) {
                 value={inviteEmail}
                 onChange={(e) => setInviteEmail(e.target.value)}
                 className="flex-1 text-xs border-gray-300"
-                style={{ fontSize: '11px' }}
+                style={{ fontSize: '10px' }}
               />
               <Button
                 onClick={handleInvite}
@@ -96,7 +96,7 @@ export function SharePopover({ children }: SharePopoverProps) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-medium text-gray-900">Anyone with the link</p>
-                      <p className="text-xs text-gray-500 truncate">.../enterprise-studio/schneider</p>
+                      <p className="text-xs text-gray-500 truncate">.../schneider-studio/</p>
                     </div>
                   </div>
                   <DropdownMenu>
