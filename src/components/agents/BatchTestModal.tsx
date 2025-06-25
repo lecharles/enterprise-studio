@@ -7,9 +7,10 @@ import { Trash2, ChevronDown } from "lucide-react";
 interface BatchTestModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onStartBatchTest?: () => void;
 }
 
-export function BatchTestModal({ isOpen, onClose }: BatchTestModalProps) {
+export function BatchTestModal({ isOpen, onClose, onStartBatchTest }: BatchTestModalProps) {
   const [definition, setDefinition] = useState(`Generate {BATCH_SIZE} unique {CHANNEL} conversations for Schneider Electric campaigns.
 
 For each conversation, randomly select from these parameters:
@@ -37,7 +38,9 @@ CONVERSATION_{ID}: {Company} | {Segment} | {Outcome} | Score: {Initial}→{Final
 
   const handleRun = () => {
     console.log("Running batch tests with definition:", definition);
-    // TODO: Implement batch test generation logic
+    if (onStartBatchTest) {
+      onStartBatchTest();
+    }
     onClose();
   };
 
