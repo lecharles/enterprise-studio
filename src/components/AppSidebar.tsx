@@ -38,6 +38,19 @@ interface AppSidebarProps {
 export function AppSidebar({ currentView, onViewChange, builderToggle, campaignLaunched = false, showAnalyticsBadge = false, analyticsBadgeNumber = 3 }: AppSidebarProps) {
   const { state } = useSidebar();
   const isCollapsed = state === "collapsed";
+  const [isHomePage, setIsHomePage] = useState(true);
+
+  // Check current route to determine which page we're on
+  useEffect(() => {
+    const checkRoute = () => {
+      setIsHomePage(window.location.pathname === '/');
+    };
+    
+    checkRoute();
+    window.addEventListener('popstate', checkRoute);
+    
+    return () => window.removeEventListener('popstate', checkRoute);
+  }, []);
 
   const mainMenuItems = [
     { id: "chat", title: "New chat", icon: MessageSquare },
@@ -48,9 +61,22 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
 
   const toolItems = [
     ...(builderToggle ? [{ id: "agents", title: "Agents", icon: Code, color: "text-green-600" }] : []),
-    { id: "analytics", title: "Analytics", icon: Film, color: "text-blue-600", badge: showAnalyticsBadge ? analyticsBadgeNumber : undefined },
+    { 
+      id: "analytics", 
+      title: "Analytics", 
+      icon: Film, 
+      color: "text-blue-600", 
+      badge: showAnalyticsBadge ? (isHomePage ? 3 : 9) : undefined 
+    },
     { id: "automation", title: "Automation", icon: Zap, color: "text-yellow-600" },
-    { id: "campaigns", title: "Campaigns", icon: Users, color: "text-purple-600", indicator: campaignLaunched, indicatorType: campaignLaunched ? "green" : "red" },
+    { 
+      id: "campaigns", 
+      title: "Campaigns", 
+      icon: Users, 
+      color: "text-purple-600", 
+      indicator: isHomePage ? campaignLaunched : true, 
+      indicatorType: isHomePage ? "red" : "green" 
+    },
     { id: "design", title: "Design", icon: Palette, color: "text-pink-600" },
   ];
 
