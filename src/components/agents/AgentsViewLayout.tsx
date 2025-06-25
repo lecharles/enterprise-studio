@@ -95,8 +95,8 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   <ConversationSimulation isVisible={true} />
                 </div>
                 
-                {/* Chatbox positioned at Functions level - around 65% from top */}
-                <div className="absolute top-[65%] left-6 right-6 z-20 bg-white">
+                {/* Chatbox positioned 5px lower than Functions level */}
+                <div className="absolute left-6 right-6 z-20 bg-white" style={{ top: 'calc(65% + 5px)' }}>
                   <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                   <p className="text-xs text-gray-500 text-center mt-2">
                     Platform messages can be viewed by anyone at your organization using the API.
@@ -145,8 +145,8 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                     <ConversationSimulation isVisible={true} />
                   </div>
                   
-                  {/* Chatbox positioned at Functions level - around 65% from top */}
-                  <div className="absolute top-[65%] left-6 right-6 z-20 bg-white">
+                  {/* Chatbox positioned 5px lower than Functions level */}
+                  <div className="absolute left-6 right-6 z-20 bg-white" style={{ top: 'calc(65% + 5px)' }}>
                     <PlatformBuilderChatbox onSendMessage={onSendMessage} />
                     <p className="text-xs text-gray-500 text-center mt-2">
                       Platform messages can be viewed by anyone at your organization using the API.
