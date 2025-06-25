@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 
 interface Message {
@@ -11,7 +12,7 @@ const conversationMessages: Message[] = [
   {
     id: 1,
     sender: "agent",
-    content: "💬 Schneider Electric (+49-171-5553333)\nHello Mr. Thomas Mueller! Quick question—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Schneider Agent",
+    content: "💬 Schneider Electric (+49-171-5553333)\nHi Thomas! Quick one—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Sarah",
     timestamp: "2:14 PM"
   },
   {
@@ -63,36 +64,36 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
     <div className="h-full w-full overflow-y-auto bg-white">
       {/* Content with proper padding - moved up 69px total */}
       <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-69px)' }}>
-        <div className="max-w-xl mx-auto space-y-4">
+        <div className="max-w-xl mx-auto space-y-6">
           {/* Conversation header */}
-          <div className="mb-3">
+          <div className="mb-6">
             <h3 className="text-sm font-medium text-gray-900 mb-2">
               Outreach Automation Agent
             </h3>
           </div>
 
-          {/* Messages - styled to match reference exactly */}
+          {/* Messages - formatted to match reference exactly */}
           {conversationMessages.map((message) => (
-            <div key={message.id} className="mb-4">
+            <div key={message.id} className="space-y-3">
               {message.sender === 'agent' ? (
                 <div>
-                  <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-                    {message.id === 1 ? (
-                      message.content
-                    ) : (
-                      <>
-                        <span className="font-medium">Schneider Electric</span>
-                        <div className="mt-1">{message.content}</div>
-                      </>
-                    )}
-                  </div>
+                  {message.id === 1 ? (
+                    <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                      {message.content}
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="text-sm font-medium text-gray-900 mb-1">Schneider Electric</div>
+                      <div className="text-sm text-gray-700 leading-relaxed">{message.content}</div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div>
-                  <div className="text-sm text-gray-700 leading-relaxed flex items-start gap-1">
-                    <span className="font-medium">Thomas Mueller 📱</span>
-                    <div className="flex-1 ml-2">{message.content}</div>
+                  <div className="text-sm font-medium text-gray-900 mb-1 flex items-center gap-1">
+                    Thomas Mueller 📱
                   </div>
+                  <div className="text-sm text-gray-700 leading-relaxed">{message.content}</div>
                 </div>
               )}
             </div>
