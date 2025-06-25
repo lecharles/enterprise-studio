@@ -27,7 +27,7 @@ export function SharePopover({ children }: SharePopoverProps) {
   const [linkCopied, setLinkCopied] = useState(false);
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText("openai.com/enterprise-studio/schneider");
+    navigator.clipboard.writeText(".../enterprise-studio/schneider");
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   };
@@ -96,7 +96,7 @@ export function SharePopover({ children }: SharePopoverProps) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-medium text-gray-900">Anyone with the link</p>
-                      <p className="text-xs text-gray-500 truncate">openai.com/enterprise-studio/schneider</p>
+                      <p className="text-xs text-gray-500 truncate">.../enterprise-studio/schneider</p>
                     </div>
                   </div>
                   <DropdownMenu>
