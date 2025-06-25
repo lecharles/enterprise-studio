@@ -1,4 +1,5 @@
 
+
 import { useState, useEffect } from "react";
 
 interface Message {
@@ -62,12 +63,12 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
 
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
-      {/* Content with proper padding - moved up 269px total (69px + 200px) */}
-      <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-269px)' }}>
+      {/* Content with proper padding - moved up 69px total, then down 10px more */}
+      <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-59px)' }}>
         <div className="max-w-xl mx-auto space-y-6">
           {/* Conversation header */}
           <div>
-            <h3 className="text-sm font-medium text-gray-900">
+            <h3 className="text-sm font-medium text-gray-900 mb-0">
               Outreach Automation Agent
             </h3>
           </div>
@@ -103,3 +104,4 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
     </div>
   );
 }
+
