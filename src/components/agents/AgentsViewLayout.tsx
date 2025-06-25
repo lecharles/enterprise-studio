@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BookOpen, MoreHorizontal, Logs } from "lucide-react";
@@ -6,6 +5,7 @@ import { Database, Trash2 } from "lucide-react";
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "@/components/ui/resizable";
 import { PlatformBuilderChatbox } from "@/components/agents/PlatformBuilderChatbox";
 import { ConversationSimulation } from "@/components/agents/ConversationSimulation";
+import { LogsPanel } from "@/components/agents/LogsPanel";
 
 interface AgentsViewLayoutProps {
   leftPanelContent: React.ReactNode;
@@ -160,7 +160,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
               {/* Right Panel (Logs) */}
               <ResizablePanel defaultSize={30} minSize={20} maxSize={40}>
                 <div className="h-full bg-white relative">
-                  {/* Hide logs button in top right - NO thread info here in 3-panel view */}
+                  {/* Hide logs button in top right */}
                   <div className="absolute top-4 right-4 z-10">
                     <Button
                       variant="outline"
@@ -172,12 +172,8 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                       <span>Hide logs</span>
                     </Button>
                   </div>
-                  {/* Logs panel content - no thread info here when 3-panel is active */}
-                  <div className="h-full p-4">
-                    <div className="h-full flex flex-col">
-                      {/* No thread info in the right panel when 3-panel view is active */}
-                    </div>
-                  </div>
+                  {/* Logs panel content */}
+                  <LogsPanel />
                 </div>
               </ResizablePanel>
             </>
