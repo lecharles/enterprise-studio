@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 
 interface Message {
@@ -45,12 +43,6 @@ const conversationMessages: Message[] = [
     sender: "customer",
     content: "Got the email—very compelling! 4pm tomorrow is good. What should I prepare? Who joins from your side?",
     timestamp: "2:22 PM"
-  },
-  {
-    id: 7,
-    sender: "agent",
-    content: "Perfect! You'll meet Maria Weber, our Energy Solutions Expert. Just bring: your latest energy bills (if easy), and main pain points with your current tools. Having Q1 budget info helps. Sending a cal invite now! 👍",
-    timestamp: "2:24 PM"
   }
 ];
 
@@ -104,4 +96,3 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
     </div>
   );
 }
-
