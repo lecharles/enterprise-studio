@@ -75,7 +75,8 @@ export function ChatInputArea({
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={handleKeyPress}
-            className="flex-1 border-0 bg-transparent focus:ring-0 focus:outline-none text-gray-900 placeholder-gray-500"
+            className="flex-1 border-0 bg-transparent focus:ring-0 focus:outline-none focus:border-white text-gray-900 placeholder-gray-500"
+            style={{ boxShadow: 'none' }}
           />
           
           <div className="flex items-center gap-2 ml-3">
