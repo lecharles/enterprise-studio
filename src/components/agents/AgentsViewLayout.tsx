@@ -15,18 +15,9 @@ interface AgentsViewLayoutProps {
 
 export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPanelContent }: AgentsViewLayoutProps) {
   const [showLogs, setShowLogs] = useState(false);
-  const [showConversationSimulation, setShowConversationSimulation] = useState(false);
 
   const onSendMessage = (message: string) => {
     console.log("Sending message:", message);
-    
-    // Check for the conversation simulation trigger
-    const triggerPattern = /Customer:\s*Thomas Mueller.*Company\s*EnBW.*Persona:\s*Building Manager.*Solutions:\s*Energy Monitoring.*Preferred Channels:\s*SMS.*Segment:\s*Enterprise/s;
-    
-    if (triggerPattern.test(message.replace(/\n/g, ' '))) {
-      console.log("Conversation simulation triggered");
-      setShowConversationSimulation(true);
-    }
   };
 
   return (
@@ -100,13 +91,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                 </div>
                 
                 {/* Content that scrolls behind header and chatbox */}
-                {showConversationSimulation ? (
-                  <ConversationSimulation isVisible={showConversationSimulation} />
-                ) : (
-                  <div className="h-full p-4">
-                    {rightPanelContent}
-                  </div>
-                )}
+                <ConversationSimulation isVisible={true} />
                 
                 {/* Chatbox for 2-panel view - positioned further down */}
                 <div className="absolute bottom-[10%] left-6 right-6 z-20">
@@ -154,13 +139,7 @@ export function AgentsViewLayout({ leftPanelContent, middlePanelContent, rightPa
                   </div>
                   
                   {/* Content that scrolls behind header and chatbox */}
-                  {showConversationSimulation ? (
-                    <ConversationSimulation isVisible={showConversationSimulation} />
-                  ) : (
-                    <div className="h-full p-4 pt-0">
-                      {middlePanelContent}
-                    </div>
-                  )}
+                  <ConversationSimulation isVisible={true} />
                   
                   {/* Chatbox for 3-panel view - positioned further down */}
                   <div className="absolute bottom-[10%] left-6 right-6 z-20">

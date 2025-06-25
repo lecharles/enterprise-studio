@@ -82,22 +82,6 @@ interface ConversationSimulationProps {
 }
 
 export function ConversationSimulation({ isVisible }: ConversationSimulationProps) {
-  const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
-
-  useEffect(() => {
-    if (!isVisible) {
-      setVisibleMessages([]);
-      return;
-    }
-
-    // Animate messages appearing one by one
-    conversationMessages.forEach((message, index) => {
-      setTimeout(() => {
-        setVisibleMessages(prev => [...prev, message]);
-      }, index * 1500); // 1.5 second delay between messages
-    });
-  }, [isVisible]);
-
   if (!isVisible) return null;
 
   return (
@@ -115,8 +99,8 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
             </p>
           </div>
 
-          {/* Messages */}
-          {visibleMessages.map((message) => (
+          {/* Messages - all visible immediately */}
+          {conversationMessages.map((message) => (
             <div
               key={message.id}
               className={`flex ${message.sender === 'agent' ? 'justify-start' : 'justify-end'} mb-4`}
@@ -146,16 +130,15 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
             </div>
           ))}
 
-          {visibleMessages.length === conversationMessages.length && (
-            <div className="text-center mt-8 p-4 bg-green-50 rounded-lg">
-              <p className="text-sm text-green-700 font-medium">
-                ✅ Meeting scheduled for tomorrow at 4pm
-              </p>
-              <p className="text-xs text-green-600 mt-1">
-                Lead qualification: High interest, enterprise segment
-              </p>
-            </div>
-          )}
+          {/* Success message */}
+          <div className="text-center mt-8 p-4 bg-green-50 rounded-lg">
+            <p className="text-sm text-green-700 font-medium">
+              ✅ Meeting scheduled for tomorrow at 4pm
+            </p>
+            <p className="text-xs text-green-600 mt-1">
+              Lead qualification: High interest, enterprise segment
+            </p>
+          </div>
         </div>
       </div>
     </div>
