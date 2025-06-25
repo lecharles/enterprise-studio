@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 
 interface Message {
@@ -12,7 +11,7 @@ const conversationMessages: Message[] = [
   {
     id: 1,
     sender: "agent",
-    content: "Outreach Automation Agent\n💬 Schneider Electric (+49-171-5553333)\nHello Mr. Thomas Mueller! Quick question—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Schneider Agent",
+    content: "💬 Schneider Electric (+49-171-5553333)\nHello Mr. Thomas Mueller! Quick question—are you ready for the new EU energy rules in 2025? Your 12 Stuttgart buildings could need upgrades. We helped RWE cut compliance costs 41%. Worth a chat? —Schneider Agent",
     timestamp: "2:14 PM"
   },
   {
@@ -62,9 +61,16 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
 
   return (
     <div className="h-full w-full overflow-y-auto bg-white">
-      {/* Content with proper padding - moved up 15px */}
-      <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-15px)' }}>
+      {/* Content with proper padding - moved up 35px total */}
+      <div className="pt-16 pb-6 px-6" style={{ transform: 'translateY(-35px)' }}>
         <div className="max-w-xl mx-auto space-y-4">
+          {/* Conversation header */}
+          <div className="mb-6">
+            <h3 className="text-sm font-bold text-gray-900 mb-2">
+              Outreach Automation Agent
+            </h3>
+          </div>
+
           {/* Messages - styled to match reference exactly */}
           {conversationMessages.map((message) => (
             <div key={message.id} className="mb-4">
