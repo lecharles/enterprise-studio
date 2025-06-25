@@ -74,7 +74,7 @@ export function ConnectMoreModal({
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">Browse connectors</DialogTitle>
           <p className="text-sm text-gray-600 mt-1">
-            ChatGPT can access information from connected apps, based on what you're authorized to view.
+            ChatGPT can access and push information from and to connected apps, based on what you're authorized to view and write.
           </p>
         </DialogHeader>
 
