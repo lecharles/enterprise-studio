@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { 
   MessageSquare,
@@ -155,7 +156,7 @@ export function AppSidebar({ currentView, onViewChange, builderToggle, campaignL
                     } ${isCollapsed ? 'justify-center p-2 h-10 w-10 mx-auto' : 'justify-start px-3 py-2'}`}
                     tooltip={isCollapsed ? item.title : undefined}
                   >
-                    <div className="flex items-center gap-3 w-full">
+                    <div className={`flex items-center gap-3 ${isCollapsed ? 'justify-center' : 'w-full'}`}>
                       <item.icon className={`w-4 h-4 shrink-0 ${item.color}`} />
                       {!isCollapsed && <span className="flex-1">{item.title}</span>}
                       
