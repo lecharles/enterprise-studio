@@ -88,45 +88,35 @@ export function ConversationSimulation({ isVisible }: ConversationSimulationProp
     <div className="h-full w-full overflow-y-auto bg-white">
       {/* Content that scrolls behind header and chatbox */}
       <div className="pt-16 pb-32 px-6">
-        <div className="max-w-md mx-auto space-y-4">
+        <div className="max-w-2xl mx-auto space-y-6">
           {/* Conversation header */}
-          <div className="text-center mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
               Outreach Automation Agent
+              <span className="text-gray-400">💬</span>
             </h3>
-            <p className="text-sm text-gray-600">
-              Live conversation simulation with Thomas Mueller (EnBW)
-            </p>
           </div>
 
-          {/* Messages - all visible immediately */}
+          {/* Messages - styled exactly like the reference */}
           {conversationMessages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${message.sender === 'agent' ? 'justify-start' : 'justify-end'} mb-4`}
-            >
-              <div
-                className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                  message.sender === 'agent'
-                    ? 'bg-gray-100 text-gray-900'
-                    : 'bg-blue-500 text-white'
-                }`}
-              >
-                {message.sender === 'agent' && (
-                  <div className="font-semibold text-sm mb-1">
-                    Schneider Electric
+            <div key={message.id} className="mb-6">
+              {message.sender === 'agent' ? (
+                <div>
+                  <div className="font-medium text-gray-900 mb-2">Schneider Electric</div>
+                  <div className="text-gray-700 leading-relaxed">
+                    {message.content}
                   </div>
-                )}
-                {message.sender === 'customer' && (
-                  <div className="font-semibold text-sm mb-1 flex items-center">
+                </div>
+              ) : (
+                <div>
+                  <div className="font-medium text-gray-900 mb-2 flex items-center gap-1">
                     Thomas Mueller 📱
                   </div>
-                )}
-                <p className="text-sm whitespace-pre-line">{message.content}</p>
-                <div className="text-xs opacity-70 mt-1">
-                  {message.timestamp}
+                  <div className="text-gray-700 leading-relaxed">
+                    {message.content}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
 
