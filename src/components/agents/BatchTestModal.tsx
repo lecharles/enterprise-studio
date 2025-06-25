@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
-import { Trash2 } from "lucide-react";
+import { Trash2, ChevronDown } from "lucide-react";
 
 interface BatchTestModalProps {
   isOpen: boolean;
@@ -50,6 +50,29 @@ CONVERSATION_{ID}: {Company} | {Segment} | {Outcome} | Score: {Initial}→{Final
     setDefinition("");
   };
 
+  const renderTextWithHighlighting = (text: string) => {
+    // Split text by lines and process each line
+    const lines = text.split('\n');
+    return lines.map((line, lineIndex) => {
+      // Replace variables in curly braces with colored spans
+      const parts = line.split(/(\{[^}]+\})/g);
+      return (
+        <div key={lineIndex} className="leading-6">
+          {parts.map((part, partIndex) => {
+            if (part.match(/^\{[^}]+\}$/)) {
+              return (
+                <span key={partIndex} className="text-green-600 font-medium">
+                  {part}
+                </span>
+              );
+            }
+            return <span key={partIndex}>{part}</span>;
+          })}
+        </div>
+      );
+    });
+  };
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[80vh] flex flex-col">
@@ -85,21 +108,23 @@ CONVERSATION_{ID}: {Company} | {Segment} | {Outcome} | Score: {Initial}→{Final
                   size="sm"
                   className="flex items-center gap-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 h-8 px-3 text-xs"
                 >
-                  Variables
-                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M6 9l6 6 6-6"/>
-                  </svg>
+                  Examples
+                  <ChevronDown className="w-3 h-3" />
                 </Button>
               </div>
             </div>
             
             <div className="flex-1 relative">
-              <Textarea
-                value={definition}
-                onChange={(e) => setDefinition(e.target.value)}
-                className="w-full h-full resize-none border border-gray-300 rounded-md p-3 text-sm"
-                placeholder="Enter your batch test definition..."
-              />
+              <div 
+                className="w-full h-full border border-gray-300 rounded-md overflow-auto"
+                style={{ backgroundColor: 'rgba(249,250,251,255)' }}
+              >
+                <div className="p-4 h-full">
+                  <pre className="text-sm font-mono text-gray-900 whitespace-pre-wrap leading-6 h-full overflow-auto">
+                    {renderTextWithHighlighting(definition)}
+                  </pre>
+                </div>
+              </div>
             </div>
           </div>
         </div>
