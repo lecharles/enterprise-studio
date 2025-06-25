@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,7 +25,7 @@ export function PlatformBuilderChatbox({ onSendMessage }: PlatformBuilderChatbox
   };
 
   return (
-    <div className="bg-white border border-gray-300 rounded-lg shadow-sm" style={{ marginTop: '31px' }}>
+    <div className="bg-white border border-gray-300 rounded-lg shadow-sm" style={{ marginTop: '26px' }}>
       <div className="flex flex-col px-4 py-4">
         {/* Input field on top */}
         <Input
