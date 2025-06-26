@@ -38,7 +38,7 @@ export function ToolsSection({
   onShowMcpConfiguration
 }: ToolsSectionProps) {
   const twilioMcpConfig = {
-    "name": "twilio-sms-campaigns",
+    "name": "MCP-twilio-sms-campaigns",
     "description": "Send personalized SMS campaigns with Twilio",
     "functions": [
       "send_sms_campaign",
@@ -183,7 +183,7 @@ export function ToolsSection({
               className="data-[state=checked]:bg-green-500 h-3 w-5 scale-75"
             />
             <img src="/lovable-uploads/181b29ba-d8ff-4a97-8705-41d2fdf24153.png" alt="MCP" className="w-4 h-4" />
-            <span className="font-mono text-gray-900">twilio-sms-campaigns</span>
+            <span className="font-mono text-gray-900">MCP-twilio-sms-campaigns</span>
           </div>
           <div className="flex items-center gap-1">
             <Button 
