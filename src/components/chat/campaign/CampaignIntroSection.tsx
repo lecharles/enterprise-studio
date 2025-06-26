@@ -11,11 +11,11 @@ export function CampaignIntroSection({ isVisible }: CampaignIntroSectionProps) {
   const [showFinalParagraph, setShowFinalParagraph] = useState(false);
 
   const bulletPoints = [
-    "📋 Generate persona-specific content for each of your 3 key segments with tailored messaging angles",
-    "✍️ Create ready-to-deploy copy for Email, WhatsApp, and LinkedIn with A/B testing variants",
-    "📊 Calculate performance projections based on your industry benchmarks and historical data",
-    "💰 Show pipeline impact estimates with detailed ROI calculations and conversion forecasts",
-    "🚀 Provide instant launch options with full platform integrations ready to execute"
+    "📋 **Generate persona-specific content** for each of your 3 key segments with tailored messaging angles",
+    "✍️ **Create ready-to-deploy copy** for Email, WhatsApp, and LinkedIn with A/B testing variants",
+    "📊 **Calculate performance projections** based on your industry benchmarks and historical data",
+    "💰 **Show pipeline impact estimates** with detailed ROI calculations and conversion forecasts",
+    "🚀 **Provide instant launch options** with full platform integrations ready to execute"
   ];
 
   useEffect(() => {
@@ -57,9 +57,10 @@ export function CampaignIntroSection({ isVisible }: CampaignIntroSectionProps) {
             className={`text-gray-900 transition-opacity duration-300 ${
               visibleItems.includes(index) ? 'opacity-100' : 'opacity-0'
             }`}
-          >
-            {bullet}
-          </li>
+            dangerouslySetInnerHTML={{
+              __html: bullet.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            }}
+          />
         ))}
       </ul>
 
